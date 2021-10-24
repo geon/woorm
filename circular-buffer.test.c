@@ -105,4 +105,16 @@ void circularBufferTest()
 		assertTrue("The buffer should be full now.", !success);
 	}
 	endTest();
+
+	beginTest("Pop too many elements.");
+	{
+		circularBufferInit(&circularBuffer);
+
+		circularBufferPush(&circularBuffer, 0x12);
+		circularBufferPop(&circularBuffer);
+		assertByte("Should be back at zero size.", circularBufferSize(&circularBuffer), 0);
+		circularBufferPop(&circularBuffer);
+		assertByte("Popping too many should not decrease size.", circularBufferSize(&circularBuffer), 0);
+	}
+	endTest();
 }
