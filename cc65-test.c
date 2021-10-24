@@ -1,5 +1,5 @@
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #ifdef __C64__
@@ -45,7 +45,7 @@ void fail(char *messageString, char *result, char *okValue)
 
 	printf("========================================\n");
 	printf("Test failed:\n");
-	printf("%s\n", lastMessageStringPointer);
+	printf("* %s\n", lastMessageStringPointer);
 	printf("Assertion: %s\n", messageString);
 	printf("Expected:  %s\n", okValue);
 	printf("Actual:    %s\n", result);
