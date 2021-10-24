@@ -20,7 +20,14 @@ bool circularBufferPush(CircularBuffer *circularBuffer, uint8_t value)
 
 uint8_t circularBufferPop(CircularBuffer *circularBuffer)
 {
-	uint8_t value = circularBuffer->values[circularBuffer->begin];
+	uint8_t value;
+
+	if (circularBufferSize(circularBuffer) == 0)
+	{
+		return false;
+	}
+
+	value = circularBuffer->values[circularBuffer->begin];
 	++(circularBuffer->begin);
 	return value;
 }
