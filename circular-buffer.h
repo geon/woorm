@@ -13,5 +13,6 @@ typedef struct CircularBuffer
 void circularBufferInit(CircularBuffer *circularBuffer);
 void circularBufferPush(CircularBuffer *circularBuffer, uint8_t value);
 uint8_t circularBufferPop(CircularBuffer *circularBuffer);
+uint8_t circularBufferSize(CircularBuffer *circularBuffer);
 
 #endif
