@@ -1,18 +1,18 @@
 #include "circular-buffer.h"
 #include "cc65-test.h"
 
+CircularBuffer circularBuffer;
+
 void circularBufferTest()
 {
 	beginTest("Create circularBuffer.");
 	{
-		CircularBuffer circularBuffer;
 		circularBufferInit(&circularBuffer);
 	}
 	endTest();
 
 	beginTest("Push element to circularBuffer.");
 	{
-		CircularBuffer circularBuffer;
 		circularBufferInit(&circularBuffer);
 
 		circularBufferPush(&circularBuffer, 0x12);
@@ -21,7 +21,6 @@ void circularBufferTest()
 
 	beginTest("Pop element from circularBuffer.");
 	{
-		CircularBuffer circularBuffer;
 		circularBufferInit(&circularBuffer);
 
 		circularBufferPush(&circularBuffer, 0x12);
@@ -33,7 +32,6 @@ void circularBufferTest()
 	{
 		uint8_t popped;
 		uint8_t pushed;
-		CircularBuffer circularBuffer;
 		uint16_t i;
 
 		// Can't for-loop over 256 element with a byte counter.
