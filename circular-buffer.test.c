@@ -143,4 +143,29 @@ void circularBufferTest()
 		}
 	}
 	endTest();
+
+	beginTest("Foreach should iterate the buffer.");
+	{
+		uint8_t pushed;
+		uint8_t iterator;
+		uint8_t value;
+		uint8_t expected;
+		uint16_t i;
+
+		circularBufferInit(&circularBuffer);
+
+		for (i = 0; i < 10; ++i)
+		{
+			pushed = i;
+			circularBufferPush(&circularBuffer, pushed);
+		}
+
+		expected = 0;
+		circularBufferForEach((&circularBuffer), iterator, value)
+		{
+			assertByte("Popped value should be same as pushed.", value, expected);
+			++expected;
+		}
+	}
+	endTest();
 }

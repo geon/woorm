@@ -16,4 +16,6 @@ bool circularBufferPush(CircularBuffer *circularBuffer, uint8_t value);
 uint8_t circularBufferPop(CircularBuffer *circularBuffer);
 uint8_t circularBufferSize(CircularBuffer *circularBuffer);
 
+#define circularBufferForEach(circularBuffer, iterator, value) for (iterator = circularBuffer->begin; value = circularBuffer->values[iterator], iterator != circularBuffer->end; ++iterator)
+
 #endif
