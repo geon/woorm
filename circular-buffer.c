@@ -18,3 +18,8 @@ uint8_t circularBufferPop(CircularBuffer *circularBuffer)
 	++(circularBuffer->begin);
 	return value;
 }
+
+uint8_t circularBufferSize(CircularBuffer *circularBuffer)
+{
+	return circularBuffer->end - circularBuffer->begin;
+}

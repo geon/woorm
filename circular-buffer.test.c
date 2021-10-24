@@ -68,4 +68,23 @@ void circularBufferTest()
 		assertByte("Second popped value should be the second pushed.", secondPopped, secondPushed);
 	}
 	endTest();
+
+	beginTest("Push/pop should in-/decrease size.");
+	{
+		circularBufferInit(&circularBuffer);
+		assertByte("Fresh buffer should be empty.", circularBufferSize(&circularBuffer), 0);
+
+		circularBufferPush(&circularBuffer, 0x12);
+		assertByte("Pushing should increase size.", circularBufferSize(&circularBuffer), 1);
+
+		circularBufferPush(&circularBuffer, 0x12);
+		assertByte("Pushing should increase size.", circularBufferSize(&circularBuffer), 2);
+
+		circularBufferPop(&circularBuffer);
+		assertByte("Popping should decrease size.", circularBufferSize(&circularBuffer), 1);
+
+		circularBufferPop(&circularBuffer);
+		assertByte("Popping should decrease size.", circularBufferSize(&circularBuffer), 0);
+	}
+	endTest();
 }
