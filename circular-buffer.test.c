@@ -18,4 +18,14 @@ void circularBufferTest()
 		circularBufferPush(&circularBuffer, 0x12);
 	}
 	endTest();
+
+	beginTest("Pop element from circularBuffer.");
+	{
+		CircularBuffer circularBuffer;
+		circularBufferInit(&circularBuffer);
+
+		circularBufferPush(&circularBuffer, 0x12);
+		circularBufferPop(&circularBuffer);
+	}
+	endTest();
 }
