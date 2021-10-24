@@ -87,4 +87,22 @@ void circularBufferTest()
 		assertByte("Popping should decrease size.", circularBufferSize(&circularBuffer), 0);
 	}
 	endTest();
+
+	beginTest("Push too many elements.");
+	{
+		uint16_t i;
+		bool success;
+
+		circularBufferInit(&circularBuffer);
+
+		for (i = 0x00; i < 0xff; ++i)
+		{
+			success = circularBufferPush(&circularBuffer, 0x12);
+			assertTrue("Should be able to push exactly 0xff - 1 bytes.", success);
+		}
+
+		success = circularBufferPush(&circularBuffer, 0x12);
+		assertTrue("The buffer should be full now.", !success);
+	}
+	endTest();
 }

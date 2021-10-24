@@ -2,6 +2,7 @@
 #define CIRCULAR_BUFFER_H
 
 #include <stdint.h>
+#include <stdbool.h>
 
 typedef struct CircularBuffer
 {
@@ -11,7 +12,7 @@ typedef struct CircularBuffer
 } CircularBuffer;
 
 void circularBufferInit(CircularBuffer *circularBuffer);
-void circularBufferPush(CircularBuffer *circularBuffer, uint8_t value);
+bool circularBufferPush(CircularBuffer *circularBuffer, uint8_t value);
 uint8_t circularBufferPop(CircularBuffer *circularBuffer);
 uint8_t circularBufferSize(CircularBuffer *circularBuffer);
 
