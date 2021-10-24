@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #ifdef __C64__
@@ -81,5 +82,13 @@ void assertByte(char *messageString, uint8_t result, uint8_t okValue)
 		sprintf(resultBuffer, "0x%.2x", result);
 		sprintf(okBuffer, "0x%.2x", okValue);
 		fail(messageString, resultBuffer, okBuffer);
+	}
+}
+
+void assertTrue(char *messageString, bool success)
+{
+	if (!success)
+	{
+		fail(messageString, "false", "true");
 	}
 }
