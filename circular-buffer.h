@@ -5,7 +5,9 @@
 
 typedef struct CircularBuffer
 {
-    uint8_t value;
+	uint8_t values[0xff];
+	uint8_t begin;
+	uint8_t end;
 } CircularBuffer;
 
 void circularBufferInit(CircularBuffer *circularBuffer);

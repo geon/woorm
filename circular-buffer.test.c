@@ -45,4 +45,27 @@ void circularBufferTest()
 		}
 	}
 	endTest();
+
+	beginTest("Push and pop 2 elements.");
+	{
+		uint8_t firstPopped;
+		uint8_t secondPopped;
+		uint8_t firstPushed;
+		uint8_t secondPushed;
+
+		circularBufferInit(&circularBuffer);
+
+		firstPushed = 0x12;
+		secondPushed = 0x34;
+
+		circularBufferPush(&circularBuffer, firstPushed);
+		circularBufferPush(&circularBuffer, secondPushed);
+
+		firstPopped = circularBufferPop(&circularBuffer);
+		secondPopped = circularBufferPop(&circularBuffer);
+
+		assertByte("First popped value should be the first pushed.", firstPopped, firstPushed);
+		assertByte("Second popped value should be the second pushed.", secondPopped, secondPushed);
+	}
+	endTest();
 }
