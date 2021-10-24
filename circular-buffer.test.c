@@ -117,4 +117,30 @@ void circularBufferTest()
 		assertByte("Popping too many should not decrease size.", circularBufferSize(&circularBuffer), 0);
 	}
 	endTest();
+
+	beginTest("Push past the end, looping back.");
+	{
+		uint8_t popped;
+		uint8_t pushed;
+		uint16_t i;
+
+		circularBufferInit(&circularBuffer);
+
+		// Prep the buffer by pushing and popping to nearly capacity.
+		for (i = 0; i < 250; ++i)
+		{
+			circularBufferPush(&circularBuffer, 0);
+			circularBufferPop(&circularBuffer);
+		}
+
+		// A few more pushes will bring it over the edge and loop back at the beginning.
+		for (i = 0; i < 10; ++i)
+		{
+			pushed = i;
+			circularBufferPush(&circularBuffer, pushed);
+			popped = circularBufferPop(&circularBuffer);
+			assertByte("Popped value should be same as pushed.", popped, pushed);
+		}
+	}
+	endTest();
 }

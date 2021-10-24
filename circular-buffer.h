@@ -1,12 +1,12 @@
 #ifndef CIRCULAR_BUFFER_H
 #define CIRCULAR_BUFFER_H
 
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 typedef struct CircularBuffer
 {
-	uint8_t values[0xff];
+	uint8_t values[0x100];
 	uint8_t begin;
 	uint8_t end;
 } CircularBuffer;
