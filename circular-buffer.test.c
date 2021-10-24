@@ -9,4 +9,13 @@ void circularBufferTest()
 		circularBufferInit(&circularBuffer);
 	}
 	endTest();
+
+	beginTest("Push element to circularBuffer.");
+	{
+		CircularBuffer circularBuffer;
+		circularBufferInit(&circularBuffer);
+
+		circularBufferPush(&circularBuffer, 0x12);
+	}
+	endTest();
 }
