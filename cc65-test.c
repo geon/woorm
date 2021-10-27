@@ -85,6 +85,28 @@ void assertByte(char *messageString, uint8_t result, uint8_t okValue)
 	}
 }
 
+void assertWordDecimal(char *messageString, uint16_t result, uint16_t okValue)
+{
+	if (result != okValue)
+	{
+		char resultBuffer[6], okBuffer[6]; // 5 chars + null
+		sprintf(resultBuffer, "%*i", 5, result);
+		sprintf(okBuffer, "%*i", 5, okValue);
+		fail(messageString, resultBuffer, okBuffer);
+	}
+}
+
+void assertByteDecimal(char *messageString, uint8_t result, uint8_t okValue)
+{
+	if (result != okValue)
+	{
+		char resultBuffer[4], okBuffer[4]; // 3 chars + null
+		sprintf(resultBuffer, "%*i", 3, result);
+		sprintf(okBuffer, "%*i", 3, okValue);
+		fail(messageString, resultBuffer, okBuffer);
+	}
+}
+
 void assertTrue(char *messageString, bool success)
 {
 	if (!success)
