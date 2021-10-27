@@ -11,7 +11,7 @@ typedef struct Coord
 } Coord;
 
 Coord coordCreate(uint8_t x, uint8_t y);
-uint16_t coordToPos(uint8_t x, uint8_t y);
+uint16_t coordToPos(Coord coord);
 int8_t getPositionOffsetForDirection(Direction direction);
 
 #endif
