@@ -13,9 +13,9 @@ Coord coordCreate(uint8_t x, uint8_t y)
 	return coord;
 }
 
-uint16_t coordToPos(uint8_t x, uint8_t y)
+uint16_t coordToPos(Coord coord)
 {
-	return x + y * SCREEN_WIDTH;
+	return coord.x + coord.y * SCREEN_WIDTH;
 }
 
 // offsets for Direction_up, Direction_right, Direction_down, Direction_left.
