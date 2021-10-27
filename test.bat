@@ -8,6 +8,7 @@ cl ^
     circular-buffer.c ^
     coord.test.c ^
     coord.c ^
+    custom-asserts.c ^
     -o test.exe
 if %errorlevel% neq 0 exit /b %errorlevel%
 
@@ -23,6 +24,7 @@ cl65 -O ^
     circular-buffer.c ^
     coord.test.c ^
     coord.c ^
+    custom-asserts.c ^
     -o test.prg
 if %errorlevel% neq 0 exit /b %errorlevel%
 
