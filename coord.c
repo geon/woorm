@@ -18,6 +18,14 @@ uint16_t coordToPos(Coord coord)
 	return coord.x + coord.y * SCREEN_WIDTH;
 }
 
+Coord posToCoord(uint16_t pos)
+{
+	Coord coord;
+	coord.x = pos % SCREEN_WIDTH;
+	coord.y = pos / SCREEN_WIDTH;
+	return coord;
+}
+
 // offsets for Direction_up, Direction_right, Direction_down, Direction_left.
 int8_t offsets[Direction_count] = {-SCREEN_WIDTH, 1, SCREEN_WIDTH, -1};
 int8_t getPositionOffsetForDirection(Direction direction)
