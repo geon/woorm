@@ -6,6 +6,8 @@ cl ^
     cc65-test.c ^
     circular-buffer.test.c ^
     circular-buffer.c ^
+    coord.test.c ^
+    coord.c ^
     -o test.exe
 if %errorlevel% neq 0 exit /b %errorlevel%
 
@@ -19,6 +21,8 @@ cl65 -O ^
     cc65-test.c ^
     circular-buffer.test.c ^
     circular-buffer.c ^
+    coord.test.c ^
+    coord.c ^
     -o test.prg
 if %errorlevel% neq 0 exit /b %errorlevel%
 
