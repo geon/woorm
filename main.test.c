@@ -2,6 +2,7 @@
 #include "circular-buffer.test.h"
 #include "coord.test.h"
 #include "tile.test.h"
+#include "worm.test.h"
 
 int main()
 {
@@ -11,6 +12,7 @@ int main()
 	coordTest();
 	circularBufferTest();
 	tileTest();
+	wormTest();
 
 	afterTests();
 
