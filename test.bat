@@ -11,6 +11,8 @@ cl ^
     custom-asserts.c ^
     tile.c ^
     tile.test.c ^
+    worm.c ^
+    worm.test.c ^
     -o test.exe
 if %errorlevel% neq 0 exit /b %errorlevel%
 
@@ -29,6 +31,8 @@ cl65 -O ^
     custom-asserts.c ^
     tile.c ^
     tile.test.c ^
+    worm.c ^
+    worm.test.c ^
     -o test.prg
 if %errorlevel% neq 0 exit /b %errorlevel%
 
