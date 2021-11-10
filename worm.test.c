@@ -20,14 +20,14 @@ void wormTest()
 {
 	beginTest("Create worm.");
 	{
-		wormInit(worm, screen, 100, Direction_first);
+		wormInit(worm, screen, 100, Direction_first, 0);
 	}
 	endTest();
 
 	beginTest("A worm is drawn in 4 tiles on init.");
 	{
 		screen->chars[coordToPos(coordCreate(17, 10))] = 1;
-		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right);
+		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
 
 		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(20, 10))], Tile_worm_right_0_0);
 		assertByteDecimal("Head to middle", screen->chars[coordToPos(coordCreate(19, 10))], Tile_worm_right_1_0);
@@ -38,7 +38,7 @@ void wormTest()
 
 	beginTest("To move, it must add a tile in front.");
 	{
-		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right);
+		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
 		wormStep(worm);
 
 		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(21, 10))], Tile_worm_right_0_1);
@@ -50,7 +50,7 @@ void wormTest()
 
 	beginTest("Further microsteps should cycle the tiles.");
 	{
-		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right);
+		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
 		wormStep(worm);
 		wormStep(worm);
 		wormStep(worm);
@@ -64,7 +64,7 @@ void wormTest()
 
 	beginTest("The last microsteps should clear the trail.");
 	{
-		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right);
+		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
 		wormStep(worm);
 		wormStep(worm);
 		wormStep(worm);
