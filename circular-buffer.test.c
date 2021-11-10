@@ -175,6 +175,7 @@ void circularBufferTest()
 		uint8_t iterator;
 		uint8_t value;
 		uint8_t expected;
+		uint8_t count;
 		uint16_t i;
 
 		circularBufferInit(&circularBuffer);
@@ -186,11 +187,14 @@ void circularBufferTest()
 		}
 
 		expected = pushed;
+		count = 0;
 		circularBufferForEachReverse((&circularBuffer), iterator, value)
 		{
 			assertByte("Value should be same as pushed.", value, expected);
 			--expected;
+			++count;
 		}
+		assertByte("All values should be iterated.", count, 10);
 	}
 	endTest();
 }
