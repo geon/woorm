@@ -1,8 +1,11 @@
+#include "coord.h"
+#include "direction.h"
 #include "screen.h"
 #include "worm.h"
 #include <c64.h>
 #include <conio.h>
-#include <stdint.h>
+
+Worm wormPlayer1;
 
 Screen _screen = {
 	(uint8_t *)0x0400,
@@ -36,12 +39,29 @@ void setUpWormCharset()
 	VIC.bgcolor2 = COLOR_BROWN;
 }
 
+void waitSecond()
+{
+	uint8_t i;
+	for (i = 0; i < 50; ++i)
+	{
+		waitvsync();
+	}
+}
+
 int main()
 {
 	clearScreen();
 	bgcolor(COLOR_BLACK);
 	bordercolor(COLOR_BLACK);
 	setUpWormCharset();
+
+	wormInit(&wormPlayer1, screen, coordToPos(coordCreate(10, 10)), Direction_right, COLOR_GREEN + 8);
+
+	for (;;)
+	{
+		waitSecond();
+		wormStep(&wormPlayer1);
+	}
 
 	return 0;
 }
