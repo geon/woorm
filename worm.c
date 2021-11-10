@@ -43,11 +43,15 @@ void wormStep(Worm *worm)
 
 	currentHeadCell = worm->tailValues[worm->tail.end - 1];
 
+	if (!worm->step)
+	{
+		circularBufferPush(&worm->tail, &index);
+		worm->tailValues[index].direction = worm->nextDirection;
+		worm->tailValues[index].position = currentHeadCell.position + getPositionOffsetForDirection(worm->nextDirection);
+		circularBufferPop(&worm->tail, &index);
+	}
+
 	++worm->step;
-	circularBufferPush(&worm->tail, &index);
-	worm->tailValues[index].direction = worm->nextDirection;
-	worm->tailValues[index].position = currentHeadCell.position + getPositionOffsetForDirection(worm->nextDirection);
-	circularBufferPop(&worm->tail, &index);
 
 	wormDraw(worm);
 }
