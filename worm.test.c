@@ -47,4 +47,18 @@ void wormTest()
 		assertByteDecimal("End", screen->chars[coordToPos(coordCreate(18, 10))], Tile_worm_right_3_1);
 	}
 	endTest();
+
+	beginTest("Further microsteps should cycle the tiles.");
+	{
+		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right);
+		wormStep(worm);
+		wormStep(worm);
+		wormStep(worm);
+
+		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(21, 10))], Tile_worm_right_0_3);
+		assertByteDecimal("Head to middle", screen->chars[coordToPos(coordCreate(20, 10))], Tile_worm_right_1_3);
+		assertByteDecimal("End to middle", screen->chars[coordToPos(coordCreate(19, 10))], Tile_worm_right_2_3);
+		assertByteDecimal("End", screen->chars[coordToPos(coordCreate(18, 10))], Tile_worm_right_3_3);
+	}
+	endTest();
 }
