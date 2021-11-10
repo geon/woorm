@@ -67,7 +67,6 @@ void wormDraw(Worm *worm)
 	circularBufferForEachReverse(tail, iterator)
 	{
 		uint8_t part;
-		Tile tile;
 		TailCell cell;
 		cell = worm->tailValues[iterator];
 
