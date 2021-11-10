@@ -17,6 +17,6 @@ uint8_t circularBufferPop(CircularBuffer *circularBuffer);
 uint8_t circularBufferSize(CircularBuffer *circularBuffer);
 
 #define circularBufferForEach(circularBuffer, iterator, value) for (iterator = circularBuffer->begin; value = circularBuffer->values[iterator], iterator != circularBuffer->end; ++iterator)
-#define circularBufferForEachReverse(circularBuffer, iterator, value) for (iterator = circularBuffer->end; value = circularBuffer->values[iterator - 1], iterator != circularBuffer->begin; --iterator)
+#define circularBufferForEachReverse(circularBuffer, iterator, value) for (iterator = circularBuffer->end - 1; value = circularBuffer->values[iterator], iterator != (uint8_t)(circularBuffer->begin - 1); --iterator)
 
 #endif
