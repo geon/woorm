@@ -7,13 +7,14 @@
 
 void wormDraw(Worm *worm);
 
-void wormInit(Worm *worm, Screen *screen, uint16_t pos, Direction direction)
+void wormInit(Worm *worm, Screen *screen, uint16_t pos, Direction direction, uint8_t color)
 {
 	uint8_t index;
 	uint16_t position = pos - getPositionOffsetForDirection(direction) * 3;
 
 	worm->nextDirection = direction;
 	worm->step = Microstep_0;
+	worm->color = color;
 	worm->screen = screen;
 	circularBufferInit(&worm->tail);
 
@@ -92,6 +93,6 @@ void wormDraw(Worm *worm)
 		}
 
 		screen->chars[cell.position] = tileCreate(part, lastDirection, cell.direction, worm->step);
-		screen->colors[cell.position] = 14;
+		screen->colors[cell.position] = worm->color;
 	}
 }

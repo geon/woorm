@@ -16,13 +16,14 @@ typedef struct TailCell
 typedef struct Worm
 {
 	Screen *screen;
+	uint8_t color;
 	Direction nextDirection;
 	Microstep step;
 	CircularBuffer tail;
 	TailCell tailValues[0x100];
 } Worm;
 
-void wormInit(Worm *worm, Screen *screen, uint16_t pos, Direction direction);
+void wormInit(Worm *worm, Screen *screen, uint16_t pos, Direction direction, uint8_t color);
 void wormStep(Worm *worm);
 
 #endif
