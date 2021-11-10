@@ -51,7 +51,7 @@ void wormStep(Worm *worm)
 		circularBufferPop(&worm->tail, &index);
 	}
 
-	++worm->step;
+	worm->step = (worm->step + 1) & 3;
 
 	wormDraw(worm);
 }
