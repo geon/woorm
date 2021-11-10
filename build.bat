@@ -1,5 +1,6 @@
 rem Compile tests for c64.
 cl65 -O ^
+    worm-charset.asm ^
     main.c ^
     -C c64-c-gamedev.cfg ^
     -o woorm.prg
