@@ -60,7 +60,7 @@ int main()
 
 	for (;;)
 	{
-		waitMs(1000);
+		waitMs(300);
 		wormStep(&wormPlayer1);
 	}
 
