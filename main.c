@@ -39,10 +39,11 @@ void setUpWormCharset()
 	VIC.bgcolor2 = COLOR_BROWN;
 }
 
-void waitSecond()
+void waitMs(uint16_t time)
 {
+	uint16_t frames = time / 20;
 	uint8_t i;
-	for (i = 0; i < 50; ++i)
+	for (i = 0; i < frames; ++i)
 	{
 		waitvsync();
 	}
@@ -59,7 +60,7 @@ int main()
 
 	for (;;)
 	{
-		waitSecond();
+		waitMs(1000);
 		wormStep(&wormPlayer1);
 	}
 
