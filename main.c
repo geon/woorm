@@ -6,6 +6,9 @@
 #include <conio.h>
 
 Worm wormPlayer1;
+Worm wormPlayer2;
+Worm wormPlayer3;
+Worm wormPlayer4;
 
 Screen _screen = {
 	(uint8_t *)0x0400,
@@ -56,12 +59,20 @@ int main()
 	bordercolor(COLOR_BLACK);
 	setUpWormCharset();
 
+	waitMs(1000);
+
 	wormInit(&wormPlayer1, screen, coordToPos(coordCreate(10, 10)), Direction_right, COLOR_GREEN + 8);
+	wormInit(&wormPlayer2, screen, coordToPos(coordCreate(20, 20)), Direction_up, COLOR_YELLOW + 8);
+	wormInit(&wormPlayer3, screen, coordToPos(coordCreate(10, 14)), Direction_down, COLOR_RED + 8);
+	wormInit(&wormPlayer4, screen, coordToPos(coordCreate(30, 14)), Direction_left, COLOR_CYAN + 8);
 
 	for (;;)
 	{
 		waitMs(300);
 		wormStep(&wormPlayer1);
+		wormStep(&wormPlayer2);
+		wormStep(&wormPlayer3);
+		wormStep(&wormPlayer4);
 	}
 
 	return 0;
