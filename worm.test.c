@@ -26,6 +26,7 @@ void wormTest()
 
 	beginTest("A worm is drawn in 4 tiles on init.");
 	{
+		screenClear(screen);
 		screen->chars[coordToPos(coordCreate(17, 10))] = 1;
 		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
 
@@ -38,6 +39,7 @@ void wormTest()
 
 	beginTest("To move, it must add a tile in front.");
 	{
+		screenClear(screen);
 		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
 		wormStep(worm);
 
@@ -50,6 +52,7 @@ void wormTest()
 
 	beginTest("Further microsteps should cycle the tiles.");
 	{
+		screenClear(screen);
 		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
 		wormStep(worm);
 		wormStep(worm);
@@ -64,6 +67,7 @@ void wormTest()
 
 	beginTest("The last microsteps should clear the trail.");
 	{
+		screenClear(screen);
 		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
 		wormStep(worm);
 		wormStep(worm);
