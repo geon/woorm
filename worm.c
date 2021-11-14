@@ -37,6 +37,11 @@ void wormInit(Worm *worm, Screen *screen, uint16_t pos, Direction direction, uin
 	wormDraw(worm);
 }
 
+void wormSetNextDirection(Worm *worm, Direction direction)
+{
+	worm->nextDirection = direction;
+}
+
 void wormStep(Worm *worm)
 {
 	uint8_t index;
@@ -91,7 +96,7 @@ void wormDraw(Worm *worm)
 			part = TileType_middle;
 		}
 
-		screen->chars[cell.position] = tileCreate(part, lastDirection, cell.direction, worm->step);
+		screen->chars[cell.position] = tileCreate(part, cell.direction, lastDirection, worm->step);
 		screen->colors[cell.position] = worm->color;
 	}
 }
