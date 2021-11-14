@@ -13,6 +13,7 @@ cl ^
     tile.test.c ^
     worm.c ^
     worm.test.c ^
+    screen.c ^
     -o test.exe
 if %errorlevel% neq 0 exit /b %errorlevel%
 
@@ -33,6 +34,7 @@ cl65 -O ^
     tile.test.c ^
     worm.c ^
     worm.test.c ^
+    screen.c ^
     -o test.prg
 if %errorlevel% neq 0 exit /b %errorlevel%
 
