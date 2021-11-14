@@ -15,7 +15,7 @@ Screen _screen = {
 	(uint8_t *)0xD800};
 Screen *screen = &_screen;
 
-void clearScreen(Screen *screen)
+void screenClear(Screen *screen)
 {
 	uint16_t i;
 
@@ -54,7 +54,7 @@ void waitMs(uint16_t time)
 
 int main()
 {
-	clearScreen(screen);
+	screenClear(screen);
 	bgcolor(COLOR_BLACK);
 	bordercolor(COLOR_BLACK);
 	setUpWormCharset();
