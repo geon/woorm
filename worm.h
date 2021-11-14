@@ -24,6 +24,7 @@ typedef struct Worm
 } Worm;
 
 void wormInit(Worm *worm, Screen *screen, uint16_t pos, Direction direction, uint8_t color);
+void wormSetNextDirection(Worm *worm, Direction direction);
 void wormStep(Worm *worm);
 
 #endif

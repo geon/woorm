@@ -80,4 +80,22 @@ void wormTest()
 		assertByte("Clear", screen->chars[coordToPos(coordCreate(18, 10))], Tile_empty);
 	}
 	endTest();
+
+	beginTest("Setting nextDirection affects macro steps.");
+	{
+		screenClear(screen);
+		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_up, 0);
+		wormSetNextDirection(worm, Direction_right);
+
+		wormStep(worm);
+		wormStep(worm);
+		wormStep(worm);
+		wormStep(worm);
+
+		assertTrue("Head", screen->chars[coordToPos(coordCreate(21, 10))]);
+		assertTrue("Middle", screen->chars[coordToPos(coordCreate(20, 10))]);
+		assertTrue("End", screen->chars[coordToPos(coordCreate(20, 11))]);
+		assertTrue("Clear", !screen->chars[coordToPos(coordCreate(20, 12))]);
+	}
+	endTest();
 }
