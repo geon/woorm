@@ -15,16 +15,6 @@ Screen _screen = {
 	(uint8_t *)0xD800};
 Screen *screen = &_screen;
 
-void screenClear(Screen *screen)
-{
-	uint16_t i;
-
-	for (i = 0; i < 1000; ++i)
-	{
-		screen->chars[i] = 0;
-	}
-}
-
 void setUpWormCharset()
 {
 	// Switch to charset at 0x2000. (Charset with index 4 in the default bank, which is the first one not shadowed by rom.)
