@@ -6,6 +6,7 @@ cl65 -O ^
     worm.c ^
     coord.c ^
     tile.c ^
+    screen.c ^
     -C c64-c-gamedev.cfg ^
     -o woorm.prg
 if %errorlevel% neq 0 exit /b %errorlevel%
