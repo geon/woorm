@@ -15,6 +15,11 @@ Screen _screen = {
 	(uint8_t *)0xD800};
 Screen *screen = &_screen;
 
+void animateWorm(Worm *worm)
+{
+	wormStep(worm);
+}
+
 void setUpWormCharset()
 {
 	// Switch to charset at 0x2000. (Charset with index 4 in the default bank, which is the first one not shadowed by rom.)
@@ -59,10 +64,10 @@ int main()
 	for (;;)
 	{
 		waitMs(300);
-		wormStep(&wormPlayer1);
-		wormStep(&wormPlayer2);
-		wormStep(&wormPlayer3);
-		wormStep(&wormPlayer4);
+		animateWorm(&wormPlayer1);
+		animateWorm(&wormPlayer2);
+		animateWorm(&wormPlayer3);
+		animateWorm(&wormPlayer4);
 	}
 
 	return 0;
