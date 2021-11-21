@@ -10,14 +10,33 @@ Worm wormPlayer2;
 Worm wormPlayer3;
 Worm wormPlayer4;
 
+int stepCount1 = 0;
+int stepCount2 = 0;
+int stepCount3 = 0;
+int stepCount4 = 0;
+
 Screen _screen = {
 	(uint8_t *)0x0400,
 	(uint8_t *)0xD800};
 Screen *screen = &_screen;
 
-void animateWorm(Worm *worm)
+void animateWorm(Worm *worm, int *stepCount)
 {
 	wormStep(worm);
+	if (*stepCount == 0)
+	{
+		++worm->nextDirection;
+		if (worm->nextDirection == 4)
+		{
+			worm->nextDirection = 0;
+		}
+	}
+
+	++*stepCount;
+	if (*stepCount == 8)
+	{
+		*stepCount = 0;
+	}
 }
 
 void setUpWormCharset()
@@ -64,10 +83,10 @@ int main()
 	for (;;)
 	{
 		waitMs(300);
-		animateWorm(&wormPlayer1);
-		animateWorm(&wormPlayer2);
-		animateWorm(&wormPlayer3);
-		animateWorm(&wormPlayer4);
+		animateWorm(&wormPlayer1, &stepCount1);
+		animateWorm(&wormPlayer2, &stepCount2);
+		animateWorm(&wormPlayer3, &stepCount3);
+		animateWorm(&wormPlayer4, &stepCount4);
 	}
 
 	return 0;
