@@ -11,9 +11,9 @@ Worm wormPlayer3;
 Worm wormPlayer4;
 
 int stepCount1 = 0;
-int stepCount2 = 0;
-int stepCount3 = 0;
-int stepCount4 = 0;
+int stepCount2 = 1;
+int stepCount3 = 2;
+int stepCount4 = 3;
 
 Screen _screen = {
 	(uint8_t *)0x0400,
