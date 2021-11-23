@@ -4,38 +4,26 @@
 #include "worm.h"
 #include <c64.h>
 #include <conio.h>
+#include <stdlib.h>
+#include <time.h>
 
 Worm wormPlayer1;
 Worm wormPlayer2;
 Worm wormPlayer3;
 Worm wormPlayer4;
 
-int stepCount1 = 0;
-int stepCount2 = 1;
-int stepCount3 = 2;
-int stepCount4 = 3;
-
 Screen _screen = {
 	(uint8_t *)0x0400,
 	(uint8_t *)0xD800};
 Screen *screen = &_screen;
 
-void animateWorm(Worm *worm, int *stepCount)
+void animateWorm(Worm *worm)
 {
 	wormStep(worm);
-	if (*stepCount == 0)
+	if (worm->step == 0)
 	{
-		++worm->nextDirection;
-		if (worm->nextDirection == 4)
-		{
-			worm->nextDirection = 0;
-		}
-	}
-
-	++*stepCount;
-	if (*stepCount == 8)
-	{
-		*stepCount = 0;
+		int random = rand() % 4;
+		worm->nextDirection = (worm->nextDirection + (random == 0 ? 1 : (random == 1 ? -1 : 0))) & 3;
 	}
 }
 
@@ -68,6 +56,8 @@ void waitMs(uint16_t time)
 
 int main()
 {
+	srand(time(NULL));
+
 	screenClear(screen);
 	bgcolor(COLOR_BLACK);
 	bordercolor(COLOR_BLACK);
@@ -82,11 +72,11 @@ int main()
 
 	for (;;)
 	{
-		waitMs(300);
-		animateWorm(&wormPlayer1, &stepCount1);
-		animateWorm(&wormPlayer2, &stepCount2);
-		animateWorm(&wormPlayer3, &stepCount3);
-		animateWorm(&wormPlayer4, &stepCount4);
+		waitMs(40);
+		animateWorm(&wormPlayer1);
+		animateWorm(&wormPlayer2);
+		animateWorm(&wormPlayer3);
+		animateWorm(&wormPlayer4);
 	}
 
 	return 0;
