@@ -128,10 +128,22 @@ void wormTest()
 
 		screenClear(screen);
 		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
-		screen->chars[coordToPos(coordCreate(20, 11))] = 255;
-		screen->chars[coordToPos(coordCreate(21, 10))] = 255;
+		screen->chars[coordToPos(coordCreate(20, 11))] = Tile_filled;
+		screen->chars[coordToPos(coordCreate(21, 10))] = Tile_filled;
 		wormStep(worm);
 		assertTrue("Below and to the right.", screen->chars[coordToPos(coordCreate(20, 9))]);
+	}
+	endTest();
+
+	beginTest("Worms should not turn back on themself.");
+	{
+		screenClear(screen);
+		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_up, 0);
+		wormSetNextDirection(worm, Direction_right);
+		screen->chars[coordToPos(coordCreate(20, 9))] = Tile_filled;
+		screen->chars[coordToPos(coordCreate(21, 10))] = Tile_filled;
+		wormStep(worm);
+		assertTrue("Above and to the right.", screen->chars[coordToPos(coordCreate(19, 10))]);
 	}
 	endTest();
 }
