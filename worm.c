@@ -55,6 +55,12 @@ void wormStep(Worm *worm)
 		Direction direction = worm->nextDirection;
 		uint16_t nextPos = currentHeadCell.position + getPositionOffsetForDirection(direction);
 
+		// If the selected direction is blocked, first try the previous direction.
+		if (worm->screen->chars[nextPos])
+		{
+			direction = worm->tailValues[worm->tail.end - 1].direction;
+			nextPos = currentHeadCell.position + getPositionOffsetForDirection(direction);
+		}
 		// If the direction is blocked, turn clockwise.
 		if (worm->screen->chars[nextPos])
 		{
