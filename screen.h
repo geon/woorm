@@ -10,5 +10,6 @@ typedef struct Screen
 } Screen;
 
 void screenClear(Screen *screen);
+void screenDrawLevelBorderRectangle(Screen *screen, uint8_t borderColor);
 
 #endif

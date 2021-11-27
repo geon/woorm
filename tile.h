@@ -137,6 +137,9 @@ typedef enum Tile
 	Tile_worm_right_up_3_3 = Tile_worm_anti_clockwise_start + 1 + 16 * 1 + 2 * 2,
 	Tile_worm_right_up_3_0 = Tile_worm_anti_clockwise_start + 1 + 16 * 1 + 2 * 3,
 
+	// Used for level drawing until the real graphics is in place.
+	Tile_filled = 255,
+
 	Tile_count,
 	Tile_error
 } Tile;
