@@ -1,6 +1,7 @@
 #include "coord.h"
 #include "direction.h"
 #include "screen.h"
+#include "tile.h"
 #include "worm.h"
 #include <c64.h>
 #include <conio.h>
@@ -22,7 +23,7 @@ void animateWorm(Worm *worm)
 	wormStep(worm);
 	if (worm->step == 0)
 	{
-		int random = rand() % 4;
+		int random = rand() % 8;
 		worm->nextDirection = (worm->nextDirection + (random == 0 ? 1 : (random == 1 ? -1 : 0))) & 3;
 	}
 }
@@ -54,6 +55,11 @@ void waitMs(uint16_t time)
 	}
 }
 
+void drawLevel(Screen *screen)
+{
+	screenDrawLevelBorderRectangle(screen, COLOR_PURPLE);
+}
+
 int main()
 {
 	srand(time(NULL));
@@ -62,6 +68,7 @@ int main()
 	bgcolor(COLOR_BLACK);
 	bordercolor(COLOR_BLACK);
 	setUpWormCharset();
+	drawLevel(screen);
 
 	waitMs(1000);
 
