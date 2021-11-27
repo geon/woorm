@@ -125,6 +125,13 @@ void wormTest()
 		screen->chars[coordToPos(coordCreate(21, 10))] = Tile_filled;
 		wormStep(worm);
 		assertTrue("Above and to the right.", screen->chars[coordToPos(coordCreate(20, 11))]);
+
+		screenClear(screen);
+		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
+		screen->chars[coordToPos(coordCreate(20, 11))] = 255;
+		screen->chars[coordToPos(coordCreate(21, 10))] = 255;
+		wormStep(worm);
+		assertTrue("Below and to the right.", screen->chars[coordToPos(coordCreate(20, 9))]);
 	}
 	endTest();
 }
