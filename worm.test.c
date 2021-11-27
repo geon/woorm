@@ -146,4 +146,19 @@ void wormTest()
 		assertTrue("Above and to the right.", screen->chars[coordToPos(coordCreate(19, 10))]);
 	}
 	endTest();
+
+	beginTest("Worms should stop if all 4 directions are blocked.");
+	{
+		uint8_t headTile;
+		screenClear(screen);
+		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
+		screen->chars[coordToPos(coordCreate(20, 9))] = Tile_filled;
+		screen->chars[coordToPos(coordCreate(21, 10))] = Tile_filled;
+		screen->chars[coordToPos(coordCreate(20, 11))] = Tile_filled;
+
+		headTile = screen->chars[coordToPos(coordCreate(20, 10))];
+		wormStep(worm);
+		assertTrue("No step.", screen->chars[coordToPos(coordCreate(20, 10))] == headTile);
+	}
+	endTest();
 }
