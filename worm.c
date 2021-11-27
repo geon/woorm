@@ -73,6 +73,11 @@ void wormStep(Worm *worm)
 			direction = (direction + 2) & 3;
 			nextPos = currentHeadCell.position + getPositionOffsetForDirection(direction);
 		}
+		// If still blocked, just don't move.
+		if (worm->screen->chars[nextPos])
+		{
+			return;
+		}
 
 		circularBufferPush(&worm->tail, &index);
 		worm->tailValues[index].direction = direction;
