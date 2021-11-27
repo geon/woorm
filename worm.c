@@ -51,9 +51,17 @@ void wormStep(Worm *worm)
 
 	if (!worm->step)
 	{
+		Direction direction = worm->nextDirection;
+		uint16_t nextPos = currentHeadCell.position + getPositionOffsetForDirection(direction);
+		if (worm->screen->chars[nextPos])
+		{
+			direction = (direction + 1) & 3;
+			nextPos = currentHeadCell.position + getPositionOffsetForDirection(direction);
+		}
+
 		circularBufferPush(&worm->tail, &index);
-		worm->tailValues[index].direction = worm->nextDirection;
-		worm->tailValues[index].position = currentHeadCell.position + getPositionOffsetForDirection(worm->nextDirection);
+		worm->tailValues[index].direction = direction;
+		worm->tailValues[index].position = nextPos;
 		circularBufferPop(&worm->tail, &index);
 	}
 

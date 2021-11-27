@@ -116,4 +116,15 @@ void wormTest()
 		assertByteDecimal("Clear", screen->chars[coordToPos(coordCreate(20, 12))], Tile_empty);
 	}
 	endTest();
+
+	beginTest("Worms should avoid obstacles automatically.");
+	{
+		screenClear(screen);
+		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
+		screen->chars[coordToPos(coordCreate(20, 9))] = Tile_filled;
+		screen->chars[coordToPos(coordCreate(21, 10))] = Tile_filled;
+		wormStep(worm);
+		assertTrue("Above and to the right.", screen->chars[coordToPos(coordCreate(20, 11))]);
+	}
+	endTest();
 }
