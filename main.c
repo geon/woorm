@@ -9,10 +9,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-Worm wormPlayer1;
-Worm wormPlayer2;
-Worm wormPlayer3;
-Worm wormPlayer4;
+Worm worms[4];
 
 Screen _screen = {
 	(uint8_t *)0x0400,
@@ -126,22 +123,18 @@ int main()
 	bgcolor(COLOR_BLACK);
 	bordercolor(COLOR_BLACK);
 	setUpWormCharset();
-	levelDraw(&level, screen);
 
-	wormInit(&wormPlayer1, screen, coordToPos(level.playerStarts[0].position), level.playerStarts[0].direction, COLOR_CYAN + 8);
-	wormInit(&wormPlayer2, screen, coordToPos(level.playerStarts[1].position), level.playerStarts[1].direction, COLOR_GREEN + 8);
-	wormInit(&wormPlayer3, screen, coordToPos(level.playerStarts[2].position), level.playerStarts[2].direction, COLOR_YELLOW + 8);
-	wormInit(&wormPlayer4, screen, coordToPos(level.playerStarts[3].position), level.playerStarts[3].direction, COLOR_RED + 8);
+	levelStart(&level, screen, worms);
 
 	waitMs(1000);
 
 	for (;;)
 	{
 		waitMs(40);
-		animateWorm(&wormPlayer1);
-		animateWorm(&wormPlayer2);
-		animateWorm(&wormPlayer3);
-		animateWorm(&wormPlayer4);
+		animateWorm(&worms[0]);
+		animateWorm(&worms[1]);
+		animateWorm(&worms[2]);
+		animateWorm(&worms[3]);
 	}
 
 	return 0;

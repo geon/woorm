@@ -4,6 +4,7 @@
 #include "coord.h"
 #include "direction.h"
 #include "screen.h"
+#include "worm.h"
 #include <stdint.h>
 
 typedef struct PlayerStart
@@ -22,5 +23,6 @@ typedef struct Level
 } Level;
 
 void levelDraw(Level *level, Screen *screen);
+void levelStart(Level *level, Screen *screen, Worm worms[4]);
 
 #endif
