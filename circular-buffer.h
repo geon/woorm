@@ -6,17 +6,16 @@
 
 typedef struct CircularBuffer
 {
-	uint8_t values[0x100];
 	uint8_t begin;
 	uint8_t end;
 } CircularBuffer;
 
 void circularBufferInit(CircularBuffer *circularBuffer);
-bool circularBufferPush(CircularBuffer *circularBuffer, uint8_t value);
-bool circularBufferPop(CircularBuffer *circularBuffer, uint8_t *value);
+bool circularBufferPush(CircularBuffer *circularBuffer, uint8_t *index);
+bool circularBufferPop(CircularBuffer *circularBuffer, uint8_t *index);
 uint8_t circularBufferSize(CircularBuffer *circularBuffer);
 
-#define circularBufferForEach(circularBuffer, iterator, value) for (iterator = circularBuffer->begin; value = circularBuffer->values[iterator], iterator != circularBuffer->end; ++iterator)
-#define circularBufferForEachReverse(circularBuffer, iterator, value) for (iterator = circularBuffer->end - 1; value = circularBuffer->values[iterator], iterator != (uint8_t)(circularBuffer->begin - 1); --iterator)
+#define circularBufferForEach(circularBuffer, iterator) for (iterator = circularBuffer->begin; iterator != circularBuffer->end; ++iterator)
+#define circularBufferForEachReverse(circularBuffer, iterator) for (iterator = circularBuffer->end - 1; iterator != (uint8_t)(circularBuffer->begin - 1); --iterator)
 
 #endif
