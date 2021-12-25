@@ -3,6 +3,7 @@
 
 #include "coord.h"
 #include "direction.h"
+#include "screen.h"
 #include <stdint.h>
 
 typedef struct PlayerStart
@@ -19,5 +20,7 @@ typedef struct Level
 	LevelAttributes chars;
 	LevelAttributes colors;
 } Level;
+
+void levelDraw(Level *level, Screen *screen);
 
 #endif
