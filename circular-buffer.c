@@ -18,18 +18,16 @@ bool circularBufferPush(CircularBuffer *circularBuffer, uint8_t value)
 	return true;
 }
 
-uint8_t circularBufferPop(CircularBuffer *circularBuffer)
+bool circularBufferPop(CircularBuffer *circularBuffer, uint8_t *value)
 {
-	uint8_t value;
-
 	if (circularBufferSize(circularBuffer) == 0)
 	{
 		return false;
 	}
 
-	value = circularBuffer->values[circularBuffer->begin];
+	*value = circularBuffer->values[circularBuffer->begin];
 	++(circularBuffer->begin);
-	return value;
+	return true;
 }
 
 uint8_t circularBufferSize(CircularBuffer *circularBuffer)

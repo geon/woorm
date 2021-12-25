@@ -21,10 +21,11 @@ void circularBufferTest()
 
 	beginTest("Pop element from circularBuffer.");
 	{
+		uint8_t foo;
 		circularBufferInit(&circularBuffer);
 
 		circularBufferPush(&circularBuffer, 0x12);
-		circularBufferPop(&circularBuffer);
+		circularBufferPop(&circularBuffer, &foo);
 	}
 	endTest();
 
@@ -40,7 +41,7 @@ void circularBufferTest()
 			pushed = i;
 			circularBufferInit(&circularBuffer);
 			circularBufferPush(&circularBuffer, pushed);
-			popped = circularBufferPop(&circularBuffer);
+			circularBufferPop(&circularBuffer, &popped);
 			assertByte("Popped value should be same as pushed.", popped, pushed);
 		}
 	}
@@ -61,8 +62,8 @@ void circularBufferTest()
 		circularBufferPush(&circularBuffer, firstPushed);
 		circularBufferPush(&circularBuffer, secondPushed);
 
-		firstPopped = circularBufferPop(&circularBuffer);
-		secondPopped = circularBufferPop(&circularBuffer);
+		circularBufferPop(&circularBuffer, &firstPopped);
+		circularBufferPop(&circularBuffer, &secondPopped);
 
 		assertByte("First popped value should be the first pushed.", firstPopped, firstPushed);
 		assertByte("Second popped value should be the second pushed.", secondPopped, secondPushed);
@@ -71,6 +72,8 @@ void circularBufferTest()
 
 	beginTest("Push/pop should in-/decrease size.");
 	{
+		uint8_t foo;
+
 		circularBufferInit(&circularBuffer);
 		assertByte("Fresh buffer should be empty.", circularBufferSize(&circularBuffer), 0);
 
@@ -80,10 +83,10 @@ void circularBufferTest()
 		circularBufferPush(&circularBuffer, 0x12);
 		assertByte("Pushing should increase size.", circularBufferSize(&circularBuffer), 2);
 
-		circularBufferPop(&circularBuffer);
+		circularBufferPop(&circularBuffer, &foo);
 		assertByte("Popping should decrease size.", circularBufferSize(&circularBuffer), 1);
 
-		circularBufferPop(&circularBuffer);
+		circularBufferPop(&circularBuffer, &foo);
 		assertByte("Popping should decrease size.", circularBufferSize(&circularBuffer), 0);
 	}
 	endTest();
@@ -108,12 +111,14 @@ void circularBufferTest()
 
 	beginTest("Pop too many elements.");
 	{
+		uint8_t foo;
+
 		circularBufferInit(&circularBuffer);
 
 		circularBufferPush(&circularBuffer, 0x12);
-		circularBufferPop(&circularBuffer);
+		circularBufferPop(&circularBuffer, &foo);
 		assertByte("Should be back at zero size.", circularBufferSize(&circularBuffer), 0);
-		circularBufferPop(&circularBuffer);
+		circularBufferPop(&circularBuffer, &foo);
 		assertByte("Popping too many should not decrease size.", circularBufferSize(&circularBuffer), 0);
 	}
 	endTest();
@@ -130,7 +135,7 @@ void circularBufferTest()
 		for (i = 0; i < 250; ++i)
 		{
 			circularBufferPush(&circularBuffer, 0);
-			circularBufferPop(&circularBuffer);
+			circularBufferPop(&circularBuffer, &popped);
 		}
 
 		// A few more pushes will bring it over the edge and loop back at the beginning.
@@ -138,7 +143,7 @@ void circularBufferTest()
 		{
 			pushed = i;
 			circularBufferPush(&circularBuffer, pushed);
-			popped = circularBufferPop(&circularBuffer);
+			circularBufferPop(&circularBuffer, &popped);
 			assertByte("Popped value should be same as pushed.", popped, pushed);
 		}
 	}
