@@ -139,12 +139,12 @@ int main()
 	setUpWormCharset();
 	drawLevel(&level, screen);
 
-	waitMs(1000);
-
 	wormInit(&wormPlayer1, screen, coordToPos(level.playerStarts[0].position), level.playerStarts[0].direction, COLOR_CYAN + 8);
 	wormInit(&wormPlayer2, screen, coordToPos(level.playerStarts[1].position), level.playerStarts[1].direction, COLOR_GREEN + 8);
 	wormInit(&wormPlayer3, screen, coordToPos(level.playerStarts[2].position), level.playerStarts[2].direction, COLOR_YELLOW + 8);
 	wormInit(&wormPlayer4, screen, coordToPos(level.playerStarts[3].position), level.playerStarts[3].direction, COLOR_RED + 8);
+
+	waitMs(1000);
 
 	for (;;)
 	{
