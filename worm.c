@@ -6,6 +6,7 @@
 #include <stdint.h>
 
 void wormDraw(Worm *worm);
+void wormLazyDraw(Worm *worm);
 
 void wormInit(Worm *worm, Screen *screen, uint16_t pos, Direction direction, uint8_t color)
 {
@@ -90,8 +91,7 @@ void wormStep(Worm *worm)
 	}
 
 	worm->step = (worm->step + 1) & 3;
-
-	wormDraw(worm);
+	wormLazyDraw(worm);
 }
 
 void wormDrawCell(Worm *worm, uint8_t iterator, Direction *nextDirection)
@@ -138,4 +138,17 @@ void wormDraw(Worm *worm)
 	{
 		wormDrawCell(worm, iterator, &nextDirection);
 	}
+}
+
+void wormLazyDraw(Worm *worm)
+{
+	Direction nextDirection = worm->nextDirection;
+	CircularBuffer *tail = &worm->tail;
+	uint8_t iterator;
+
+	wormDrawCell(worm, tail->end - 1, &nextDirection);
+	wormDrawCell(worm, tail->end - 2, &nextDirection);
+	nextDirection = worm->tailValues[worm->tail.begin + 2].direction;
+	wormDrawCell(worm, tail->begin + 1, &nextDirection);
+	wormDrawCell(worm, tail->begin, &nextDirection);
 }
