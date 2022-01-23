@@ -52,6 +52,26 @@ typedef enum Tile
 	Tile_worm_right_1_0,
 	Tile_worm_right_0_0,
 
+	// The part order is backwards to look better in the charset.
+	// Tile_name_direction_step_part
+	Tile_worm_down_start = Tile_first + 16 * 1 + 8,
+	Tile_worm_down_1_3 = Tile_worm_down_start + 16 * 0,
+	Tile_worm_down_2_3,
+	Tile_worm_down_3_3,
+	Tile_worm_down_0_3,
+	Tile_worm_down_1_2 = Tile_worm_down_start + 16 * 1,
+	Tile_worm_down_2_2,
+	Tile_worm_down_3_2,
+	Tile_worm_down_0_2,
+	Tile_worm_down_1_1 = Tile_worm_down_start + 16 * 2,
+	Tile_worm_down_2_1,
+	Tile_worm_down_3_1,
+	Tile_worm_down_0_1,
+	Tile_worm_down_1_0 = Tile_worm_down_start + 16 * 3,
+	Tile_worm_down_2_0,
+	Tile_worm_down_3_0,
+	Tile_worm_down_0_0,
+
 	Tile_count,
 	Tile_error
 } Tile;
