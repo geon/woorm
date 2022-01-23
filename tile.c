@@ -17,6 +17,11 @@ Tile tileCreate(TileType type, Direction lastDirection, Direction direction, Mic
 		{
 			return Tile_worm_up_start + (type * 16) + ((3 + step) & 3);
 		}
+
+		if (direction == Direction_right)
+		{
+			return Tile_worm_right_start + (3 - type) + ((3 + step) & 3) * 16;
+		}
 	}
 
 	return Tile_error;
