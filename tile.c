@@ -1,8 +1,13 @@
 #include "tile.h"
 #include "direction.h"
+#include <stdbool.h>
+#include <stdint.h>
+
+int8_t bendOffsetsClockwiseFromTopLeft[] = {0, 1, 17, 16};
 
 Tile tileCreate(TileType type, Direction lastDirection, Direction direction, Microstep step)
 {
+
 	// Cover up the tracks.
 	if (type == TileType_animated_end && !step)
 	{
@@ -31,6 +36,24 @@ Tile tileCreate(TileType type, Direction lastDirection, Direction direction, Mic
 		if (direction == Direction_left)
 		{
 			return Tile_worm_left_start + (type) + ((3 + step) & 3) * 16;
+		}
+	}
+	else
+	{
+
+		bool clockwise = ((lastDirection + 1) & 3) == direction;
+
+		if (clockwise)
+		{
+			uint8_t tileQuadrant = (direction + 3) & 3;
+			uint8_t headQuadrant = (tileQuadrant + type) & 3;
+			uint8_t quadrantOffset = (4 + headQuadrant - type) & 3;
+
+			uint8_t group = (headQuadrant + 3) & 3;
+			uint8_t groupOffsetX = group % 2;
+			uint8_t groupOffsetY = group / 2;
+
+			return Tile_worm_clockwise_start + 8 * groupOffsetX + 2 * 16 * groupOffsetY + 2 * ((step + 3) & 3) + bendOffsetsClockwiseFromTopLeft[quadrantOffset];
 		}
 	}
 
