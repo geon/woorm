@@ -35,4 +35,16 @@ void wormTest()
 		assertByteDecimal("End", screen->chars[coordToPos(coordCreate(17, 10))], Tile_empty);
 	}
 	endTest();
+
+	beginTest("To move, it must add a tile in front.");
+	{
+		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right);
+		wormStep(worm);
+
+		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(21, 10))], Tile_worm_right_0_1);
+		assertByteDecimal("Head to middle", screen->chars[coordToPos(coordCreate(20, 10))], Tile_worm_right_1_1);
+		assertByteDecimal("End to middle", screen->chars[coordToPos(coordCreate(19, 10))], Tile_worm_right_2_1);
+		assertByteDecimal("End", screen->chars[coordToPos(coordCreate(18, 10))], Tile_worm_right_3_1);
+	}
+	endTest();
 }
