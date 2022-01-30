@@ -7,7 +7,6 @@ int8_t bendOffsetsClockwiseFromTopLeft[] = {0, 1, 17, 16};
 
 Tile tileCreate(TileType type, Direction lastDirection, Direction direction, Microstep step)
 {
-
 	// Cover up the tracks.
 	if (type == TileType_animated_end && !step)
 	{
@@ -54,6 +53,18 @@ Tile tileCreate(TileType type, Direction lastDirection, Direction direction, Mic
 			uint8_t groupOffsetY = group / 2;
 
 			return Tile_worm_clockwise_start + 8 * groupOffsetX + 2 * 16 * groupOffsetY + 2 * ((step + 3) & 3) + bendOffsetsClockwiseFromTopLeft[quadrantOffset];
+		}
+		else
+		{
+			uint8_t tileQuadrant = (direction + 2) & 3;
+			uint8_t headQuadrant = (tileQuadrant - type + 4) & 3;
+			uint8_t quadrantOffset = (4 + headQuadrant + type) & 3;
+
+			uint8_t group = (3 - headQuadrant) & 3;
+			uint8_t groupOffsetX = group % 2;
+			uint8_t groupOffsetY = group / 2;
+
+			return Tile_worm_anti_clockwise_start + 8 * groupOffsetX + 2 * 16 * groupOffsetY + 2 * ((step + 3) & 3) + bendOffsetsClockwiseFromTopLeft[quadrantOffset];
 		}
 	}
 

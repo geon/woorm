@@ -115,6 +115,28 @@ typedef enum Tile
 
 	// ^ There are more clockwise groups, but I can't be arsed to add tests for them, so I don't need enums either.
 
+	Tile_worm_anti_clockwise_start = Tile_first + 16 * 9 + 0,
+	// Tile_name_direction_part_step
+	Tile_worm_down_right_0_1 = Tile_worm_anti_clockwise_start + 0 + 16 * 1 + 2 * 0,
+	Tile_worm_down_right_0_2 = Tile_worm_anti_clockwise_start + 0 + 16 * 1 + 2 * 1,
+	Tile_worm_down_right_0_3 = Tile_worm_anti_clockwise_start + 0 + 16 * 1 + 2 * 2,
+	Tile_worm_down_right_0_0 = Tile_worm_anti_clockwise_start + 0 + 16 * 1 + 2 * 3,
+
+	Tile_worm_left_down_1_1 = Tile_worm_anti_clockwise_start + 0 + 16 * 0 + 2 * 0,
+	Tile_worm_left_down_1_2 = Tile_worm_anti_clockwise_start + 0 + 16 * 0 + 2 * 1,
+	Tile_worm_left_down_1_3 = Tile_worm_anti_clockwise_start + 0 + 16 * 0 + 2 * 2,
+	Tile_worm_left_down_1_0 = Tile_worm_anti_clockwise_start + 0 + 16 * 0 + 2 * 3,
+
+	Tile_worm_up_left_2_1 = Tile_worm_anti_clockwise_start + 1 + 16 * 0 + 2 * 0,
+	Tile_worm_up_left_2_2 = Tile_worm_anti_clockwise_start + 1 + 16 * 0 + 2 * 1,
+	Tile_worm_up_left_2_3 = Tile_worm_anti_clockwise_start + 1 + 16 * 0 + 2 * 2,
+	Tile_worm_up_left_2_0 = Tile_worm_anti_clockwise_start + 1 + 16 * 0 + 2 * 3,
+
+	Tile_worm_right_up_3_1 = Tile_worm_anti_clockwise_start + 1 + 16 * 1 + 2 * 0,
+	Tile_worm_right_up_3_2 = Tile_worm_anti_clockwise_start + 1 + 16 * 1 + 2 * 1,
+	Tile_worm_right_up_3_3 = Tile_worm_anti_clockwise_start + 1 + 16 * 1 + 2 * 2,
+	Tile_worm_right_up_3_0 = Tile_worm_anti_clockwise_start + 1 + 16 * 1 + 2 * 3,
+
 	Tile_count,
 	Tile_error
 } Tile;
