@@ -107,7 +107,7 @@ void wormDraw(Worm *worm)
 		TailCell cell;
 		cell = worm->tailValues[iterator];
 
-		if (iterator == worm->tail.end - 1)
+		if (iterator == tail->end - 1)
 		{
 			part = TileType_animated_head;
 		}
