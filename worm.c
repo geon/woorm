@@ -12,6 +12,7 @@ void wormInit(Worm *worm, Screen *screen, uint16_t pos, Direction direction, uin
 	uint8_t index;
 	uint16_t position = pos - getPositionOffsetForDirection(direction) * 3;
 
+	worm->wantedNextDirection = direction;
 	worm->nextDirection = direction;
 	worm->step = Microstep_0;
 	worm->color = color;
@@ -39,7 +40,7 @@ void wormInit(Worm *worm, Screen *screen, uint16_t pos, Direction direction, uin
 
 void wormSetNextDirection(Worm *worm, Direction direction)
 {
-	worm->nextDirection = direction;
+	worm->wantedNextDirection = direction;
 }
 
 void wormStep(Worm *worm)
@@ -52,7 +53,7 @@ void wormStep(Worm *worm)
 	if (!worm->step)
 	{
 		// Try stepping in the selected direction.
-		Direction direction = worm->nextDirection;
+		Direction direction = worm->wantedNextDirection;
 		uint16_t nextPos = currentHeadCell.position + getPositionOffsetForDirection(direction);
 
 		// If the selected direction is blocked, first try the previous direction.
@@ -73,6 +74,9 @@ void wormStep(Worm *worm)
 			direction = (direction + 2) & 3;
 			nextPos = currentHeadCell.position + getPositionOffsetForDirection(direction);
 		}
+
+		worm->nextDirection = direction;
+
 		// If still blocked, just don't move.
 		if (worm->screen->chars[nextPos])
 		{

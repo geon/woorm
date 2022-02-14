@@ -161,4 +161,18 @@ void wormTest()
 		assertTrue("No step.", screen->chars[coordToPos(coordCreate(20, 10))] == headTile);
 	}
 	endTest();
+
+	beginTest("Worms should face forwd when blocked.");
+	{
+		uint8_t headTile;
+		screenClear(screen);
+		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
+		screen->chars[coordToPos(coordCreate(20, 11))] = Tile_filled;
+		wormSetNextDirection(worm, Direction_down);
+
+		wormStep(worm);
+
+		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(21, 10))], Tile_worm_right_0_1);
+	}
+	endTest();
 }
