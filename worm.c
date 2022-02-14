@@ -94,43 +94,48 @@ void wormStep(Worm *worm)
 	wormDraw(worm);
 }
 
+void wormDrawCell(Worm *worm, uint8_t iterator, Direction *nextDirection)
+{
+	Screen *screen = worm->screen;
+	CircularBuffer *tail = &worm->tail;
+	TileType part;
+	TailCell cell;
+	cell = worm->tailValues[iterator];
+
+	if (iterator == tail->end - 1)
+	{
+		part = TileType_animated_head;
+	}
+	else if (iterator == tail->end - 2)
+	{
+		part = TileType_animated_headToMiddle;
+	}
+	else if (iterator == tail->begin + 1)
+	{
+		part = TileType_animated_endToMiddle;
+	}
+	else if (iterator == tail->begin)
+	{
+		part = TileType_animated_end;
+	}
+	else
+	{
+		part = TileType_middle;
+	}
+
+	screen->chars[cell.position] = tileCreate(part, cell.direction, *nextDirection, worm->step);
+	screen->colors[cell.position] = worm->color;
+
+	*nextDirection = cell.direction;
+}
+
 void wormDraw(Worm *worm)
 {
-	uint8_t iterator;
-	CircularBuffer *tail = &worm->tail;
-	Screen *screen = worm->screen;
 	Direction nextDirection = worm->nextDirection;
-
+	CircularBuffer *tail = &worm->tail;
+	uint8_t iterator;
 	circularBufferForEachReverse(tail, iterator)
 	{
-		uint8_t part;
-		TailCell cell;
-		cell = worm->tailValues[iterator];
-
-		if (iterator == tail->end - 1)
-		{
-			part = TileType_animated_head;
-		}
-		else if (iterator == tail->end - 2)
-		{
-			part = TileType_animated_headToMiddle;
-		}
-		else if (iterator == tail->begin + 1)
-		{
-			part = TileType_animated_endToMiddle;
-		}
-		else if (iterator == tail->begin)
-		{
-			part = TileType_animated_end;
-		}
-		else
-		{
-			part = TileType_middle;
-		}
-
-		screen->chars[cell.position] = tileCreate(part, cell.direction, nextDirection, worm->step);
-		screen->colors[cell.position] = worm->color;
-
-		nextDirection = cell.direction;
+		wormDrawCell(worm, iterator, &nextDirection);
 	}
 }
