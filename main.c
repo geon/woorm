@@ -24,7 +24,7 @@ void animateWorm(Worm *worm)
 	if (worm->step == 0)
 	{
 		int random = rand() % 8;
-		worm->nextDirection = (worm->nextDirection + (random == 0 ? 1 : (random == 1 ? -1 : 0))) & 3;
+		wormSetNextDirection(worm, (worm->nextDirection + (random == 0 ? 1 : (random == 1 ? -1 : 0))) & 3);
 	}
 }
 
