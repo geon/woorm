@@ -17,6 +17,7 @@ typedef struct Worm
 {
 	Screen *screen;
 	uint8_t color;
+	Direction wantedNextDirection;
 	Direction nextDirection;
 	Microstep step;
 	CircularBuffer tail;
