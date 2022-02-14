@@ -98,4 +98,22 @@ void wormTest()
 		assertTrue("Clear", !screen->chars[coordToPos(coordCreate(20, 12))]);
 	}
 	endTest();
+
+	beginTest("Bends should render properly.");
+	{
+		screenClear(screen);
+		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_up, 0);
+		wormSetNextDirection(worm, Direction_right);
+
+		wormStep(worm);
+		wormStep(worm);
+		wormStep(worm);
+		wormStep(worm);
+
+		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(21, 10))], Tile_worm_right_0_0);
+		assertByteDecimal("Middle", screen->chars[coordToPos(coordCreate(20, 10))], Tile_worm_up_right_1_0);
+		assertByteDecimal("End", screen->chars[coordToPos(coordCreate(20, 11))], Tile_worm_up_2_0);
+		assertByteDecimal("Clear", screen->chars[coordToPos(coordCreate(20, 12))], Tile_empty);
+	}
+	endTest();
 }

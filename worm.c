@@ -67,7 +67,7 @@ void wormDraw(Worm *worm)
 	uint8_t iterator;
 	CircularBuffer *tail = &worm->tail;
 	Screen *screen = worm->screen;
-	Direction lastDirection = worm->tailValues[worm->tail.end - 1].direction;
+	Direction nextDirection = worm->nextDirection;
 
 	circularBufferForEachReverse(tail, iterator)
 	{
@@ -96,7 +96,9 @@ void wormDraw(Worm *worm)
 			part = TileType_middle;
 		}
 
-		screen->chars[cell.position] = tileCreate(part, cell.direction, lastDirection, worm->step);
+		screen->chars[cell.position] = tileCreate(part, cell.direction, nextDirection, worm->step);
 		screen->colors[cell.position] = worm->color;
+
+		nextDirection = cell.direction;
 	}
 }
