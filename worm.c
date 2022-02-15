@@ -21,20 +21,20 @@ void wormInit(Worm *worm, Screen *screen, uint16_t pos, Direction direction, uin
 	circularBufferInit(&worm->tail);
 
 	circularBufferPush(&worm->tail, &index);
-	worm->tailValues[index].direction = direction;
-	worm->tailValues[index].position = position;
+	circularBufferGetValue(worm->tailValues, index).direction = direction;
+	circularBufferGetValue(worm->tailValues, index).position = position;
 	position += getPositionOffsetForDirection(direction);
 	circularBufferPush(&worm->tail, &index);
-	worm->tailValues[index].direction = direction;
-	worm->tailValues[index].position = position;
+	circularBufferGetValue(worm->tailValues, index).direction = direction;
+	circularBufferGetValue(worm->tailValues, index).position = position;
 	position += getPositionOffsetForDirection(direction);
 	circularBufferPush(&worm->tail, &index);
-	worm->tailValues[index].direction = direction;
-	worm->tailValues[index].position = position;
+	circularBufferGetValue(worm->tailValues, index).direction = direction;
+	circularBufferGetValue(worm->tailValues, index).position = position;
 	position += getPositionOffsetForDirection(direction);
 	circularBufferPush(&worm->tail, &index);
-	worm->tailValues[index].direction = direction;
-	worm->tailValues[index].position = position;
+	circularBufferGetValue(worm->tailValues, index).direction = direction;
+	circularBufferGetValue(worm->tailValues, index).position = position;
 
 	wormDraw(worm);
 }
@@ -49,7 +49,7 @@ void wormStep(Worm *worm)
 	uint8_t index;
 	TailCell currentHeadCell;
 
-	currentHeadCell = worm->tailValues[worm->tail.end - 1];
+	currentHeadCell = circularBufferGetValue(worm->tailValues, worm->tail.end - 1);
 
 	if (!worm->step)
 	{
@@ -60,7 +60,7 @@ void wormStep(Worm *worm)
 		// If the selected direction is blocked, first try the previous direction.
 		if (worm->screen->chars[nextPos])
 		{
-			direction = worm->tailValues[worm->tail.end - 1].direction;
+			direction = circularBufferGetValue(worm->tailValues, worm->tail.end - 1).direction;
 			nextPos = currentHeadCell.position + getPositionOffsetForDirection(direction);
 		}
 		// If the direction is blocked, turn clockwise.
@@ -85,8 +85,8 @@ void wormStep(Worm *worm)
 		}
 
 		circularBufferPush(&worm->tail, &index);
-		worm->tailValues[index].direction = direction;
-		worm->tailValues[index].position = nextPos;
+		circularBufferGetValue(worm->tailValues, index).direction = direction;
+		circularBufferGetValue(worm->tailValues, index).position = nextPos;
 		circularBufferPop(&worm->tail, &index);
 	}
 
@@ -100,7 +100,7 @@ void wormDrawCell(Worm *worm, uint8_t iterator, Direction *nextDirection)
 	CircularBuffer *tail = &worm->tail;
 	TileType part;
 	TailCell cell;
-	cell = worm->tailValues[iterator];
+	cell = circularBufferGetValue(worm->tailValues, iterator);
 
 	if (iterator == tail->end - 1)
 	{
@@ -148,7 +148,7 @@ void wormLazyDraw(Worm *worm)
 
 	wormDrawCell(worm, tail->end - 1, &nextDirection);
 	wormDrawCell(worm, tail->end - 2, &nextDirection);
-	nextDirection = worm->tailValues[worm->tail.begin + 2].direction;
+	nextDirection = circularBufferGetValue(worm->tailValues, worm->tail.begin + 2).direction;
 	wormDrawCell(worm, tail->begin + 1, &nextDirection);
 	wormDrawCell(worm, tail->begin, &nextDirection);
 }
