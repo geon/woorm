@@ -49,7 +49,7 @@ void wormStep(Worm *worm)
 	uint8_t index;
 	TailCell currentHeadCell;
 
-	currentHeadCell = circularBufferGetValue(worm->tailValues, worm->tail.end - 1);
+	currentHeadCell = circularBufferGetLastValue(worm->tail, worm->tailValues);
 
 	if (!worm->step)
 	{
@@ -60,7 +60,7 @@ void wormStep(Worm *worm)
 		// If the selected direction is blocked, first try the previous direction.
 		if (worm->screen->chars[nextPos])
 		{
-			direction = circularBufferGetValue(worm->tailValues, worm->tail.end - 1).direction;
+			direction = circularBufferGetLastValue(worm->tail, worm->tailValues).direction;
 			nextPos = currentHeadCell.position + getPositionOffsetForDirection(direction);
 		}
 		// If the direction is blocked, turn clockwise.
