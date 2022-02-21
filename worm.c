@@ -144,7 +144,6 @@ void wormLazyDraw(Worm *worm)
 {
 	Direction nextDirection = worm->nextDirection;
 	CircularBuffer *tail = &worm->tail;
-	uint8_t iterator;
 
 	wormDrawCell(worm, tail->end - 1, &nextDirection);
 	wormDrawCell(worm, tail->end - 2, &nextDirection);
