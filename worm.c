@@ -94,14 +94,13 @@ void wormStep(Worm *worm)
 	wormLazyDraw(worm);
 }
 
-void wormDrawCell(Worm *worm, uint8_t iterator, Direction *nextDirection)
-{
-	Screen *screen = worm->screen;
-	CircularBuffer *tail = &worm->tail;
-	TileType part;
-	TailCell cell;
-	cell = circularBufferGetValue(worm->tailValues, iterator);
+TileType wormGetPart(Worm *worm, uint8_t iterator);
 
+TileType wormGetPart(Worm *worm, uint8_t iterator)
+{
+	CircularBuffer *tail = &worm->tail;
+
+	TileType part;
 	if (iterator == tail->end - 1)
 	{
 		part = TileType_animated_head;
@@ -122,6 +121,18 @@ void wormDrawCell(Worm *worm, uint8_t iterator, Direction *nextDirection)
 	{
 		part = TileType_middle;
 	}
+
+	return part;
+}
+
+void wormDrawCell(Worm *worm, uint8_t iterator, Direction *nextDirection)
+{
+	Screen *screen = worm->screen;
+	TileType part;
+	TailCell cell;
+	cell = circularBufferGetValue(worm->tailValues, iterator);
+
+	part = wormGetPart(worm, iterator);
 
 	screen->chars[cell.position] = tileCreate(part, cell.direction, *nextDirection, worm->step);
 	screen->colors[cell.position] = worm->color;
