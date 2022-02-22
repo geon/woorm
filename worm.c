@@ -125,14 +125,12 @@ TileType wormGetPart(Worm *worm, uint8_t iterator)
 	return part;
 }
 
-void wormDrawCell(Worm *worm, uint8_t iterator, Direction *nextDirection)
+void wormDrawCell(Worm *worm, uint8_t iterator, Direction *nextDirection, TileType part)
 {
 	Screen *screen = worm->screen;
-	TileType part;
+	TileType foo;
 	TailCell cell;
 	cell = circularBufferGetValue(worm->tailValues, iterator);
-
-	part = wormGetPart(worm, iterator);
 
 	screen->chars[cell.position] = tileCreate(part, cell.direction, *nextDirection, worm->step);
 	screen->colors[cell.position] = worm->color;
@@ -144,10 +142,12 @@ void wormDraw(Worm *worm)
 {
 	Direction nextDirection = worm->nextDirection;
 	CircularBuffer *tail = &worm->tail;
+	TileType part;
 	uint8_t iterator;
 	circularBufferForEachReverse(tail, iterator)
 	{
-		wormDrawCell(worm, iterator, &nextDirection);
+		part = wormGetPart(worm, iterator);
+		wormDrawCell(worm, iterator, &nextDirection, part);
 	}
 }
 
@@ -156,9 +156,9 @@ void wormLazyDraw(Worm *worm)
 	Direction nextDirection = worm->nextDirection;
 	CircularBuffer *tail = &worm->tail;
 
-	wormDrawCell(worm, tail->end - 1, &nextDirection);
-	wormDrawCell(worm, tail->end - 2, &nextDirection);
+	wormDrawCell(worm, tail->end - 1, &nextDirection, TileType_animated_head);
+	wormDrawCell(worm, tail->end - 2, &nextDirection, TileType_animated_headToMiddle);
 	nextDirection = circularBufferGetValue(worm->tailValues, worm->tail.begin + 2).direction;
-	wormDrawCell(worm, tail->begin + 1, &nextDirection);
-	wormDrawCell(worm, tail->begin, &nextDirection);
+	wormDrawCell(worm, tail->begin + 1, &nextDirection, TileType_animated_endToMiddle);
+	wormDrawCell(worm, tail->begin, &nextDirection, TileType_animated_end);
 }

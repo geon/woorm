@@ -22,7 +22,7 @@ Screen _screen = {
 	colors};
 Screen *screen = &_screen;
 
-void wormDrawCell(Worm *worm, uint8_t iterator, Direction *nextDirection);
+void wormDrawCell(Worm *worm, uint8_t iterator, Direction *nextDirection, TileType part);
 void wormDraw(Worm *worm);
 void wormLazyDraw(Worm *worm);
 
@@ -43,7 +43,7 @@ void wormBenchmark()
 	{
 		beginBenchmarkRepeat
 			Direction nextDirection = Direction_right;
-		wormDrawCell(worm, worm->tail.end - 1, &nextDirection);
+		wormDrawCell(worm, worm->tail.end - 1, &nextDirection, 0);
 		endBenchmarkRepeat
 	}
 	endBenchmark();
