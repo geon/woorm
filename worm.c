@@ -159,7 +159,6 @@ void wormLazyDraw(Worm *worm)
 
 	cell = circularBufferGetValue(worm->tailValues, tail->end - 2);
 	screen->chars[cell.position] = tileCreate(TileType_animated_headToMiddle, cell.direction, nextDirection, worm->step);
-	nextDirection = cell.direction;
 	nextDirection = circularBufferGetValue(worm->tailValues, worm->tail.begin + 2).direction;
 
 	cell = circularBufferGetValue(worm->tailValues, tail->begin + 1);
