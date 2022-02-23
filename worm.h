@@ -30,7 +30,6 @@ void wormSetNextDirection(Worm *worm, Direction direction);
 void wormStep(Worm *worm);
 
 // For benchmark only.
-void wormDrawCell(Worm *worm, uint8_t iterator, Direction *nextDirection, TileType part);
 void wormDraw(Worm *worm);
 void wormLazyDraw(Worm *worm);
 
