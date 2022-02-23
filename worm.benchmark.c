@@ -22,10 +22,6 @@ Screen _screen = {
 	colors};
 Screen *screen = &_screen;
 
-void wormDrawCell(Worm *worm, uint8_t iterator, Direction *nextDirection, TileType part);
-void wormDraw(Worm *worm);
-void wormLazyDraw(Worm *worm);
-
 void wormBenchmark()
 {
 	screenClear(screen);
