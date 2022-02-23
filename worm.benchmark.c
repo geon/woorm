@@ -35,15 +35,6 @@ void wormBenchmark()
 	}
 	endBenchmark();
 
-	beginBenchmark("wormDrawCell");
-	{
-		beginBenchmarkRepeat
-			Direction nextDirection = Direction_right;
-		wormDrawCell(worm, worm->tail.end - 1, &nextDirection, 0);
-		endBenchmarkRepeat
-	}
-	endBenchmark();
-
 	beginBenchmark("wormDraw");
 	{
 		beginBenchmarkRepeat
