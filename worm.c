@@ -5,9 +5,6 @@
 #include "tile.h"
 #include <stdint.h>
 
-void wormDraw(Worm *worm);
-void wormLazyDraw(Worm *worm);
-
 void wormInit(Worm *worm, Screen *screen, uint16_t pos, Direction direction, uint8_t color)
 {
 	uint8_t index;
