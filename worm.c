@@ -43,16 +43,18 @@ void wormSetNextDirection(Worm *worm, Direction direction)
 
 void wormStep(Worm *worm)
 {
-	uint8_t index;
-	TailCell currentHeadCell;
-
-	currentHeadCell = circularBufferGetLastValue(worm->tail, worm->tailValues);
-
 	if (!worm->step)
 	{
+		uint8_t index;
+		TailCell currentHeadCell;
+		Direction direction;
+		uint16_t nextPos;
+
+		currentHeadCell = circularBufferGetLastValue(worm->tail, worm->tailValues);
+
 		// Try stepping in the selected direction.
-		Direction direction = worm->wantedNextDirection;
-		uint16_t nextPos = currentHeadCell.position + getPositionOffsetForDirection(direction);
+		direction = worm->wantedNextDirection;
+		nextPos = currentHeadCell.position + getPositionOffsetForDirection(direction);
 
 		// If the selected direction is blocked, first try the previous direction.
 		if (worm->screen->chars[nextPos])
