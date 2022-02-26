@@ -72,14 +72,13 @@ bool wormFullStep(Worm *worm)
 		nextStep.direction = (nextStep.direction + 2) & 3;
 		nextStep.position = currentHeadCell.position + getPositionOffsetForDirection(nextStep.direction);
 	}
-
-	worm->nextDirection = nextStep.direction;
-
 	// If still blocked, just don't move.
 	if (worm->screen->chars[nextStep.position])
 	{
 		return false;
 	}
+
+	worm->nextDirection = nextStep.direction;
 
 	circularBufferPush(&worm->tail, &index);
 	circularBufferGetValue(worm->tailValues, index).direction = nextStep.direction;
