@@ -46,45 +46,44 @@ bool wormFullStep(Worm *worm)
 	uint8_t index;
 	TailCell currentHeadCell;
 
-	Direction nextDirection;
-	uint16_t nextPosition;
+	TailCell nextStep;
 
 	currentHeadCell = circularBufferGetLastValue(worm->tail, worm->tailValues);
 
 	// Try stepping in the selected direction.
-	nextDirection = worm->wantedNextDirection;
-	nextPosition = currentHeadCell.position + getPositionOffsetForDirection(nextDirection);
+	nextStep.direction = worm->wantedNextDirection;
+	nextStep.position = currentHeadCell.position + getPositionOffsetForDirection(nextStep.direction);
 
 	// If the selected direction is blocked, first try the previous direction.
-	if (worm->screen->chars[nextPosition])
+	if (worm->screen->chars[nextStep.position])
 	{
-		nextDirection = circularBufferGetLastValue(worm->tail, worm->tailValues).direction;
-		nextPosition = currentHeadCell.position + getPositionOffsetForDirection(nextDirection);
+		nextStep.direction = circularBufferGetLastValue(worm->tail, worm->tailValues).direction;
+		nextStep.position = currentHeadCell.position + getPositionOffsetForDirection(nextStep.direction);
 	}
 	// If the direction is blocked, turn clockwise.
-	if (worm->screen->chars[nextPosition])
+	if (worm->screen->chars[nextStep.position])
 	{
-		nextDirection = (nextDirection + 1) & 3;
-		nextPosition = currentHeadCell.position + getPositionOffsetForDirection(nextDirection);
+		nextStep.direction = (nextStep.direction + 1) & 3;
+		nextStep.position = currentHeadCell.position + getPositionOffsetForDirection(nextStep.direction);
 	}
 	// If still blocked, try anti-clockwise instead.
-	if (worm->screen->chars[nextPosition])
+	if (worm->screen->chars[nextStep.position])
 	{
-		nextDirection = (nextDirection + 2) & 3;
-		nextPosition = currentHeadCell.position + getPositionOffsetForDirection(nextDirection);
+		nextStep.direction = (nextStep.direction + 2) & 3;
+		nextStep.position = currentHeadCell.position + getPositionOffsetForDirection(nextStep.direction);
 	}
 
-	worm->nextDirection = nextDirection;
+	worm->nextDirection = nextStep.direction;
 
 	// If still blocked, just don't move.
-	if (worm->screen->chars[nextPosition])
+	if (worm->screen->chars[nextStep.position])
 	{
 		return false;
 	}
 
 	circularBufferPush(&worm->tail, &index);
-	circularBufferGetValue(worm->tailValues, index).direction = nextDirection;
-	circularBufferGetValue(worm->tailValues, index).position = nextPosition;
+	circularBufferGetValue(worm->tailValues, index).direction = nextStep.direction;
+	circularBufferGetValue(worm->tailValues, index).position = nextStep.position;
 	circularBufferPop(&worm->tail, &index);
 
 	return true;
