@@ -45,45 +45,46 @@ bool wormFullStep(Worm *worm)
 {
 	uint8_t index;
 	TailCell currentHeadCell;
-	Direction direction;
-	uint16_t nextPos;
+
+	Direction nextDirection;
+	uint16_t nextPosition;
 
 	currentHeadCell = circularBufferGetLastValue(worm->tail, worm->tailValues);
 
 	// Try stepping in the selected direction.
-	direction = worm->wantedNextDirection;
-	nextPos = currentHeadCell.position + getPositionOffsetForDirection(direction);
+	nextDirection = worm->wantedNextDirection;
+	nextPosition = currentHeadCell.position + getPositionOffsetForDirection(nextDirection);
 
 	// If the selected direction is blocked, first try the previous direction.
-	if (worm->screen->chars[nextPos])
+	if (worm->screen->chars[nextPosition])
 	{
-		direction = circularBufferGetLastValue(worm->tail, worm->tailValues).direction;
-		nextPos = currentHeadCell.position + getPositionOffsetForDirection(direction);
+		nextDirection = circularBufferGetLastValue(worm->tail, worm->tailValues).direction;
+		nextPosition = currentHeadCell.position + getPositionOffsetForDirection(nextDirection);
 	}
 	// If the direction is blocked, turn clockwise.
-	if (worm->screen->chars[nextPos])
+	if (worm->screen->chars[nextPosition])
 	{
-		direction = (direction + 1) & 3;
-		nextPos = currentHeadCell.position + getPositionOffsetForDirection(direction);
+		nextDirection = (nextDirection + 1) & 3;
+		nextPosition = currentHeadCell.position + getPositionOffsetForDirection(nextDirection);
 	}
 	// If still blocked, try anti-clockwise instead.
-	if (worm->screen->chars[nextPos])
+	if (worm->screen->chars[nextPosition])
 	{
-		direction = (direction + 2) & 3;
-		nextPos = currentHeadCell.position + getPositionOffsetForDirection(direction);
+		nextDirection = (nextDirection + 2) & 3;
+		nextPosition = currentHeadCell.position + getPositionOffsetForDirection(nextDirection);
 	}
 
-	worm->nextDirection = direction;
+	worm->nextDirection = nextDirection;
 
 	// If still blocked, just don't move.
-	if (worm->screen->chars[nextPos])
+	if (worm->screen->chars[nextPosition])
 	{
 		return false;
 	}
 
 	circularBufferPush(&worm->tail, &index);
-	circularBufferGetValue(worm->tailValues, index).direction = direction;
-	circularBufferGetValue(worm->tailValues, index).position = nextPos;
+	circularBufferGetValue(worm->tailValues, index).direction = nextDirection;
+	circularBufferGetValue(worm->tailValues, index).position = nextPosition;
 	circularBufferPop(&worm->tail, &index);
 
 	return true;
