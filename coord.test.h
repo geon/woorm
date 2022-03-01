@@ -1,1 +1,1 @@
-void coordTest();
+void coordTest(void);

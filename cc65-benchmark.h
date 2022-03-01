@@ -2,7 +2,7 @@
 #include <stdint.h>
 
 void beginBenchmark(char *messageString);
-void endBenchmark();
+void endBenchmark(void);
 
 #define beginBenchmarkRepeat                   \
 	{                                          \

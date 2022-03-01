@@ -1,1 +1,1 @@
-void wormTest();
+void wormTest(void);

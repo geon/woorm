@@ -3,7 +3,7 @@
 #include <c64.h>
 #include <stdio.h>
 
-int main()
+int main(void)
 {
 	printf("\ntile.c\n----------\n");
 	tileBenchmark();

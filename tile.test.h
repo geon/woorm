@@ -1,1 +1,1 @@
-void tileTest();
+void tileTest(void);

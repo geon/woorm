@@ -22,7 +22,7 @@ Screen _screen = {
 	colors};
 Screen *screen = &_screen;
 
-void wormBenchmark()
+void wormBenchmark(void)
 {
 	screenClear(screen);
 	wormInit(worm, screen, coordToPos(coordCreate(4, 0)), Direction_right, 0);

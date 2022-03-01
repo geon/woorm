@@ -2,7 +2,7 @@
 
 void screenClear(Screen *screen)
 {
-	uint16_t i;
+	uint16_t i = 0;
 
 	for (i = 0; i < 1000; ++i)
 	{
