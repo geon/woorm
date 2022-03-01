@@ -21,8 +21,8 @@ uint16_t coordToPos(Coord coord)
 Coord posToCoord(uint16_t pos)
 {
 	Coord coord;
-	coord.x = pos % SCREEN_WIDTH;
-	coord.y = pos / SCREEN_WIDTH;
+	coord.x = (uint8_t)(pos % SCREEN_WIDTH);
+	coord.y = (uint8_t)(pos / SCREEN_WIDTH);
 	return coord;
 }
 

@@ -12,7 +12,7 @@ void beginBenchmark(char *messageString)
 	begin = clock();
 }
 
-void endBenchmark()
+void endBenchmark(void)
 {
 	printf("%-20s%5i f\n", currentBenchmarkMessageStringPointer, (int)(clock() - begin));
 }

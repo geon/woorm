@@ -4,7 +4,7 @@
 #include "tile.test.h"
 #include "worm.test.h"
 
-int main()
+int main(void)
 {
 
 	beforeTests();
