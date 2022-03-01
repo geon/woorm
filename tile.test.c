@@ -2,7 +2,7 @@
 #include "cc65-test.h"
 #include "direction.h"
 
-void tileTest()
+void tileTest(void)
 {
 	beginTest("Create tile up step 0.");
 	{

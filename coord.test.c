@@ -3,7 +3,7 @@
 #include "custom-asserts.h"
 #include <stdio.h>
 
-void coordTest()
+void coordTest(void)
 {
 	beginTest("Create coord.");
 	{

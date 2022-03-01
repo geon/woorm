@@ -14,6 +14,12 @@ cl ^
     worm.c ^
     worm.test.c ^
     screen.c ^
+    /Wall ^
+    /W4 ^
+    /wd4710 ^
+    /wd4820 ^
+    /wd4996 ^
+    /wd4668 ^
     -o test.exe
 if %errorlevel% neq 0 exit /b %errorlevel%
 

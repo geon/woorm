@@ -4,7 +4,7 @@
 CircularBuffer circularBuffer;
 uint8_t circularBufferValues[0x100];
 
-void circularBufferTest()
+void circularBufferTest(void)
 {
 	beginTest("Create circularBuffer.");
 	{
@@ -14,7 +14,7 @@ void circularBufferTest()
 
 	beginTest("Push element to circularBuffer.");
 	{
-		uint8_t foo;
+		uint8_t foo = 0;
 
 		circularBufferInit(&circularBuffer);
 
@@ -24,7 +24,7 @@ void circularBufferTest()
 
 	beginTest("Pop element from circularBuffer.");
 	{
-		uint8_t foo;
+		uint8_t foo = 0;
 		circularBufferInit(&circularBuffer);
 
 		circularBufferPush(&circularBuffer, &foo);
@@ -34,14 +34,14 @@ void circularBufferTest()
 
 	beginTest("Push and pop element.");
 	{
-		uint8_t popped;
-		uint8_t pushed;
-		uint16_t i;
+		uint8_t popped = 0;
+		uint8_t pushed = 0;
+		uint16_t i = 0;
 
 		// Can't for-loop over 256 element with a byte counter.
 		for (i = 0x00; i <= 0xff; ++i)
 		{
-			pushed = i;
+			pushed = (uint8_t)i;
 			circularBufferInit(&circularBuffer);
 			circularBufferPush(&circularBuffer, &pushed);
 			circularBufferPop(&circularBuffer, &popped);
@@ -52,10 +52,10 @@ void circularBufferTest()
 
 	beginTest("Push and pop 2 elements.");
 	{
-		uint8_t firstPopped;
-		uint8_t secondPopped;
-		uint8_t firstPushed;
-		uint8_t secondPushed;
+		uint8_t firstPopped = 0;
+		uint8_t secondPopped = 0;
+		uint8_t firstPushed = 0;
+		uint8_t secondPushed = 0;
 
 		circularBufferInit(&circularBuffer);
 
@@ -72,7 +72,7 @@ void circularBufferTest()
 
 	beginTest("Push/pop should in-/decrease size.");
 	{
-		uint8_t foo;
+		uint8_t foo = 0;
 
 		circularBufferInit(&circularBuffer);
 		assertByte("Fresh buffer should be empty.", circularBufferSize(&circularBuffer), 0);
@@ -93,9 +93,9 @@ void circularBufferTest()
 
 	beginTest("Push too many elements.");
 	{
-		uint16_t i;
-		bool success;
-		uint8_t foo;
+		uint16_t i = 0;
+		bool success = 0;
+		uint8_t foo = 0;
 
 		circularBufferInit(&circularBuffer);
 
@@ -112,7 +112,7 @@ void circularBufferTest()
 
 	beginTest("Pop too many elements.");
 	{
-		uint8_t foo;
+		uint8_t foo = 0;
 
 		circularBufferInit(&circularBuffer);
 
@@ -126,9 +126,9 @@ void circularBufferTest()
 
 	beginTest("Push past the end, looping back.");
 	{
-		uint8_t popped;
-		uint8_t pushed;
-		uint16_t i;
+		uint8_t popped = 0;
+		uint8_t pushed = 0;
+		uint16_t i = 0;
 
 		circularBufferInit(&circularBuffer);
 
@@ -151,10 +151,10 @@ void circularBufferTest()
 
 	beginTest("Foreach should iterate the buffer.");
 	{
-		uint8_t pushed;
-		uint8_t iterator;
-		uint8_t expected;
-		uint16_t i;
+		uint8_t pushed = 0;
+		uint8_t iterator = 0;
+		uint8_t expected = 0;
+		uint16_t i = 0;
 
 		circularBufferInit(&circularBuffer);
 
@@ -174,11 +174,11 @@ void circularBufferTest()
 
 	beginTest("Foreach-reverse should iterate.");
 	{
-		uint8_t pushed;
-		uint8_t iterator;
-		uint8_t expected;
-		uint8_t count;
-		uint16_t i;
+		uint8_t pushed = 0;
+		uint8_t iterator = 0;
+		uint8_t expected = 0;
+		uint8_t count = 0;
+		uint16_t i = 0;
 
 		circularBufferInit(&circularBuffer);
 

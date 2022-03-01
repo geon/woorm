@@ -1,1 +1,1 @@
-void tileBenchmark();
+void tileBenchmark(void);

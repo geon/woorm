@@ -1,1 +1,1 @@
-void wormBenchmark();
+void wormBenchmark(void);

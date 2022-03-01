@@ -9,7 +9,7 @@
 
 char *lastMessageStringPointer = NULL;
 
-void beforeTests()
+void beforeTests(void)
 {
 #ifdef __C64__
 	clrscr();
@@ -20,7 +20,7 @@ void beforeTests()
 	printf("----------------------------------------\n");
 }
 
-void afterTests()
+void afterTests(void)
 {
 #ifdef __C64__
 	// Color for success.
@@ -58,7 +58,7 @@ void beginTest(char *messageString)
 	lastMessageStringPointer = messageString;
 }
 
-void endTest()
+void endTest(void)
 {
 	printf("* %s\n", lastMessageStringPointer);
 }

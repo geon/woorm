@@ -16,7 +16,7 @@ Screen _screen = {
 	colors};
 Screen *screen = &_screen;
 
-void wormTest()
+void wormTest(void)
 {
 	beginTest("Create worm.");
 	{
@@ -149,7 +149,7 @@ void wormTest()
 
 	beginTest("Worms should stop if all 4 directions are blocked.");
 	{
-		uint8_t headTile;
+		uint8_t headTile = 0;
 		screenClear(screen);
 		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
 		screen->chars[coordToPos(coordCreate(20, 9))] = Tile_filled;
@@ -164,7 +164,6 @@ void wormTest()
 
 	beginTest("Worms should face forwd when blocked.");
 	{
-		uint8_t headTile;
 		screenClear(screen);
 		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
 		screen->chars[coordToPos(coordCreate(20, 11))] = Tile_filled;
