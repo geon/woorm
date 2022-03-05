@@ -4,6 +4,7 @@
 #include "direction.h"
 #include "microstep.h"
 #include "tile-type.h"
+#include <stdint.h>
 
 typedef enum Tile
 {

@@ -3,14 +3,10 @@
 
 typedef enum Microstep
 {
-	Microstep_first,
-
-	Microstep_0 = Microstep_first,
-	Microstep_1,
-	Microstep_2,
-	Microstep_3,
-
-	Microstep_count
+	Microstep_0 = 0,
+	Microstep_1 = 4,
+	Microstep_2 = 8,
+	Microstep_3 = 12
 } Microstep;
 
 #endif

@@ -7,6 +7,9 @@ int8_t bendOffsetsClockwiseFromTopLeft[] = {0, 1, 17, 16};
 
 Tile tileCreate(TileType type, Direction lastDirection, Direction direction, Microstep step)
 {
+	// Step has extra precision bits.
+	step >>= 2;
+
 	// Cover up the tracks.
 	if (type == TileType_animated_end && !step)
 	{
