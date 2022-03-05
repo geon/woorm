@@ -12,7 +12,7 @@ void wormInit(Worm *worm, Screen *screen, uint16_t pos, Direction direction, uin
 
 	worm->wantedNextDirection = direction;
 	worm->nextDirection = direction;
-	worm->speed = 1;
+	worm->speed = 4;
 	worm->step = Microstep_0;
 	worm->color = color;
 	worm->screen = screen;
@@ -118,7 +118,7 @@ void wormStep(Worm *worm)
 	}
 
 	worm->nextDirection = nextStep.direction;
-	worm->step = (worm->step + 1) & 3;
+	worm->step = (worm->step + 4) & 15;
 
 	wormLazyDraw(worm);
 }
