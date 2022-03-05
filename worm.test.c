@@ -174,4 +174,20 @@ void wormTest(void)
 		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(21, 10))], Tile_worm_right_0_1);
 	}
 	endTest();
+
+	beginTest("Worms look ahead around corners.");
+	{
+		screenClear(screen);
+		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_up, 0);
+		// screen->chars[coordToPos(coordCreate(21, 10))] = Tile_filled;
+		wormStep(worm);
+		wormSetNextDirection(worm, Direction_right);
+		wormStep(worm);
+
+		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(20, 9))], 122);
+		assertByteDecimal("Head to middle", screen->chars[coordToPos(coordCreate(20, 10))], Tile_worm_up_1_2);
+		assertByteDecimal("Head to end", screen->chars[coordToPos(coordCreate(20, 11))], Tile_worm_up_2_2);
+		assertByteDecimal("End", screen->chars[coordToPos(coordCreate(20, 12))], Tile_worm_up_3_2);
+	}
+	endTest();
 }
