@@ -78,16 +78,9 @@ bool wormGetNextStep(Worm *worm, TailCell *nextStep)
 	return true;
 }
 
-bool wormFullStep(Worm *worm)
+void wormFullStep(Worm *worm, TailCell nextStep)
 {
 	uint8_t index = 0;
-	TailCell nextStep = {0, 0};
-
-	if (!wormGetNextStep(worm, &nextStep))
-	{
-		// Blocked.
-		return false;
-	}
 
 	worm->nextDirection = nextStep.direction;
 
@@ -95,18 +88,21 @@ bool wormFullStep(Worm *worm)
 	circularBufferGetValue(worm->tailValues, index).direction = nextStep.direction;
 	circularBufferGetValue(worm->tailValues, index).position = nextStep.position;
 	circularBufferPop(&worm->tail, &index);
-
-	return true;
 }
 
 void wormStep(Worm *worm)
 {
 	if (!worm->step)
 	{
-		if (!wormFullStep(worm))
+		TailCell nextStep = {0, 0};
+
+		if (!wormGetNextStep(worm, &nextStep))
 		{
+			// Blocked.
 			return;
 		}
+
+		wormFullStep(worm, nextStep);
 	}
 
 	worm->step = (worm->step + 1) & 3;
