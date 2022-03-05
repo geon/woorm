@@ -43,9 +43,6 @@ void wormSetNextDirection(Worm *worm, Direction direction)
 
 bool wormGetNextStep(Worm *worm, TailCell *nextStep)
 {
-	// The tests break if this is removed.
-	TileType foo;
-
 	TailCell currentHeadCell = {0, 0};
 
 	currentHeadCell = circularBufferGetLastValue(worm->tail, worm->tailValues);
@@ -154,7 +151,6 @@ void wormDraw(Worm *worm)
 	TileType part = 0;
 	uint8_t iterator = 0;
 	Screen *screen = worm->screen;
-	TileType foo;
 	TailCell cell = {0, 0};
 	circularBufferForEachReverse(tail, iterator)
 	{
@@ -174,7 +170,6 @@ void wormLazyDraw(Worm *worm)
 	CircularBuffer *tail = &worm->tail;
 
 	Screen *screen = worm->screen;
-	TileType foo;
 	TailCell cell = {0, 0};
 
 	cell = circularBufferGetValue(worm->tailValues, tail->end - 1);
