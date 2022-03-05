@@ -90,23 +90,23 @@ void wormFullStep(Worm *worm, TailCell nextStep)
 
 void wormStep(Worm *worm)
 {
+	TailCell nextStep = {0, 0};
+	bool hasNextStep = wormGetNextStep(worm, &nextStep);
+
 	if (!worm->step)
 	{
-		TailCell nextStep = {0, 0};
-		bool hasNextStep = wormGetNextStep(worm, &nextStep);
-
 		if (!hasNextStep)
 		{
 			// Blocked.
 			return;
 		}
 
-		worm->nextDirection = nextStep.direction;
-
 		wormFullStep(worm, nextStep);
 	}
 
+	worm->nextDirection = nextStep.direction;
 	worm->step = (worm->step + 1) & 3;
+
 	wormLazyDraw(worm);
 }
 
