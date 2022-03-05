@@ -93,8 +93,9 @@ void wormStep(Worm *worm)
 	if (!worm->step)
 	{
 		TailCell nextStep = {0, 0};
+		bool hasNextStep = wormGetNextStep(worm, &nextStep);
 
-		if (!wormGetNextStep(worm, &nextStep))
+		if (!hasNextStep)
 		{
 			// Blocked.
 			return;
