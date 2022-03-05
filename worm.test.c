@@ -190,4 +190,17 @@ void wormTest(void)
 		assertByteDecimal("End", screen->chars[coordToPos(coordCreate(20, 12))], Tile_worm_up_3_2);
 	}
 	endTest();
+
+	beginTest("Worms don't move at speed zero.");
+	{
+		screenClear(screen);
+		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
+		wormSetSpeed(worm, 0);
+		wormSetNextDirection(worm, Direction_right);
+
+		wormStep(worm);
+
+		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(20, 10))], Tile_worm_right_0_0);
+	}
+	endTest();
 }

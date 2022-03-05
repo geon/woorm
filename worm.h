@@ -23,6 +23,7 @@ typedef struct Worm
 	uint8_t color;
 	Direction wantedNextDirection;
 	Direction nextDirection;
+	uint8_t speed;
 	Microstep step;
 	CircularBuffer tail;
 	TailCell tailValues[0x100];
@@ -30,6 +31,7 @@ typedef struct Worm
 
 void wormInit(Worm *worm, Screen *screen, uint16_t pos, Direction direction, uint8_t color);
 void wormSetNextDirection(Worm *worm, Direction direction);
+void wormSetSpeed(Worm *worm, uint8_t speed);
 void wormStep(Worm *worm);
 
 // For benchmark only.
