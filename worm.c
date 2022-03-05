@@ -142,14 +142,16 @@ TileType wormGetPart(Worm *worm, uint8_t iterator)
 
 void wormDraw(Worm *worm)
 {
-	Direction nextDirection = worm->nextDirection;
 	CircularBuffer *tail = &worm->tail;
 	TileType part = 0;
 	uint8_t iterator = 0;
 	Screen *screen = worm->screen;
-	TailCell cell = {0, 0};
+
 	circularBufferForEachReverse(tail, iterator)
 	{
+		TailCell cell = {0, 0};
+		Direction nextDirection = worm->nextDirection;
+
 		cell = circularBufferGetValue(worm->tailValues, iterator);
 		part = wormGetPart(worm, iterator);
 
