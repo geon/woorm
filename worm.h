@@ -12,6 +12,9 @@ typedef struct TailCell
 {
 	Direction direction;
 	uint16_t position;
+	// Array element size should be 1, 2, 4 or 8 bytes for speed.
+	// Also crashes without this.
+	uint8_t PADDING;
 } TailCell;
 
 typedef struct Worm
