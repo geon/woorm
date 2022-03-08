@@ -130,7 +130,7 @@ int main(void)
 
 	for (;;)
 	{
-		waitMs(40);
+		waitvsync();
 		animateWorm(&worms[0]);
 		animateWorm(&worms[1]);
 		animateWorm(&worms[2]);
