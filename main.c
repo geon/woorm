@@ -126,7 +126,7 @@ int main(void)
 
 	levelStart(&level, screen, worms);
 
-	waitMs(1000);
+	waitMs(100);
 
 	for (;;)
 	{
