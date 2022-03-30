@@ -110,7 +110,7 @@ void wormStep(Worm *worm)
 
 	newStep = (worm->step + 4) & 15;
 
-	if (!worm->step)
+	if (newStep == 4)
 	{
 		if (!hasNextStep)
 		{
