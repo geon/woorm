@@ -108,6 +108,8 @@ void wormStep(Worm *worm)
 
 	hasNextStep = wormGetNextStep(worm, &nextStep);
 
+	newStep = (worm->step + 4) & 15;
+
 	if (!worm->step)
 	{
 		if (!hasNextStep)
@@ -121,7 +123,6 @@ void wormStep(Worm *worm)
 
 	worm->nextDirection = nextStep.direction;
 
-	newStep = (worm->step + 4) & 15;
 	worm->step = newStep;
 
 	wormLazyDraw(worm);
