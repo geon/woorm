@@ -99,6 +99,8 @@ void wormStep(Worm *worm)
 	TailCell nextStep = {0, 0};
 	bool hasNextStep = false;
 
+	uint8_t newStep;
+
 	if (worm->speed == 0)
 	{
 		return;
@@ -118,7 +120,9 @@ void wormStep(Worm *worm)
 	}
 
 	worm->nextDirection = nextStep.direction;
-	worm->step = (worm->step + 4) & 15;
+
+	newStep = (worm->step + 4) & 15;
+	worm->step = newStep;
 
 	wormLazyDraw(worm);
 }
