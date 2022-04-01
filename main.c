@@ -126,6 +126,11 @@ int main(void)
 
 	levelStart(&level, screen, worms);
 
+	wormSetSpeed(&worms[0], 1);
+	wormSetSpeed(&worms[1], 2);
+	wormSetSpeed(&worms[2], 3);
+	wormSetSpeed(&worms[3], 4);
+
 	waitMs(100);
 
 	for (;;)
