@@ -107,7 +107,7 @@ void wormStep(Worm *worm)
 		return;
 	}
 
-	for (stepCounter = 0; stepCounter < 4; ++stepCounter)
+	for (stepCounter = 0; stepCounter < worm->speed; ++stepCounter)
 	{
 		hasNextStep = wormGetNextStep(worm, &nextStep);
 
