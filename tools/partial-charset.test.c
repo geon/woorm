@@ -43,4 +43,41 @@ void partialCharsetTest()
 		assertIntDecimal("Adding more should fail.", partialCharsetFindIndexOrAdd(&partialCharset, b), -1);
 	}
 	endTest();
+
+	beginTest("PartialCharset compress.");
+	{
+		CharsetChar a = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+		CharsetChar b = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+		CharsetChar c = {0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA};
+
+		// Clear the charset.
+		Charset uncompressedCharset;
+		for (int index = 0; index < 256; ++index)
+		{
+			charsetCharCopy(a, uncompressedCharset[index]);
+		}
+
+		// Add some chars.
+		charsetCharCopy(b, uncompressedCharset[1]);
+		charsetCharCopy(c, uncompressedCharset[2]);
+		charsetCharCopy(b, uncompressedCharset[3]);
+		charsetCharCopy(c, uncompressedCharset[4]);
+
+		PartialCharset compressedCharset;
+		compressedCharset.numUsedChars = 0;
+		uint8_t mappingTable[256];
+		partialCharsetCompress(&compressedCharset, uncompressedCharset, mappingTable);
+
+		assertIntDecimal("Charset should contain 3 chars.", compressedCharset.numUsedChars, 3);
+		assertTrue("Charset should contain a.", charsetCharEquals(compressedCharset.charset[0], a));
+		assertTrue("Charset should contain b.", charsetCharEquals(compressedCharset.charset[1], b));
+		assertTrue("Charset should contain c.", charsetCharEquals(compressedCharset.charset[2], c));
+		assertIntDecimal("Mapping should contain a.", mappingTable[0], 0);
+		assertIntDecimal("Mapping should contain b.", mappingTable[1], 1);
+		assertIntDecimal("Mapping should contain c.", mappingTable[2], 2);
+		assertIntDecimal("Mapping should contain b.", mappingTable[3], 1);
+		assertIntDecimal("Mapping should contain c.", mappingTable[4], 2);
+		assertIntDecimal("Mapping should contain a.", mappingTable[5], 0);
+	}
+	endTest();
 }
