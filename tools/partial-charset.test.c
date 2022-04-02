@@ -22,4 +22,25 @@ void partialCharsetTest()
 		assertIntDecimal("Char usage should stay the same.", partialCharset.numUsedChars, 2);
 	}
 	endTest();
+
+	beginTest("PartialCharset findIndexOrAdd full.");
+	{
+		CharsetChar a = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+		CharsetChar b = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+
+		PartialCharset partialCharset;
+		partialCharset.numUsedChars = 0;
+
+		for (int index = 0; index < 256; ++index)
+		{
+			// Make the char unique.
+			a[0] = (uint8_t)index;
+
+			partialCharsetFindIndexOrAdd(&partialCharset, a);
+		}
+
+		assertIntDecimal("Charset should be full.", partialCharset.numUsedChars, 256);
+		assertIntDecimal("Adding more should fail.", partialCharsetFindIndexOrAdd(&partialCharset, b), -1);
+	}
+	endTest();
 }

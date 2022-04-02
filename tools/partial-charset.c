@@ -9,7 +9,12 @@ int partialCharsetFindIndexOrAdd(PartialCharset *charset, CharsetChar charsetCha
 		return index;
 	}
 
-	// New unique char, so add it.
+	// New unique char, so add it if not full.
+	if (charset->numUsedChars >= 256)
+	{
+		// Charset is full
+		return -1;
+	}
 	charsetCharCopy(charsetChar, charset->charset[charset->numUsedChars]);
 	return charset->numUsedChars++;
 }
