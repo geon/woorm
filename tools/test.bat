@@ -3,6 +3,8 @@ cl ^
     main.test.c ^
     charset-char.test.c ^
     charset-char.c ^
+    charset.test.c ^
+    charset.c ^
     /Wall ^
     /W4 ^
     /wd4710 ^
