@@ -14,8 +14,12 @@ void partialCharsetTest()
 		assertIntDecimal("Char should be added at the first available index.", partialCharsetFindIndexOrAdd(&partialCharset, a), 0);
 		assertTrue("Char a should be added.", charsetCharEquals(partialCharset.charset[0], a));
 		assertIntDecimal("Char usage should increase.", partialCharset.numUsedChars, 1);
+
 		assertIntDecimal("Next char should be added at the new first available index.", partialCharsetFindIndexOrAdd(&partialCharset, b), 1);
 		assertIntDecimal("Char usage should increase.", partialCharset.numUsedChars, 2);
+
+		assertIntDecimal("Char a should be found.", partialCharsetFindIndexOrAdd(&partialCharset, a), 0);
+		assertIntDecimal("Char usage should stay the same.", partialCharset.numUsedChars, 2);
 	}
 	endTest();
 }
