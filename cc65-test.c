@@ -114,3 +114,14 @@ void assertTrue(char *messageString, bool success)
 		fail(messageString, "false", "true");
 	}
 }
+
+void assertIntDecimal(char *messageString, int result, int okValue)
+{
+	if (result != okValue)
+	{
+		char resultBuffer[8], okBuffer[8]; // 7 chars + null
+		sprintf(resultBuffer, "%*i", 7, result);
+		sprintf(okBuffer, "%*i", 7, okValue);
+		fail(messageString, resultBuffer, okBuffer);
+	}
+}
