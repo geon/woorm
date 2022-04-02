@@ -5,6 +5,8 @@ cl ^
     charset-char.c ^
     charset.test.c ^
     charset.c ^
+    partial-charset.test.c ^
+    partial-charset.c ^
     /Wall ^
     /W4 ^
     /wd4710 ^
