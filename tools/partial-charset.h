@@ -11,5 +11,6 @@ typedef struct PartialCharset
 } PartialCharset;
 
 int partialCharsetFindIndexOrAdd(PartialCharset *charset, CharsetChar charsetChar);
+bool partialCharsetCompress(PartialCharset *compressedCharset, Charset uncompressedCharset, uint8_t mappingTable[256]);
 
 #endif
