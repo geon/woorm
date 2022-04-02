@@ -14,4 +14,17 @@ void charsetCharTest()
 		assertTrue("a != b", !charsetCharEquals(a, b));
 	}
 	endTest();
+
+	beginTest("CharsetChar copy.");
+	{
+		CharsetChar a = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+		CharsetChar b = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+
+		assertTrue("a != b", !charsetCharEquals(a, b));
+
+		charsetCharCopy(a, b);
+
+		assertTrue("a == a", charsetCharEquals(a, b));
+	}
+	endTest();
 }

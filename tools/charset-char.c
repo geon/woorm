@@ -13,3 +13,11 @@ bool charsetCharEquals(CharsetChar a, CharsetChar b)
 	}
 	return true;
 }
+
+void charsetCharCopy(CharsetChar source, CharsetChar destination)
+{
+	for (uint8_t i = 0; i < 8; ++i)
+	{
+		destination[i] = source[i];
+	}
+}
