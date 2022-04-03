@@ -18,7 +18,7 @@ void charsetTest()
 		};
 
 		assertIntDecimal("Char b should be found.", charsetIndexOf(charset, b), 4);
-		assertIntDecimal("Char c should not be found.", charsetIndexOf(charset, c), 1);
+		assertIntDecimal("Char c should not be found.", charsetIndexOf(charset, c), -1);
 	}
 	endTest();
 }
