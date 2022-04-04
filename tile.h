@@ -146,5 +146,6 @@ typedef enum Tile
 } Tile;
 
 Tile tileCreate(TileType type, Direction lastDirection, Direction direction, Microstep step);
+extern uint8_t tileToIndex[256];
 
 #endif
