@@ -178,7 +178,7 @@ void wormDraw(Worm *worm)
 		cell = circularBufferGetValue(worm->tailValues, iterator);
 		part = wormGetPart(worm, iterator);
 
-		screen->chars[cell.position] = tileCreate(part, cell.direction, nextDirection, worm->step);
+		screen->chars[cell.position] = tileToIndex[tileCreate(part, cell.direction, nextDirection, worm->step)];
 		screen->colors[cell.position] = worm->color;
 
 		nextDirection = cell.direction;
@@ -194,19 +194,19 @@ void wormLazyDraw(Worm *worm)
 	TailCell cell = {0, 0};
 
 	cell = circularBufferGetValue(worm->tailValues, tail->end - 1);
-	screen->chars[cell.position] = tileCreate(TileType_animated_head, cell.direction, nextDirection, worm->step);
+	screen->chars[cell.position] = tileToIndex[tileCreate(TileType_animated_head, cell.direction, nextDirection, worm->step)];
 	screen->colors[cell.position] = worm->color;
 	nextDirection = cell.direction;
 
 	cell = circularBufferGetValue(worm->tailValues, tail->end - 2);
-	screen->chars[cell.position] = tileCreate(TileType_animated_headToMiddle, cell.direction, nextDirection, worm->step);
+	screen->chars[cell.position] = tileToIndex[tileCreate(TileType_animated_headToMiddle, cell.direction, nextDirection, worm->step)];
 	nextDirection = circularBufferGetValue(worm->tailValues, worm->tail.begin + 2).direction;
 
 	cell = circularBufferGetValue(worm->tailValues, tail->begin + 1);
-	screen->chars[cell.position] = tileCreate(TileType_animated_endToMiddle, cell.direction, nextDirection, worm->step);
+	screen->chars[cell.position] = tileToIndex[tileCreate(TileType_animated_endToMiddle, cell.direction, nextDirection, worm->step)];
 	nextDirection = cell.direction;
 
 	cell = circularBufferGetValue(worm->tailValues, tail->begin);
-	screen->chars[cell.position] = tileCreate(TileType_animated_end, cell.direction, nextDirection, worm->step);
+	screen->chars[cell.position] = tileToIndex[tileCreate(TileType_animated_end, cell.direction, nextDirection, worm->step)];
 	nextDirection = cell.direction;
 }
