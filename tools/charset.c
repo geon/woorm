@@ -1,4 +1,5 @@
 #include "charset.h"
+#include <stdio.h>
 
 int charsetIndexOf(Charset charset, CharsetChar charsetChar)
 {
@@ -11,4 +12,14 @@ int charsetIndexOf(Charset charset, CharsetChar charsetChar)
 	}
 
 	return -1;
+}
+
+void charsetPrint(Charset charset)
+{
+	printf("\n{\n");
+	for (int i = 0; i < 256; ++i)
+	{
+		charsetCharPrint(charset[i]);
+	}
+	printf("}\n");
 }
