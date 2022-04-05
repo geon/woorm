@@ -7,6 +7,8 @@ cl ^
     charset.c ^
     partial-charset.test.c ^
     partial-charset.c ^
+    tile.legacy.test.c ^
+    tile.legacy.c ^
     /Wall ^
     /W4 ^
     /wd4710 ^

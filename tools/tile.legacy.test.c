@@ -1,8 +1,8 @@
-#include "tile.h"
-#include "cc65-test.h"
-#include "direction.h"
+#include "../cc65-test.h"
+#include "../direction.h"
+#include "tile.legacy.h"
 
-void tileTest(void)
+void tileLegacyTest(void)
 {
 	beginTest("Create tile up step 0.");
 	{

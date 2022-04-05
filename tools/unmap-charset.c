@@ -43,19 +43,22 @@ int main()
 				{
 					Direction nextDirection = direction;
 					uint8_t sourceIndex = tileCreate(tileType, direction, nextDirection, step);
-					charsetCharCopy(originalWormCharset[sourceIndex], cleanedWormCharset[sourceIndex]);
+					uint8_t tileBits = tilePackWormTileStateInBits(tileType, direction, nextDirection, step);
+					charsetCharCopy(originalWormCharset[sourceIndex], cleanedWormCharset[tileBits]);
 				}
 
 				{
 					Direction nextDirection = (direction + 1) & 3;
 					uint8_t sourceIndex = tileCreate(tileType, direction, nextDirection, step);
-					charsetCharCopy(originalWormCharset[sourceIndex], cleanedWormCharset[sourceIndex]);
+					uint8_t tileBits = tilePackWormTileStateInBits(tileType, direction, nextDirection, step);
+					charsetCharCopy(originalWormCharset[sourceIndex], cleanedWormCharset[tileBits]);
 				}
 
 				{
 					Direction nextDirection = (direction + 3) & 3;
 					uint8_t sourceIndex = tileCreate(tileType, direction, nextDirection, step);
-					charsetCharCopy(originalWormCharset[sourceIndex], cleanedWormCharset[sourceIndex]);
+					uint8_t tileBits = tilePackWormTileStateInBits(tileType, direction, nextDirection, step);
+					charsetCharCopy(originalWormCharset[sourceIndex], cleanedWormCharset[tileBits]);
 				}
 			}
 
