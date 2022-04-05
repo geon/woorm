@@ -11,13 +11,13 @@
 
 void tileBenchmark()
 {
-	beginBenchmark("tileCreate");
+	beginBenchmark("tileToIndex + tilePackWormTileStateInBits");
 	{
 		beginBenchmarkRepeat
-			tileCreate(1, 1, 1, 1);
-		tileCreate(1, 1, 1, 1);
-		tileCreate(1, 1, 1, 1);
-		tileCreate(1, 1, 1, 1);
+			tileToIndex[tilePackWormTileStateInBits(1, 1, 1, 1)];
+		tileToIndex[tilePackWormTileStateInBits(1, 1, 1, 1)];
+		tileToIndex[tilePackWormTileStateInBits(1, 1, 1, 1)];
+		tileToIndex[tilePackWormTileStateInBits(1, 1, 1, 1)];
 		endBenchmarkRepeat
 	}
 	endBenchmark();

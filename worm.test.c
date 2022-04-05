@@ -5,6 +5,8 @@
 #include "tile.h"
 #include <stdint.h>
 
+bool Tile_filled = true;
+
 Worm _worm;
 Worm *worm = &_worm;
 
@@ -30,10 +32,10 @@ void wormTest(void)
 		screen->chars[coordToPos(coordCreate(17, 10))] = 1;
 		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
 
-		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(20, 10))], tileToIndex[Tile_worm_right_0_0]);
-		assertByteDecimal("Head to middle", screen->chars[coordToPos(coordCreate(19, 10))], tileToIndex[Tile_worm_right_1_0]);
-		assertByteDecimal("End to middle", screen->chars[coordToPos(coordCreate(18, 10))], tileToIndex[Tile_worm_right_2_0]);
-		assertByteDecimal("End", screen->chars[coordToPos(coordCreate(17, 10))], tileToIndex[Tile_empty]);
+		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(20, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_head, Direction_right, Direction_right, Microstep_0)]);
+		assertByteDecimal("Head to middle", screen->chars[coordToPos(coordCreate(19, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_headToMiddle, Direction_right, Direction_right, Microstep_0)]);
+		assertByteDecimal("End to middle", screen->chars[coordToPos(coordCreate(18, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_endToMiddle, Direction_right, Direction_right, Microstep_0)]);
+		assertByteDecimal("End", screen->chars[coordToPos(coordCreate(17, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_end, Direction_right, Direction_right, Microstep_0)]);
 	}
 	endTest();
 
@@ -43,10 +45,10 @@ void wormTest(void)
 		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
 		wormStep(worm);
 
-		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(21, 10))], tileToIndex[Tile_worm_right_0_1]);
-		assertByteDecimal("Head to middle", screen->chars[coordToPos(coordCreate(20, 10))], tileToIndex[Tile_worm_right_1_1]);
-		assertByteDecimal("End to middle", screen->chars[coordToPos(coordCreate(19, 10))], tileToIndex[Tile_worm_right_2_1]);
-		assertByteDecimal("End", screen->chars[coordToPos(coordCreate(18, 10))], tileToIndex[Tile_worm_right_3_1]);
+		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(21, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_head, Direction_right, Direction_right, Microstep_1)]);
+		assertByteDecimal("Head to middle", screen->chars[coordToPos(coordCreate(20, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_headToMiddle, Direction_right, Direction_right, Microstep_1)]);
+		assertByteDecimal("End to middle", screen->chars[coordToPos(coordCreate(19, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_endToMiddle, Direction_right, Direction_right, Microstep_1)]);
+		assertByteDecimal("End", screen->chars[coordToPos(coordCreate(18, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_end, Direction_right, Direction_right, Microstep_1)]);
 	}
 	endTest();
 
@@ -58,10 +60,10 @@ void wormTest(void)
 		wormStep(worm);
 		wormStep(worm);
 
-		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(21, 10))], tileToIndex[Tile_worm_right_0_3]);
-		assertByteDecimal("Head to middle", screen->chars[coordToPos(coordCreate(20, 10))], tileToIndex[Tile_worm_right_1_3]);
-		assertByteDecimal("End to middle", screen->chars[coordToPos(coordCreate(19, 10))], tileToIndex[Tile_worm_right_2_3]);
-		assertByteDecimal("End", screen->chars[coordToPos(coordCreate(18, 10))], tileToIndex[Tile_worm_right_3_3]);
+		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(21, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_head, Direction_right, Direction_right, Microstep_3)]);
+		assertByteDecimal("Head to middle", screen->chars[coordToPos(coordCreate(20, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_headToMiddle, Direction_right, Direction_right, Microstep_3)]);
+		assertByteDecimal("End to middle", screen->chars[coordToPos(coordCreate(19, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_endToMiddle, Direction_right, Direction_right, Microstep_3)]);
+		assertByteDecimal("End", screen->chars[coordToPos(coordCreate(18, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_end, Direction_right, Direction_right, Microstep_3)]);
 	}
 	endTest();
 
@@ -74,10 +76,10 @@ void wormTest(void)
 		wormStep(worm);
 		wormStep(worm);
 
-		assertByte("Head", screen->chars[coordToPos(coordCreate(21, 10))], tileToIndex[Tile_worm_right_0_0]);
-		assertByte("Middle", screen->chars[coordToPos(coordCreate(20, 10))], tileToIndex[Tile_worm_right_1_0]);
-		assertByte("End", screen->chars[coordToPos(coordCreate(19, 10))], tileToIndex[Tile_worm_right_2_0]);
-		assertByte("Clear", screen->chars[coordToPos(coordCreate(18, 10))], tileToIndex[Tile_empty]);
+		assertByte("Head", screen->chars[coordToPos(coordCreate(21, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_head, Direction_right, Direction_right, Microstep_0)]);
+		assertByte("Middle", screen->chars[coordToPos(coordCreate(20, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_headToMiddle, Direction_right, Direction_right, Microstep_0)]);
+		assertByte("End", screen->chars[coordToPos(coordCreate(19, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_endToMiddle, Direction_right, Direction_right, Microstep_0)]);
+		assertByte("Clear", screen->chars[coordToPos(coordCreate(18, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_end, Direction_right, Direction_right, Microstep_0)]);
 	}
 	endTest();
 
@@ -110,10 +112,10 @@ void wormTest(void)
 		wormStep(worm);
 		wormStep(worm);
 
-		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(21, 10))], tileToIndex[Tile_worm_right_0_0]);
-		assertByteDecimal("Middle", screen->chars[coordToPos(coordCreate(20, 10))], tileToIndex[Tile_worm_up_right_1_0]);
-		assertByteDecimal("End", screen->chars[coordToPos(coordCreate(20, 11))], tileToIndex[Tile_worm_up_2_0]);
-		assertByteDecimal("Clear", screen->chars[coordToPos(coordCreate(20, 12))], tileToIndex[Tile_empty]);
+		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(21, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_head, Direction_right, Direction_right, Microstep_0)]);
+		assertByteDecimal("Middle", screen->chars[coordToPos(coordCreate(20, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_headToMiddle, Direction_up, Direction_right, Microstep_0)]);
+		assertByteDecimal("End", screen->chars[coordToPos(coordCreate(20, 11))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_endToMiddle, Direction_up, Direction_up, Microstep_0)]);
+		assertByteDecimal("Clear", screen->chars[coordToPos(coordCreate(20, 12))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_end, Direction_up, Direction_up, Microstep_0)]);
 	}
 	endTest();
 
@@ -171,7 +173,7 @@ void wormTest(void)
 
 		wormStep(worm);
 
-		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(21, 10))], tileToIndex[Tile_worm_right_0_1]);
+		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(21, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_head, Direction_right, Direction_right, Microstep_1)]);
 	}
 	endTest();
 
@@ -184,10 +186,10 @@ void wormTest(void)
 		wormSetNextDirection(worm, Direction_right);
 		wormStep(worm);
 
-		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(20, 9))], tileToIndex[122]);
-		assertByteDecimal("Head to middle", screen->chars[coordToPos(coordCreate(20, 10))], tileToIndex[Tile_worm_up_1_2]);
-		assertByteDecimal("Head to end", screen->chars[coordToPos(coordCreate(20, 11))], tileToIndex[Tile_worm_up_2_2]);
-		assertByteDecimal("End", screen->chars[coordToPos(coordCreate(20, 12))], tileToIndex[Tile_worm_up_3_2]);
+		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(20, 9))], tilePackWormTileStateInBits(TileType_animated_head, Direction_up, Direction_right, Microstep_2));
+		assertByteDecimal("Head to middle", screen->chars[coordToPos(coordCreate(20, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_headToMiddle, Direction_up, Direction_up, Microstep_2)]);
+		assertByteDecimal("Head to end", screen->chars[coordToPos(coordCreate(20, 11))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_endToMiddle, Direction_up, Direction_up, Microstep_2)]);
+		assertByteDecimal("End", screen->chars[coordToPos(coordCreate(20, 12))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_end, Direction_up, Direction_up, Microstep_2)]);
 	}
 	endTest();
 
@@ -200,7 +202,7 @@ void wormTest(void)
 
 		wormStep(worm);
 
-		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(20, 10))], tileToIndex[Tile_worm_right_0_0]);
+		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(20, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_head, Direction_right, Direction_right, Microstep_0)]);
 	}
 	endTest();
 }
