@@ -1,6 +1,26 @@
 #include "levels.h"
 
+char pain[] = "pain";
 char square[] = "square";
+char love_hate[] = "love hate";
+char bub_01[] = "Bub 01";
+char bub_05[] = "Bub 05";
+char mr_man[] = "Mr Man";
+char worry[] = "Worry";
+char load_1[] = "Load 1";
+char doodle[] = "Doodle";
+char bub_04[] = "Bub 04";
+char ms_man[] = "Ms Man";
+char bub_45[] = "Bub 45";
+char bub_18[] = "Bub 18";
+char load_2[] = "Load 2";
+char bub_29[] = "Bub 29";
+char bub_16[] = "Bub 16";
+char quatro[] = "Quatro";
+char busted[] = "Busted";
+char amazing_spider[] = "Amazing Spider";
+char yrtemmys[] = "yrtemmyS";
+char extend[] = "Extend";
 
 Level levels[] = {
 	{square,
