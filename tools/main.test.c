@@ -8,6 +8,7 @@ int main(void)
 
 	beforeTests();
 
+	tileLegacyTest();
 	charsetCharTest();
 	charsetTest();
 	partialCharsetTest();
