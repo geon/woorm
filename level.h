@@ -17,6 +17,7 @@ typedef uint8_t LevelAttributes[1000];
 
 typedef struct Level
 {
+	char *name;
 	PlayerStart playerStarts[4];
 	LevelAttributes chars;
 	LevelAttributes colors;
