@@ -58,6 +58,7 @@ void waitMs(uint16_t time)
 
 int main(void)
 {
+	int levelIndex = 6;
 	srand(time(NULL));
 
 	screenClear(screen);
@@ -65,14 +66,18 @@ int main(void)
 	bordercolor(COLOR_BLACK);
 	setUpWormCharset();
 
-	levelStart(&levels[0], screen, worms);
+	levelDraw(&levels[levelIndex], screen);
+
+	waitMs(1000);
+
+	levelStart(&levels[levelIndex], screen, worms);
 
 	wormSetSpeed(&worms[0], 1);
 	wormSetSpeed(&worms[1], 2);
 	wormSetSpeed(&worms[2], 3);
 	wormSetSpeed(&worms[3], 4);
 
-	waitMs(100);
+	waitMs(20000);
 
 	for (;;)
 	{
