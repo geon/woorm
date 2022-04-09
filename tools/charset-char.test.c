@@ -27,4 +27,15 @@ void charsetCharTest()
 		assertTrue("a == a", charsetCharEquals(a, b));
 	}
 	endTest();
+
+	beginTest("CharsetChar hasPrimaryColor.");
+	{
+		// The primary color is the 01 bit-pair.
+		CharsetChar a = {0b01000000, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+		CharsetChar b = {0b10110000, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+
+		assertTrue("match", charsetCharHasPrimaryColor(a));
+		assertTrue("no match", !charsetCharHasPrimaryColor(b));
+	}
+	endTest();
 }

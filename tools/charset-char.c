@@ -36,3 +36,25 @@ void charsetCharPrint(CharsetChar charsetChar)
 		charsetChar[6],
 		charsetChar[7]);
 }
+
+bool charsetCharHasPrimaryColor(CharsetChar charsetChar)
+{
+	// Check all lines.
+	for (int i = 0; i < 8; ++i)
+	{
+		uint8_t line = charsetChar[i];
+
+		// Check all bit-pairs.
+		for (int j = 0; j < 4; ++j)
+		{
+			uint8_t bitPair = (line >> (j * 2)) & 3;
+
+			if (bitPair == 0b01)
+			{
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
