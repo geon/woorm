@@ -9,5 +9,6 @@ typedef uint8_t CharsetChar[8];
 bool charsetCharEquals(CharsetChar a, CharsetChar b);
 void charsetCharCopy(CharsetChar source, CharsetChar destination);
 void charsetCharPrint(CharsetChar charsetChar);
+bool charsetCharHasPrimaryColor(CharsetChar charsetChar);
 
 #endif
