@@ -24,5 +24,21 @@ uint8_t *bufferEnd(Buffer *buffer)
 
 size_t bufferLengthInCommon(Buffer *a, Buffer *b)
 {
-	return 0;
+	int length;
+	for (
+		length = 0;
+
+		length <= a->length &&
+		length <= b->length;
+
+		++length)
+	{
+		if (
+			a->content[length] !=
+			b->content[length])
+		{
+			break;
+		}
+	}
+	return length;
 }
