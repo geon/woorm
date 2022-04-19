@@ -49,4 +49,13 @@ void bufferTest()
 		assertIntDecimal("Common", bufferLengthInCommon(&a, &b), 3);
 	}
 	endTest();
+
+	beginTest("Partial in common.");
+	{
+		Buffer a = bufferCreateFromString("hammock");
+		Buffer b = bufferCreateFromString("hamster");
+
+		assertIntDecimal("Common", bufferLengthInCommon(&a, &b), 3);
+	}
+	endTest();
 }
