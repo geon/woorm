@@ -2,6 +2,7 @@
 #include "charset-char.test.h"
 #include "charset.test.h"
 #include "partial-charset.test.h"
+#include "tile.legacy.test.h"
 
 int main(void)
 {
