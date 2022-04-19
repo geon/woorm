@@ -72,4 +72,15 @@ void bufferTest()
 		assertIntDecimal("After", buffer.length, 1);
 	}
 	endTest();
+
+	beginTest("Push past capacity.");
+	{
+		uint8_t content[1];
+		Buffer buffer = bufferCreate(content, 1, sizeof(content));
+
+		assertIntDecimal("Before", buffer.length, 1);
+		bool success = bufferPush(&buffer, 'a');
+		assertTrue("Fail", !success);
+	}
+	endTest();
 }
