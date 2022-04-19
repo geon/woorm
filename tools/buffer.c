@@ -21,3 +21,8 @@ uint8_t *bufferEnd(Buffer *buffer)
 {
 	return buffer->content + buffer->length;
 }
+
+size_t bufferLengthInCommon(Buffer *a, Buffer *b)
+{
+	return 0;
+}

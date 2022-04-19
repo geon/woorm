@@ -13,5 +13,6 @@ typedef struct Buffer
 Buffer bufferCreate(uint8_t *content, size_t length);
 Buffer bufferCreateFromString(char buffer[]);
 uint8_t *bufferEnd(Buffer *buffer);
+size_t bufferLengthInCommon(Buffer *a, Buffer *b);
 
 #endif
