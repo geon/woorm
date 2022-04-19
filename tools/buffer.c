@@ -46,6 +46,11 @@ size_t bufferLengthInCommon(Buffer *a, Buffer *b)
 
 bool bufferPush(Buffer *buffer, uint8_t value)
 {
+	if (buffer->length >= buffer->capacity)
+	{
+		return false;
+	}
+
 	buffer->content[buffer->length] = value;
 	++(buffer->length);
 	return true;
