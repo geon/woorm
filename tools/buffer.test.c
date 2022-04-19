@@ -13,4 +13,14 @@ void bufferTest()
 		assertTrue("Content", buffer.content == (uint8_t *)string);
 	}
 	endTest();
+
+	beginTest("Create buffer from string.");
+	{
+		Buffer buffer = bufferCreateFromString("hello");
+
+		assertIntDecimal("Length", buffer.length, 5);
+		assertTrue("Content", buffer.content[0] == 'h');
+		assertTrue("Content", buffer.content[4] == 'o');
+	}
+	endTest();
 }

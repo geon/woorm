@@ -11,5 +11,6 @@ typedef struct Buffer
 } Buffer;
 
 Buffer bufferCreate(uint8_t *content, size_t length);
+Buffer bufferCreateFromString(char buffer[]);
 
 #endif
