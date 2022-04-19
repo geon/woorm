@@ -31,4 +31,13 @@ void bufferTest()
 		assertIntDecimal("Content", *(bufferEnd(&buffer) - 1), 'o');
 	}
 	endTest();
+
+	beginTest("No length in common.");
+	{
+		Buffer a = bufferCreateFromString("hello");
+		Buffer b = bufferCreateFromString("world");
+
+		assertIntDecimal("Common", bufferLengthInCommon(&a, &b), 0);
+	}
+	endTest();
 }
