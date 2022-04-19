@@ -43,3 +43,10 @@ size_t bufferLengthInCommon(Buffer *a, Buffer *b)
 	}
 	return length;
 }
+
+bool bufferPush(Buffer *buffer, uint8_t value)
+{
+	buffer->content[buffer->length] = value;
+	++(buffer->length);
+	return true;
+}

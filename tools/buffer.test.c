@@ -60,4 +60,16 @@ void bufferTest()
 		assertIntDecimal("Common", bufferLengthInCommon(&a, &b), 3);
 	}
 	endTest();
+
+	beginTest("Push to buffer.");
+	{
+		uint8_t content[4];
+		Buffer buffer = bufferCreate(content, 0, sizeof(content));
+
+		assertIntDecimal("Before", buffer.length, 0);
+		bool success = bufferPush(&buffer, 'a');
+		assertTrue("Success", success);
+		assertIntDecimal("After", buffer.length, 1);
+	}
+	endTest();
 }
