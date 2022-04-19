@@ -9,6 +9,8 @@ cl ^
     partial-charset.c ^
     tile.legacy.test.c ^
     tile.legacy.c ^
+    buffer.test.c ^
+    buffer.c ^
     /Wall ^
     /W4 ^
     /wd4710 ^
