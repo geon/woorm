@@ -23,4 +23,12 @@ void bufferTest()
 		assertTrue("Content", buffer.content[4] == 'o');
 	}
 	endTest();
+
+	beginTest("Get end of buffer.");
+	{
+		Buffer buffer = bufferCreateFromString("hello");
+
+		assertIntDecimal("Content", *(bufferEnd(&buffer) - 1), 'o');
+	}
+	endTest();
 }

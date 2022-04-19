@@ -16,3 +16,8 @@ Buffer bufferCreateFromString(char string[])
 	buffer.length = strlen(string);
 	return buffer;
 }
+
+uint8_t *bufferEnd(Buffer *buffer)
+{
+	return buffer->content + buffer->length;
+}
