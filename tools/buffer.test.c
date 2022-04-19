@@ -7,9 +7,10 @@ void bufferTest()
 	beginTest("Create buffer.");
 	{
 		char string[] = "hello";
-		Buffer buffer = bufferCreate((uint8_t *)string, sizeof(string));
+		Buffer buffer = bufferCreate((uint8_t *)string, 0, sizeof(string));
 
-		assertIntDecimal("Length", buffer.length, 6);
+		assertIntDecimal("Length", buffer.length, 0);
+		assertIntDecimal("Capacity", buffer.capacity, 6);
 		assertTrue("Content", buffer.content == (uint8_t *)string);
 	}
 	endTest();
@@ -19,6 +20,7 @@ void bufferTest()
 		Buffer buffer = bufferCreateFromString("hello");
 
 		assertIntDecimal("Length", buffer.length, 5);
+		assertIntDecimal("Capacity", buffer.length, 5);
 		assertTrue("Content", buffer.content[0] == 'h');
 		assertTrue("Content", buffer.content[4] == 'o');
 	}

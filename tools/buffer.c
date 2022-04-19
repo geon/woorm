@@ -1,11 +1,12 @@
 #include "buffer.h"
 #include <string.h>
 
-Buffer bufferCreate(uint8_t *content, size_t length)
+Buffer bufferCreate(uint8_t *content, size_t length, size_t capacity)
 {
 	Buffer buffer;
 	buffer.content = content;
 	buffer.length = length;
+	buffer.capacity = capacity;
 	return buffer;
 }
 
