@@ -31,3 +31,28 @@ BackReference backReferenceDecode(Buffer *buffer)
 	backReference.length = b & BACK_REFERENCE_LENGTH_BIT_MASK;
 	return backReference;
 }
+
+BackReference backReferenceFind(Buffer *buffer, size_t location)
+{
+	BackReference backReference = backReferenceCreate(0, 0);
+
+	Buffer needle;
+	needle.content = buffer->content + location;
+	needle.length = buffer->length - location;
+
+	for (int distance = 1; distance <= BACK_REFERENCE_DISTANCE_BIT_MASK; ++distance)
+	{
+		Buffer haystack;
+		haystack.content = buffer->content + (location - distance);
+		haystack.length = buffer->length - (location - distance);
+
+		size_t length = bufferLengthInCommon(&haystack, &needle);
+		if (length > backReference.length)
+		{
+			backReference.length = length;
+			backReference.distance = distance;
+		}
+	}
+
+	return backReference;
+}
