@@ -25,7 +25,7 @@ uint8_t *bufferEnd(Buffer *buffer)
 
 size_t bufferLengthInCommon(Buffer *a, Buffer *b)
 {
-	int length;
+	size_t length;
 	for (
 		length = 0;
 
