@@ -29,8 +29,8 @@ size_t bufferLengthInCommon(Buffer *a, Buffer *b)
 	for (
 		length = 0;
 
-		length <= a->length &&
-		length <= b->length;
+		length < a->length &&
+		length < b->length;
 
 		++length)
 	{

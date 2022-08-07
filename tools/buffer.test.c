@@ -83,4 +83,14 @@ void bufferTest()
 		assertTrue("Fail", !success);
 	}
 	endTest();
+
+	beginTest("No match past length.");
+	{
+		Buffer a = bufferCreateFromString("hamster");
+		Buffer b = bufferCreateFromString("hamster");
+		a.length = 3;
+
+		assertIntDecimal("Common", bufferLengthInCommon(&a, &b), 3);
+	}
+	endTest();
 }
