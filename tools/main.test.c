@@ -2,6 +2,7 @@
 #include "buffer.test.h"
 #include "charset-char.test.h"
 #include "charset.test.h"
+#include "lz77-back-reference.test.h"
 #include "partial-charset.test.h"
 #include "tile.legacy.test.h"
 
@@ -15,6 +16,7 @@ int main(void)
 	charsetTest();
 	partialCharsetTest();
 	bufferTest();
+	lz77backReferenceTest();
 
 	afterTests();
 

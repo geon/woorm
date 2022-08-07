@@ -11,6 +11,8 @@ cl ^
     tile.legacy.c ^
     buffer.test.c ^
     buffer.c ^
+    lz77-back-reference.test.c ^
+    lz77-back-reference.c ^
     /Wall ^
     /W4 ^
     /wd4710 ^
