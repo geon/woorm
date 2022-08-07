@@ -33,4 +33,24 @@ void lz77backReferenceTest()
 		assertIntDecimal("Length", decoded.length, BACK_REFERENCE_LENGTH_BIT_MASK);
 	}
 	endTest();
+
+	beginTest("Encode/decode back-reference.");
+	{
+		BackReference backReference = backReferenceCreate(
+			999,
+			49);
+
+		uint8_t content[2];
+		Buffer buffer = bufferCreate(content, 0, sizeof(content));
+
+		backReferenceEncode(&backReference, &buffer);
+
+		assertIntDecimal("Buffer length", buffer.length, 2);
+
+		BackReference decoded = backReferenceDecode(&buffer);
+
+		assertIntDecimal("Distance", decoded.distance, backReference.distance);
+		assertIntDecimal("Length", decoded.length, backReference.length);
+	}
+	endTest();
 }
