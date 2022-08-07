@@ -20,5 +20,6 @@ typedef struct BackReference
 BackReference backReferenceCreate(size_t distance, size_t length);
 void backReferenceEncode(BackReference *backReference, Buffer *buffer);
 BackReference backReferenceDecode(Buffer *buffer);
+BackReference backReferenceFind(Buffer *buffer, size_t location);
 
 #endif

@@ -53,4 +53,15 @@ void lz77backReferenceTest()
 		assertIntDecimal("Length", decoded.length, backReference.length);
 	}
 	endTest();
+
+	beginTest("Find back-reference.");
+	{
+		Buffer buffer = bufferCreateFromString("hamster ham");
+
+		BackReference backReference = backReferenceFind(&buffer, 8);
+
+		assertIntDecimal("Length", backReference.length, 3);
+		assertIntDecimal("Distance", backReference.distance, 8);
+	}
+	endTest();
 }
