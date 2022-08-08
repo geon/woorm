@@ -13,6 +13,8 @@ cl ^
     buffer.c ^
     lz77-back-reference.test.c ^
     lz77-back-reference.c ^
+    lz77.test.c ^
+    lz77.c ^
     /Wall ^
     /W4 ^
     /wd4710 ^
