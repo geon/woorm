@@ -64,4 +64,15 @@ void lz77backReferenceTest()
 		assertIntDecimal("Distance", backReference.distance, 8);
 	}
 	endTest();
+
+	beginTest("No back-reference.");
+	{
+		Buffer buffer = bufferCreateFromString("ab");
+
+		BackReference backReference = backReferenceFind(&buffer, 1);
+
+		assertIntDecimal("Length", backReference.length, 0);
+		assertIntDecimal("Distance", backReference.distance, 0);
+	}
+	endTest();
 }
