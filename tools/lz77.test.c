@@ -80,4 +80,25 @@ void lz77Test()
 		assertIntDecimal("content[29]", compressed.content[29], 0b01000100);
 	}
 	endTest();
+
+	beginTest("Decompress.");
+	{
+		Buffer original = bufferCreateFromString("Far, får får får? Nej, får får inte får, får får lamm.");
+
+		uint8_t compressedContent[100];
+		Buffer compressed = bufferCreate(compressedContent, 0, sizeof(compressedContent));
+
+		uint8_t decompressedContent[100];
+		Buffer decompressed = bufferCreate(decompressedContent, 0, sizeof(decompressedContent));
+
+		lz77Compress(&original, &compressed);
+		lz77Decompress(&compressed, &decompressed);
+
+		assertIntDecimal("Length", decompressed.length, original.length);
+		for (int i = 0; i < decompressed.length; ++i)
+		{
+			assertIntDecimal("content", decompressed.content[i], original.content[i]);
+		}
+	}
+	endTest();
 }

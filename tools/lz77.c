@@ -29,3 +29,40 @@ void lz77Compress(Buffer *uncompressed, Buffer *compressed)
 		}
 	}
 }
+
+void lz77Decompress(Buffer *compressed, Buffer *decompressed)
+{
+
+	uint8_t *read = compressed->content;
+
+	// Alternate reading raw bytes and back-references.
+	while (true)
+	{
+		// Start with reading a raw byte.
+		bufferPush(decompressed, *(read++));
+
+		// Check if done.
+		if (decompressed->length >= decompressed->capacity || read >= bufferEnd(compressed))
+		{
+			break;
+		}
+
+		// Read a back-reference.
+		Buffer partial = bufferCreate(read, compressed->length - (read - compressed->content), compressed->length - (read - compressed->content));
+		BackReference backReference = backReferenceDecode(&partial);
+
+		// Copy back-reference from DEcompressed back to DEcompressed.
+		uint8_t *backRead = bufferEnd(decompressed) - backReference.distance;
+		for (int i = 0; i < backReference.length; ++i)
+		{
+			bufferPush(decompressed, *(backRead++));
+		}
+		read += 2;
+
+		// Check if done.
+		if (decompressed->length >= decompressed->capacity || read >= bufferEnd(compressed))
+		{
+			break;
+		}
+	}
+}
