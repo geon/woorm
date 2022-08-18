@@ -15,6 +15,8 @@ cl ^
     screen.c ^
     lz77-back-reference.c ^
     lz77-back-reference.test.c ^
+    lz77.c ^
+    lz77.test.c ^
     /Wall ^
     /W4 ^
     /wd4710 ^
@@ -43,6 +45,8 @@ cl65 -O ^
     screen.c ^
     lz77-back-reference.c ^
     lz77-back-reference.test.c ^
+    lz77.c ^
+    lz77.test.c ^
     -o test.prg
 if %errorlevel% neq 0 exit /b %errorlevel%
 
