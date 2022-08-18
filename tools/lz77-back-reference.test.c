@@ -1,5 +1,5 @@
-#include "lz77-back-reference.h"
 #include "../cc65-test.h"
+#include "lz77-back-reference.tools.h"
 #include <string.h>
 
 void lz77backReferenceTest()

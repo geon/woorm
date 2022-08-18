@@ -1,8 +1,7 @@
 #ifndef LZ77_BACK_REFERENCE_H
 #define LZ77_BACK_REFERENCE_H
 
-#include "buffer.h"
-#include <stddef.h>
+#include <stdint.h>
 
 // The back references are encoded in 16 bits, with 10 bits for the distance, and 6 bits for the length.
 #define BACK_REFERENCE_DISTANCE_NUM_BITS 10
@@ -13,15 +12,12 @@
 
 typedef struct BackReference
 {
-	size_t distance;
-	size_t length;
+	uint16_t distance;
+	uint16_t length;
 } BackReference;
 
-BackReference backReferenceCreate(size_t distance, size_t length);
+BackReference backReferenceCreate(uint16_t distance, uint16_t length);
 void backReferenceEncodeToBytes(BackReference *backReference, uint8_t *a, uint8_t *b);
-void backReferenceEncodeToBuffer(BackReference *backReference, Buffer *buffer);
 BackReference backReferenceDecodeFromBytes(uint8_t a, uint8_t b);
-BackReference backReferenceDecodeFromBuffer(Buffer *buffer);
-BackReference backReferenceFind(Buffer *buffer, size_t location);
 
 #endif

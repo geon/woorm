@@ -12,7 +12,8 @@ cl ^
     buffer.test.c ^
     buffer.c ^
     lz77-back-reference.test.c ^
-    lz77-back-reference.c ^
+    lz77-back-reference.tools.c ^
+    ../lz77-back-reference.c ^
     lz77.test.c ^
     lz77.c ^
     /Wall ^
