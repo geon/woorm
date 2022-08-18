@@ -19,7 +19,7 @@ void lz77Compress(Buffer *uncompressed, Buffer *compressed)
 
 		// Write a back-reference.
 		BackReference backReference = backReferenceFind(uncompressed, read - uncompressed->content);
-		backReferenceEncode(&backReference, compressed);
+		backReferenceEncodeToBuffer(&backReference, compressed);
 		read += backReference.length;
 
 		// Check if done.

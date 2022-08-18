@@ -14,7 +14,7 @@ void lz77backReferenceTest()
 		uint8_t content[2];
 		Buffer buffer = bufferCreate(content, 0, sizeof(content));
 
-		backReferenceEncode(&backReference, &buffer);
+		backReferenceEncodeToBuffer(&backReference, &buffer);
 
 		assertIntDecimal("Buffer length", buffer.length, 2);
 		assertIntDecimal("Byte 1", buffer.content[0], 0b11111111);
@@ -43,7 +43,7 @@ void lz77backReferenceTest()
 		uint8_t content[2];
 		Buffer buffer = bufferCreate(content, 0, sizeof(content));
 
-		backReferenceEncode(&backReference, &buffer);
+		backReferenceEncodeToBuffer(&backReference, &buffer);
 
 		assertIntDecimal("Buffer length", buffer.length, 2);
 

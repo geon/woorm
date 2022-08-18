@@ -8,7 +8,7 @@ BackReference backReferenceCreate(size_t distance, size_t length)
 	return backReference;
 }
 
-void backReferenceEncode(BackReference *backReference, Buffer *buffer)
+void backReferenceEncodeToBuffer(BackReference *backReference, Buffer *buffer)
 {
 	uint8_t a, b;
 	a = (uint8_t)(backReference->distance >> (BACK_REFERENCE_DISTANCE_NUM_BITS - 8));
