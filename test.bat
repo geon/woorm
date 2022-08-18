@@ -13,6 +13,8 @@ cl ^
     worm.c ^
     worm.test.c ^
     screen.c ^
+    lz77-back-reference.c ^
+    lz77-back-reference.test.c ^
     /Wall ^
     /W4 ^
     /wd4710 ^
@@ -39,6 +41,8 @@ cl65 -O ^
     worm.c ^
     worm.test.c ^
     screen.c ^
+    lz77-back-reference.c ^
+    lz77-back-reference.test.c ^
     -o test.prg
 if %errorlevel% neq 0 exit /b %errorlevel%
 

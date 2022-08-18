@@ -1,6 +1,7 @@
 #include "cc65-test.h"
 #include "circular-buffer.test.h"
 #include "coord.test.h"
+#include "lz77-back-reference.test.h"
 #include "worm.test.h"
 
 int main(void)
@@ -11,6 +12,7 @@ int main(void)
 	coordTest();
 	circularBufferTest();
 	wormTest();
+	lz77BackReferenceTest();
 
 	afterTests();
 
