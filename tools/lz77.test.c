@@ -95,7 +95,7 @@ void lz77Test()
 		lz77Decompress(&compressed, &decompressed);
 
 		assertIntDecimal("Length", decompressed.length, original.length);
-		for (int i = 0; i < decompressed.length; ++i)
+		for (size_t i = 0; i < decompressed.length; ++i)
 		{
 			assertIntDecimal("content", decompressed.content[i], original.content[i]);
 		}

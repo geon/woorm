@@ -49,7 +49,7 @@ BackReference backReferenceFind(Buffer *buffer, size_t location)
 	needle.content = buffer->content + location;
 	needle.length = buffer->length - location;
 
-	for (int distance = 1; distance <= location && distance <= BACK_REFERENCE_DISTANCE_BIT_MASK; ++distance)
+	for (size_t distance = 1; distance <= location && distance <= BACK_REFERENCE_DISTANCE_BIT_MASK; ++distance)
 	{
 		Buffer haystack;
 		haystack.content = buffer->content + (location - distance);
