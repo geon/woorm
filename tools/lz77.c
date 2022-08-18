@@ -53,7 +53,7 @@ void lz77Decompress(Buffer *compressed, Buffer *decompressed)
 
 		// Copy back-reference from DEcompressed back to DEcompressed.
 		uint8_t *backRead = bufferEnd(decompressed) - backReference.distance;
-		for (int i = 0; i < backReference.length; ++i)
+		for (size_t i = 0; i < backReference.length; ++i)
 		{
 			bufferPush(decompressed, *(backRead++));
 		}
