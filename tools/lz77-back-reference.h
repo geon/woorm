@@ -18,6 +18,7 @@ typedef struct BackReference
 } BackReference;
 
 BackReference backReferenceCreate(size_t distance, size_t length);
+void backReferenceEncodeToBytes(BackReference *backReference, uint8_t *a, uint8_t *b);
 void backReferenceEncodeToBuffer(BackReference *backReference, Buffer *buffer);
 BackReference backReferenceDecodeFromBytes(uint8_t a, uint8_t b);
 BackReference backReferenceDecodeFromBuffer(Buffer *buffer);
