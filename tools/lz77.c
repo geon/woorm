@@ -49,7 +49,7 @@ void lz77Decompress(Buffer *compressed, Buffer *decompressed)
 
 		// Read a back-reference.
 		Buffer partial = bufferCreate(read, compressed->length - (read - compressed->content), compressed->length - (read - compressed->content));
-		BackReference backReference = backReferenceDecode(&partial);
+		BackReference backReference = backReferenceDecodeFromBuffer(&partial);
 
 		// Copy back-reference from DEcompressed back to DEcompressed.
 		uint8_t *backRead = bufferEnd(decompressed) - backReference.distance;

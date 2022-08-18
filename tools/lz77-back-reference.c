@@ -18,7 +18,7 @@ void backReferenceEncode(BackReference *backReference, Buffer *buffer)
 	bufferPush(buffer, b);
 }
 
-BackReference backReferenceDecode(Buffer *buffer)
+BackReference backReferenceDecodeFromBuffer(Buffer *buffer)
 {
 	uint8_t a, b;
 	a = buffer->content[0];
