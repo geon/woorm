@@ -18,18 +18,22 @@ void backReferenceEncode(BackReference *backReference, Buffer *buffer)
 	bufferPush(buffer, b);
 }
 
-BackReference backReferenceDecodeFromBuffer(Buffer *buffer)
+BackReference backReferenceDecodeFromBytes(uint8_t a, uint8_t b)
 {
-	uint8_t a, b;
-	a = buffer->content[0];
-	b = buffer->content[1];
-
 	BackReference backReference;
 	backReference.distance =
 		(a << (BACK_REFERENCE_DISTANCE_NUM_BITS - 8)) |
 		((b & ~BACK_REFERENCE_LENGTH_BIT_MASK) >> (BACK_REFERENCE_LENGTH_NUM_BITS));
 	backReference.length = b & BACK_REFERENCE_LENGTH_BIT_MASK;
 	return backReference;
+}
+
+BackReference backReferenceDecodeFromBuffer(Buffer *buffer)
+{
+	uint8_t a, b;
+	a = buffer->content[0];
+	b = buffer->content[1];
+	return backReferenceDecodeFromBytes(a, b);
 }
 
 BackReference backReferenceFind(Buffer *buffer, size_t location)
