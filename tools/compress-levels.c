@@ -69,7 +69,7 @@ int main()
 		{
 			Buffer original = bufferCreate(level->colors, 1000, 1000);
 			Buffer compressed = bufferCreate(compressedContent, 0, sizeof(compressedContent));
-			// levelRemoveInvisibleColorChanges(level);
+			levelRemoveInvisibleColorChanges(level);
 			lz77Compress(&original, &compressed);
 			buffferPrint(&compressed);
 			compressedSize += compressed.length;

@@ -9,6 +9,7 @@ cl65 -O ^
     screen.c ^
     level.c ^
     levels.c ^
+    lz77.c ^
     -C c64-c-gamedev.cfg ^
     -o woorm.prg
 if %errorlevel% neq 0 exit /b %errorlevel%

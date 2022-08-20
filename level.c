@@ -1,14 +1,20 @@
 #include "level.h"
+#include "lz77.h"
 #include <c64.h>
 
 void levelDraw(Level *level, Screen *screen)
 {
-	uint16_t i = 0;
+	// Decompress directly to screen.
+	lz77Decompress(level->chars, 1024, screen->chars, 1024);
+	lz77Decompress(level->colors, 1024, screen->colors, 1024);
 
-	for (i = 0; i < 1000; ++i)
+	// The tiles for the levels are missing.
 	{
-		screen->chars[i] = level->chars[i];
-		screen->colors[i] = level->colors[i];
+		int i;
+		for (i = 0; i < 1024; ++i)
+		{
+			screen->chars[i] = screen->chars[i] ? 255 : 0;
+		}
 	}
 }
 
