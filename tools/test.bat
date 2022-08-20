@@ -16,6 +16,8 @@ cl ^
     ../lz77-back-reference.c ^
     lz77.test.c ^
     lz77.c ^
+    level.test.c ^
+    level.c ^
     /Wall ^
     /W4 ^
     /wd4710 ^
