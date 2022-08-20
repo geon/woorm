@@ -30,7 +30,7 @@ BackReference backReferenceFind(Buffer *buffer, uint16_t location)
 		haystack.content = buffer->content + (location - distance);
 		haystack.length = buffer->length - (location - distance);
 
-		uint16_t length = (uint16_t)bufferLengthInCommon(&haystack, &needle);
+		uint16_t length = (uint16_t)bufferLengthInCommon(&haystack, &needle, BACK_REFERENCE_LENGTH_BIT_MASK);
 		if (length > backReference.length)
 		{
 			backReference.length = length;
