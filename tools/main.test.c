@@ -2,6 +2,7 @@
 #include "buffer.test.h"
 #include "charset-char.test.h"
 #include "charset.test.h"
+#include "level.test.h"
 #include "lz77-back-reference.test.h"
 #include "lz77.test.h"
 #include "partial-charset.test.h"
@@ -19,6 +20,7 @@ int main(void)
 	bufferTest();
 	lz77backReferenceTest();
 	lz77Test();
+	levelTest();
 
 	afterTests();
 
