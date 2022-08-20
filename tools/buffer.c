@@ -23,14 +23,15 @@ uint8_t *bufferEnd(Buffer *buffer)
 	return buffer->content + buffer->length;
 }
 
-size_t bufferLengthInCommon(Buffer *a, Buffer *b)
+size_t bufferLengthInCommon(Buffer *a, Buffer *b, size_t maxLength)
 {
 	size_t length;
 	for (
 		length = 0;
 
 		length < a->length &&
-		length < b->length;
+		length < b->length &&
+		length < maxLength;
 
 		++length)
 	{

@@ -39,7 +39,7 @@ void bufferTest()
 		Buffer a = bufferCreateFromString("hello");
 		Buffer b = bufferCreateFromString("world");
 
-		assertIntDecimal("Common", bufferLengthInCommon(&a, &b), 0);
+		assertIntDecimal("Common", bufferLengthInCommon(&a, &b, 100), 0);
 	}
 	endTest();
 
@@ -48,7 +48,7 @@ void bufferTest()
 		Buffer a = bufferCreateFromString("ham");
 		Buffer b = bufferCreateFromString("hamster");
 
-		assertIntDecimal("Common", bufferLengthInCommon(&a, &b), 3);
+		assertIntDecimal("Common", bufferLengthInCommon(&a, &b, 100), 3);
 	}
 	endTest();
 
@@ -57,7 +57,7 @@ void bufferTest()
 		Buffer a = bufferCreateFromString("hammock");
 		Buffer b = bufferCreateFromString("hamster");
 
-		assertIntDecimal("Common", bufferLengthInCommon(&a, &b), 3);
+		assertIntDecimal("Common", bufferLengthInCommon(&a, &b, 100), 3);
 	}
 	endTest();
 
@@ -90,7 +90,16 @@ void bufferTest()
 		Buffer b = bufferCreateFromString("hamster");
 		a.length = 3;
 
-		assertIntDecimal("Common", bufferLengthInCommon(&a, &b), 3);
+		assertIntDecimal("Common", bufferLengthInCommon(&a, &b, 100), 3);
+	}
+	endTest();
+
+	beginTest("Respect max length.");
+	{
+		Buffer a = bufferCreateFromString("hamster");
+		Buffer b = bufferCreateFromString("hamster");
+
+		assertIntDecimal("Common", bufferLengthInCommon(&a, &b, 3), 3);
 	}
 	endTest();
 }
