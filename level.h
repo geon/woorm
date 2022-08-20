@@ -13,14 +13,12 @@ typedef struct PlayerStart
 	Direction direction;
 } PlayerStart;
 
-typedef uint8_t LevelAttributes[1000];
-
 typedef struct Level
 {
 	char *name;
 	PlayerStart playerStarts[4];
-	LevelAttributes chars;
-	LevelAttributes colors;
+	uint8_t *chars;
+	uint8_t *colors;
 } Level;
 
 void levelDraw(Level *level, Screen *screen);

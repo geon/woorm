@@ -1,4 +1,4 @@
-#include "../levels.h"
+#include "uncompressed-levels.h"
 
 char pain[] = "pain";
 char square[] = "square";
