@@ -22,5 +22,6 @@ typedef struct Level
 } Level;
 
 extern Level levels[];
+extern int numLevels;
 
 #endif
