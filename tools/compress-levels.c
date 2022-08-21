@@ -47,7 +47,7 @@ int main()
 
 	printf("#include \"levels.h\"\n");
 	// int levelIndex = 1;
-	for (int levelIndex = 0; levelIndex < 21; ++levelIndex)
+	for (int levelIndex = 0; levelIndex < numLevels; ++levelIndex)
 	{
 		uint8_t compressedContent[2000];
 		Level *level = &levels[levelIndex];
@@ -79,7 +79,7 @@ int main()
 	}
 
 	printf("Level levels[] = {\n");
-	for (int levelIndex = 0; levelIndex < 21; ++levelIndex)
+	for (int levelIndex = 0; levelIndex < numLevels; ++levelIndex)
 	{
 		Level *level = &levels[levelIndex];
 
