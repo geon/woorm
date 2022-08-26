@@ -34,3 +34,11 @@ bool partialCharsetCompress(PartialCharset *compressedCharset, Charset uncompres
 
 	return true;
 }
+
+void partialCharsetAddNewCharsUsedInLevel(PartialCharset *partialCharset, Charset levelCharset, uint8_t chars[1000])
+{
+	for (int i = 0; i < 1000; ++i)
+	{
+		partialCharsetFindIndexOrAdd(partialCharset, levelCharset[chars[i]]);
+	}
+}

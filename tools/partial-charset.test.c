@@ -80,4 +80,43 @@ void partialCharsetTest()
 		assertIntDecimal("Mapping should contain a.", mappingTable[5], 0);
 	}
 	endTest();
+
+	beginTest("partialCharsetAddNewCharsUsedInLevel all zeroes.");
+	{
+		PartialCharset partialCharset;
+		partialCharset.numUsedChars = 0;
+
+		Charset levelCharset;
+		for (int i = 0; i < 256; ++i)
+		{
+			// levelCharset[i] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+			levelCharset[i][0] = 0x00;
+			levelCharset[i][1] = 0x00;
+			levelCharset[i][2] = 0x00;
+			levelCharset[i][3] = 0x00;
+			levelCharset[i][4] = 0x00;
+			levelCharset[i][5] = 0x00;
+			levelCharset[i][6] = 0x00;
+			levelCharset[i][7] = 0x00;
+		}
+
+		uint8_t chars[1000];
+		for (int i = 0; i < 1000; ++i)
+		{
+			chars[i] = 0;
+		}
+
+		partialCharsetAddNewCharsUsedInLevel(&partialCharset, levelCharset, chars);
+
+		assertIntDecimal("numUsedChars", partialCharset.numUsedChars, 1);
+		assertIntDecimal("charset[0][0]", partialCharset.charset[0][0], 0);
+		assertIntDecimal("charset[0][1]", partialCharset.charset[0][1], 0);
+		assertIntDecimal("charset[0][2]", partialCharset.charset[0][2], 0);
+		assertIntDecimal("charset[0][3]", partialCharset.charset[0][3], 0);
+		assertIntDecimal("charset[0][4]", partialCharset.charset[0][4], 0);
+		assertIntDecimal("charset[0][5]", partialCharset.charset[0][5], 0);
+		assertIntDecimal("charset[0][6]", partialCharset.charset[0][6], 0);
+		assertIntDecimal("charset[0][7]", partialCharset.charset[0][7], 0);
+	}
+	endTest();
 }
