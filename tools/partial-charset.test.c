@@ -119,4 +119,55 @@ void partialCharsetTest()
 		assertIntDecimal("charset[0][7]", partialCharset.charset[0][7], 0);
 	}
 	endTest();
+
+	beginTest("partialCharsetAddNewCharsUsedInLevel multiple chars.");
+	{
+		PartialCharset partialCharset;
+		partialCharset.numUsedChars = 0;
+
+		Charset levelCharset;
+		for (int i = 0; i < 256; ++i)
+		{
+			levelCharset[i][0] = 0x00;
+			levelCharset[i][1] = 0x00;
+			levelCharset[i][2] = 0x00;
+			levelCharset[i][3] = 0x00;
+			levelCharset[i][4] = 0x00;
+			levelCharset[i][5] = 0x00;
+			levelCharset[i][6] = 0x00;
+			levelCharset[i][7] = 0x00;
+		}
+		levelCharset[1][0] = 0;
+		levelCharset[1][1] = 1;
+		levelCharset[1][2] = 2;
+		levelCharset[1][3] = 3;
+		levelCharset[1][4] = 4;
+		levelCharset[1][5] = 5;
+		levelCharset[1][6] = 6;
+		levelCharset[1][7] = 7;
+
+		uint8_t chars[1000];
+		for (int i = 0; i < 1000; ++i)
+		{
+			chars[i] = 0;
+		}
+
+		chars[0] = 0;
+		chars[1] = 1;
+		chars[2] = 2;
+		chars[3] = 3;
+
+		partialCharsetAddNewCharsUsedInLevel(&partialCharset, levelCharset, chars);
+
+		assertIntDecimal("numUsedChars", partialCharset.numUsedChars, 2);
+		assertIntDecimal("charset[1][0]", partialCharset.charset[1][0], 0);
+		assertIntDecimal("charset[1][1]", partialCharset.charset[1][1], 1);
+		assertIntDecimal("charset[1][2]", partialCharset.charset[1][2], 2);
+		assertIntDecimal("charset[1][3]", partialCharset.charset[1][3], 3);
+		assertIntDecimal("charset[1][4]", partialCharset.charset[1][4], 4);
+		assertIntDecimal("charset[1][5]", partialCharset.charset[1][5], 5);
+		assertIntDecimal("charset[1][6]", partialCharset.charset[1][6], 6);
+		assertIntDecimal("charset[1][7]", partialCharset.charset[1][7], 7);
+	}
+	endTest();
 }
