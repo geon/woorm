@@ -48,8 +48,10 @@ extern Charset originalWormCharset;
 
 int main()
 {
-	CharsetChar blank = {0, 0, 0, 0, 0, 0, 0, 0};
+	PartialCharset newCharset;
 	uint8_t mappingTable[256];
+
+	CharsetChar blank = {0, 0, 0, 0, 0, 0, 0, 0};
 	Charset cleanedWormCharset;
 	for (int i = 0; i < 0x100; ++i)
 	{
@@ -87,7 +89,6 @@ int main()
 				}
 			}
 
-	PartialCharset newCharset;
 	newCharset.numUsedChars = 0;
 	// Index 0 is special and must be preserved.
 	charsetCharCopy(originalWormCharset[0], newCharset.charset[0]);
