@@ -21,6 +21,25 @@ void mappingTablePrint(uint8_t mappingTable[0x100])
 	printf("}\n");
 }
 
+void charsetPrint(Charset charset)
+{
+	printf("\n{\n");
+	for (int i = 0; i < 256; ++i)
+	{
+		printf(
+			"0x%.2X, 0x%.2X, 0x%.2X, 0x%.2X, 0x%.2X, 0x%.2X, 0x%.2X, 0x%.2X,\n",
+			charset[i][0],
+			charset[i][1],
+			charset[i][2],
+			charset[i][3],
+			charset[i][4],
+			charset[i][5],
+			charset[i][6],
+			charset[i][7]);
+	}
+	printf("}\n");
+}
+
 extern Charset originalWormCharset;
 
 int main()
