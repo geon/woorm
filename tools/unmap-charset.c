@@ -44,12 +44,8 @@ void charsetPrint(FILE *f, Charset charset)
 	}
 }
 
-extern Charset originalWormCharset;
-
-int main()
+void unmapCharset(PartialCharset *newCharset, uint8_t *mappingTable, Charset originalWormCharset)
 {
-	PartialCharset newCharset;
-	uint8_t mappingTable[256];
 
 	CharsetChar blank = {0, 0, 0, 0, 0, 0, 0, 0};
 	Charset cleanedWormCharset;
@@ -89,16 +85,25 @@ int main()
 				}
 			}
 
-	newCharset.numUsedChars = 0;
+	newCharset->numUsedChars = 0;
 	// Index 0 is special and must be preserved.
-	charsetCharCopy(originalWormCharset[0], newCharset.charset[0]);
-	++newCharset.numUsedChars;
+	charsetCharCopy(originalWormCharset[0], newCharset->charset[0]);
+	++newCharset->numUsedChars;
 	for (int i = 0; i < 0x100; ++i)
 	{
-		charsetCharCopy(blank, newCharset.charset[i]);
+		charsetCharCopy(blank, newCharset->charset[i]);
 	}
 
-	partialCharsetCompress(&newCharset, cleanedWormCharset, mappingTable);
+	partialCharsetCompress(newCharset, cleanedWormCharset, mappingTable);
+}
+
+extern Charset originalWormCharset;
+
+int main()
+{
+	PartialCharset newCharset;
+	uint8_t mappingTable[256];
+	unmapCharset(&newCharset, mappingTable, originalWormCharset);
 
 	FILE *tileMappingFile = fopen("../tile-to-index.c", "w");
 	if (tileMappingFile == NULL)
