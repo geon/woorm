@@ -85,13 +85,15 @@ void unmapCharset(PartialCharset *newCharset, uint8_t *mappingTable, Charset ori
 				}
 			}
 
+	// Clear the `newCharset`.
 	newCharset->numUsedChars = 0;
-	// Index 0 is special and must be preserved.
-	++newCharset->numUsedChars;
 	for (int i = 0; i < 0x100; ++i)
 	{
 		charsetCharCopy(blank, newCharset->charset[i]);
 	}
+
+	// Index 0 is special and must be preserved.
+	++newCharset->numUsedChars;
 
 	partialCharsetCompress(newCharset, cleanedWormCharset, mappingTable);
 }
