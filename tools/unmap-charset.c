@@ -87,7 +87,6 @@ void unmapCharset(PartialCharset *newCharset, uint8_t *mappingTable, Charset ori
 
 	newCharset->numUsedChars = 0;
 	// Index 0 is special and must be preserved.
-	charsetCharCopy(originalWormCharset[0], newCharset->charset[0]);
 	++newCharset->numUsedChars;
 	for (int i = 0; i < 0x100; ++i)
 	{
