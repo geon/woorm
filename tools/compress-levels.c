@@ -41,15 +41,8 @@ void printPlayerStart(FILE *f, PlayerStart *playerStart)
 	fprintf(f, "{{%i,%i}, %s},", playerStart->position.x, playerStart->position.y, directionNames[playerStart->direction]);
 }
 
-int main()
+void compressLevels(FILE *f, Level *levels, int numLevels)
 {
-	FILE *f = fopen("../levels.c", "w");
-	if (f == NULL)
-	{
-		printf("Error opening levels.c!\n");
-		exit(1);
-	}
-
 	int compressedSize = 0;
 
 	fprintf(f, "#include \"levels.h\"\n");
@@ -105,4 +98,16 @@ int main()
 		fprintf(f, "},");
 	}
 	fprintf(f, "};\n\n");
+}
+
+int main()
+{
+	FILE *f = fopen("../levels.c", "w");
+	if (f == NULL)
+	{
+		printf("Error opening levels.c!\n");
+		exit(1);
+	}
+
+	compressLevels(f, levels, numLevels);
 }
