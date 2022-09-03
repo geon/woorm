@@ -41,10 +41,29 @@ void printPlayerStart(FILE *f, PlayerStart *playerStart)
 	fprintf(f, "{{%i,%i}, %s},", playerStart->position.x, playerStart->position.y, directionNames[playerStart->direction]);
 }
 
-void compressAndPrintLevelData(FILE *f, Level *level, int levelIndex)
+void compressLevel(
+	Level *level,
+	Buffer *compressedChars,
+	Buffer *compressedColors)
 {
-	uint8_t compressedContent[2000];
+	{
+		Buffer original = bufferCreate(level->chars, 1000, 1000);
+		lz77Compress(&original, compressedChars);
+	}
+	{
+		Buffer original = bufferCreate(level->colors, 1000, 1000);
+		levelRemoveInvisibleColorChanges(level);
+		lz77Compress(&original, compressedColors);
+	}
+}
 
+void printLevelData(
+	FILE *f,
+	Level *level,
+	Buffer *compressedChars,
+	Buffer *compressedColors,
+	int levelIndex)
+{
 	fprintf(f, "\nchar _LEVEL_DATA_NAME_%i[] = \"%s\";\n", levelIndex, level->name);
 
 	fprintf(f, "\nPlayerStart _LEVEL_DATA_PLAYER_STARTS_%i[4] = ", levelIndex, level->name);
@@ -56,38 +75,28 @@ void compressAndPrintLevelData(FILE *f, Level *level, int levelIndex)
 	fprintf(f, "};\n\n");
 
 	fprintf(f, "\nuint8_t _LEVEL_DATA_CHARS_%i[] = ", levelIndex);
-
-	{
-		Buffer original = bufferCreate(level->chars, 1000, 1000);
-		Buffer compressed = bufferCreate(compressedContent, 0, sizeof(compressedContent));
-		lz77Compress(&original, &compressed);
-		buffferPrint(f, &compressed);
-		// compressedSize += compressed.length;
-	}
-
+	buffferPrint(f, compressedChars);
 	fprintf(f, ";\n\n");
+
 	fprintf(f, "\nuint8_t _LEVEL_DATA_COLORS_%i[] = ", levelIndex);
-
-	{
-		Buffer original = bufferCreate(level->colors, 1000, 1000);
-		Buffer compressed = bufferCreate(compressedContent, 0, sizeof(compressedContent));
-		levelRemoveInvisibleColorChanges(level);
-		lz77Compress(&original, &compressed);
-		buffferPrint(f, &compressed);
-		// compressedSize += compressed.length;
-	}
-
+	buffferPrint(f, compressedColors);
 	fprintf(f, ";\n\n");
 }
 
 void compressLevels(FILE *f, Level *levels, int numLevels)
 {
-	// int compressedSize = 0;
-
 	fprintf(f, "#include \"levels.h\"\n");
+
 	for (int levelIndex = 0; levelIndex < numLevels; ++levelIndex)
 	{
-		compressAndPrintLevelData(f, &levels[levelIndex], levelIndex);
+		uint8_t compressedCharsContent[2000];
+		uint8_t compressedColorsContent[2000];
+
+		Buffer compressedChars = bufferCreate(compressedCharsContent, 0, sizeof(compressedCharsContent));
+		Buffer compressedColors = bufferCreate(compressedColorsContent, 0, sizeof(compressedColorsContent));
+
+		compressLevel(&levels[levelIndex], &compressedChars, &compressedColors);
+		printLevelData(f, &levels[levelIndex], &compressedChars, &compressedColors, levelIndex);
 	}
 
 	fprintf(f, "Level levels[] = {\n");
