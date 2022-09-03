@@ -23,20 +23,6 @@ void charsetCharCopy(CharsetChar source, CharsetChar destination)
 	}
 }
 
-void charsetCharPrint(CharsetChar charsetChar)
-{
-	printf(
-		"0x%.2X, 0x%.2X, 0x%.2X, 0x%.2X, 0x%.2X, 0x%.2X, 0x%.2X, 0x%.2X,\n",
-		charsetChar[0],
-		charsetChar[1],
-		charsetChar[2],
-		charsetChar[3],
-		charsetChar[4],
-		charsetChar[5],
-		charsetChar[6],
-		charsetChar[7]);
-}
-
 bool charsetCharHasPrimaryColor(CharsetChar charsetChar)
 {
 	// Check all lines.

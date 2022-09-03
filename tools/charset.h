@@ -6,6 +6,5 @@
 typedef CharsetChar Charset[256];
 
 int charsetIndexOf(Charset charset, CharsetChar charsetChar);
-void charsetPrint(Charset charset);
 
 #endif
