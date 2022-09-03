@@ -10,6 +10,7 @@ cl ^
     coord.c ^
     custom-asserts.c ^
     tile.c ^
+    tile-to-index.c ^
     worm.c ^
     worm.test.c ^
     screen.c ^
@@ -40,6 +41,7 @@ cl65 -O ^
     coord.c ^
     custom-asserts.c ^
     tile.c ^
+    tile-to-index.c ^
     worm.c ^
     worm.test.c ^
     screen.c ^

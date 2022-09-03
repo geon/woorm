@@ -6,6 +6,7 @@ cl65 -O ^
     worm.c ^
     coord.c ^
     tile.c ^
+    tile-to-index.c ^
     screen.c ^
     level.c ^
     levels.c ^
