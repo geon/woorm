@@ -5,32 +5,33 @@
 #include <stdint.h>
 #include <stdio.h>
 
-void mappingTablePrint(uint8_t mappingTable[0x100])
+void mappingTablePrint(FILE *f, uint8_t mappingTable[0x100])
 {
-	printf("#include <stdint.h>\n\n");
-	printf("uint8_t tileToIndex[256] =");
-	printf("\n{\n");
+	fprintf(f, "#include <stdint.h>\n\n");
+	fprintf(f, "uint8_t tileToIndex[256] =");
+	fprintf(f, "\n{\n");
 	for (int i = 0; i < 16; ++i)
 	{
 		for (int j = 0; j < 16; ++j)
 		{
-			printf("0x%.2X", mappingTable[i * 16 + j]);
+			fprintf(f, "0x%.2X", mappingTable[i * 16 + j]);
 			if (i < 16 - 1 || j < 16 - 1)
 			{
-				printf(", ");
+				fprintf(f, ", ");
 			}
 		}
-		printf("\n");
+		fprintf(f, "\n");
 	}
-	printf("};\n");
+	fprintf(f, "};\n");
 }
 
-void charsetPrint(Charset charset)
+void charsetPrint(FILE *f, Charset charset)
 {
-	printf(".segment \"CHARSET\"\n.export _wormCharset\n_wormCharset:\n");
+	fprintf(f, ".segment \"CHARSET\"\n.export _wormCharset\n_wormCharset:\n");
 	for (int i = 0; i < 256; ++i)
 	{
-		printf(
+		fprintf(
+			f,
 			".byte $%.2X, $%.2X, $%.2X, $%.2X, $%.2X, $%.2X, $%.2X, $%.2X\n",
 			charset[i][0],
 			charset[i][1],
@@ -98,9 +99,23 @@ int main()
 
 	partialCharsetCompress(&newCharset, cleanedWormCharset, mappingTable);
 
-	mappingTablePrint(mappingTable);
+	FILE *tileMappingFile = fopen("../tile-to-index.c", "w");
+	if (tileMappingFile == NULL)
+	{
+		printf("Error opening tile-to-index.c!\n");
+		exit(1);
+	}
 
-	charsetPrint(newCharset.charset);
+	mappingTablePrint(tileMappingFile, mappingTable);
+
+	FILE *charsetFile = fopen("../worm-charset.asm", "w");
+	if (charsetFile == NULL)
+	{
+		printf("Error opening worm-charset.asm!\n");
+		exit(1);
+	}
+
+	charsetPrint(charsetFile, newCharset.charset);
 
 	return 0;
 }
