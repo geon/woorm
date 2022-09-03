@@ -14,20 +14,24 @@ void mappingTablePrint(uint8_t mappingTable[0x100])
 	{
 		for (int j = 0; j < 16; ++j)
 		{
-			printf("0x%.2X, ", mappingTable[i * 16 + j]);
+			printf("0x%.2X", mappingTable[i * 16 + j]);
+			if (i < 16 - 1 || j < 16 - 1)
+			{
+				printf(", ");
+			}
 		}
 		printf("\n");
 	}
-	printf("}\n");
+	printf("};\n");
 }
 
 void charsetPrint(Charset charset)
 {
-	printf("\n{\n");
+	printf(".segment \"CHARSET\"\n.export _wormCharset\n_wormCharset:\n");
 	for (int i = 0; i < 256; ++i)
 	{
 		printf(
-			"0x%.2X, 0x%.2X, 0x%.2X, 0x%.2X, 0x%.2X, 0x%.2X, 0x%.2X, 0x%.2X,\n",
+			".byte $%.2X, $%.2X, $%.2X, $%.2X, $%.2X, $%.2X, $%.2X, $%.2X\n",
 			charset[i][0],
 			charset[i][1],
 			charset[i][2],
@@ -37,7 +41,6 @@ void charsetPrint(Charset charset)
 			charset[i][6],
 			charset[i][7]);
 	}
-	printf("}\n");
 }
 
 extern Charset originalWormCharset;
