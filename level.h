@@ -16,7 +16,7 @@ typedef struct PlayerStart
 typedef struct Level
 {
 	char *name;
-	PlayerStart playerStarts[4];
+	PlayerStart *playerStarts;
 	uint8_t *chars;
 	uint8_t *colors;
 } Level;
