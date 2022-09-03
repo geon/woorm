@@ -53,6 +53,15 @@ void compressLevels(FILE *f, Level *levels, int numLevels)
 		Level *level = &levels[levelIndex];
 
 		fprintf(f, "\nchar _LEVEL_DATA_NAME_%i[] = \"%s\";\n", levelIndex, level->name);
+
+		fprintf(f, "\nPlayerStart _LEVEL_DATA_PLAYER_STARTS_%i[4] = ", levelIndex, level->name);
+		fprintf(f, "{");
+		for (int i = 0; i < 4; ++i)
+		{
+			printPlayerStart(f, &level->playerStarts[i]);
+		}
+		fprintf(f, "};\n\n");
+
 		fprintf(f, "\nuint8_t _LEVEL_DATA_CHARS_%i[] = ", levelIndex);
 
 		{
@@ -86,12 +95,7 @@ void compressLevels(FILE *f, Level *levels, int numLevels)
 		fprintf(f, "{");
 		{
 			fprintf(f, "_LEVEL_DATA_NAME_%i,", levelIndex);
-			fprintf(f, "{");
-			for (int i = 0; i < 4; ++i)
-			{
-				printPlayerStart(f, &level->playerStarts[i]);
-			}
-			fprintf(f, "},");
+			fprintf(f, "_LEVEL_DATA_PLAYER_STARTS_%i,", levelIndex);
 			fprintf(f, "_LEVEL_DATA_CHARS_%i,", levelIndex);
 			fprintf(f, "_LEVEL_DATA_COLORS_%i,", levelIndex);
 		}
