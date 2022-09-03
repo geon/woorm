@@ -7,6 +7,8 @@
 
 void mappingTablePrint(uint8_t mappingTable[0x100])
 {
+	printf("#include <stdint.h>\n\n");
+	printf("uint8_t tileToIndex[256] =");
 	printf("\n{\n");
 	for (int i = 0; i < 16; ++i)
 	{
@@ -75,6 +77,7 @@ int main()
 	partialCharsetCompress(&newCharset, cleanedWormCharset, mappingTable);
 
 	mappingTablePrint(mappingTable);
+
 	charsetPrint(newCharset.charset);
 
 	return 0;
