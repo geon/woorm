@@ -102,14 +102,14 @@ void printLevelsStructArray(FILE *f, int numLevels)
 
 int main()
 {
-	FILE *f = fopen("../levels.c", "w");
-	if (f == NULL)
+	FILE *levelsFile = fopen("../levels.c", "w");
+	if (levelsFile == NULL)
 	{
 		printf("Error opening levels.c!\n");
 		exit(1);
 	}
 
-	fprintf(f, "#include \"levels.h\"\n");
+	fprintf(levelsFile, "#include \"levels.h\"\n");
 
 	for (int levelIndex = 0; levelIndex < numLevels; ++levelIndex)
 	{
@@ -120,8 +120,8 @@ int main()
 		Buffer compressedColors = bufferCreate(compressedColorsContent, 0, sizeof(compressedColorsContent));
 
 		compressLevel(&levels[levelIndex], &compressedChars, &compressedColors);
-		printLevelData(f, &levels[levelIndex], &compressedChars, &compressedColors, levelIndex);
+		printLevelData(levelsFile, &levels[levelIndex], &compressedChars, &compressedColors, levelIndex);
 	}
 
-	printLevelsStructArray(f, numLevels);
+	printLevelsStructArray(levelsFile, numLevels);
 }
