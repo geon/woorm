@@ -12,6 +12,7 @@ cl ^
     charset.c ^
     partial-charset.c ^
     tile.legacy.c ^
+    original-levels-charset.c ^
     -o generate-charset-and-levels.exe
 if %errorlevel% neq 0 exit /b %errorlevel%
 

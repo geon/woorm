@@ -7,15 +7,6 @@ void levelDraw(Level *level, Screen *screen)
 	// Decompress directly to screen.
 	lz77Decompress(level->chars, 1024, screen->chars, 1024);
 	lz77Decompress(level->colors, 1024, screen->colors, 1024);
-
-	// The tiles for the levels are missing.
-	{
-		int i;
-		for (i = 0; i < 1024; ++i)
-		{
-			screen->chars[i] = screen->chars[i] ? 255 : 0;
-		}
-	}
 }
 
 void levelStart(Level *level, Screen *screen, Worm worms[4])
