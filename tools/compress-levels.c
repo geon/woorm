@@ -52,7 +52,6 @@ void compressLevel(
 	}
 	{
 		Buffer original = bufferCreate(level->colors, 1000, 1000);
-		levelRemoveInvisibleColorChanges(level);
 		lz77Compress(&original, compressedColors);
 	}
 }
@@ -102,6 +101,11 @@ void printLevelsStructArray(FILE *f, int numLevels)
 
 int main()
 {
+	for (int levelIndex = 0; levelIndex < numLevels; ++levelIndex)
+	{
+		levelRemoveInvisibleColorChanges(&levels[levelIndex]);
+	}
+
 	FILE *levelsFile = fopen("../levels.c", "w");
 	if (levelsFile == NULL)
 	{
