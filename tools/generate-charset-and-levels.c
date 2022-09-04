@@ -205,6 +205,17 @@ int main()
 
 	unmapCharset(&newCharset, mappingTable, originalWormCharset);
 
+	printf("numLevels: %i\n", numLevels);
+	for (int i = 0; i < numLevels; ++i)
+	{
+		printf("level: %i\n", i);
+		partialCharsetAddNewCharsUsedInLevel(&newCharset, *(levels[i].charset), levels[i].chars);
+	}
+	for (int i = 0; i < numLevels; ++i)
+	{
+		levelRemapChars(&levels[i], &newCharset);
+	}
+
 	for (int levelIndex = 0; levelIndex < numLevels; ++levelIndex)
 	{
 		levelRemoveInvisibleColorChanges(&levels[levelIndex]);
