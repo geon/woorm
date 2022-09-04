@@ -100,8 +100,15 @@ void printLevelsStructArray(FILE *f, int numLevels)
 	fprintf(f, "};\n\n");
 }
 
-void compressLevels(FILE *f, Level *levels, int numLevels)
+int main()
 {
+	FILE *f = fopen("../levels.c", "w");
+	if (f == NULL)
+	{
+		printf("Error opening levels.c!\n");
+		exit(1);
+	}
+
 	fprintf(f, "#include \"levels.h\"\n");
 
 	for (int levelIndex = 0; levelIndex < numLevels; ++levelIndex)
@@ -117,16 +124,4 @@ void compressLevels(FILE *f, Level *levels, int numLevels)
 	}
 
 	printLevelsStructArray(f, numLevels);
-}
-
-int main()
-{
-	FILE *f = fopen("../levels.c", "w");
-	if (f == NULL)
-	{
-		printf("Error opening levels.c!\n");
-		exit(1);
-	}
-
-	compressLevels(f, levels, numLevels);
 }
