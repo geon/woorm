@@ -83,6 +83,23 @@ void printLevelData(
 	fprintf(f, ";\n\n");
 }
 
+void printLevelsStructArray(FILE *f, int numLevels)
+{
+	fprintf(f, "Level levels[] = {\n");
+	for (int levelIndex = 0; levelIndex < numLevels; ++levelIndex)
+	{
+		fprintf(f, "{");
+		{
+			fprintf(f, "_LEVEL_DATA_NAME_%i,", levelIndex);
+			fprintf(f, "_LEVEL_DATA_PLAYER_STARTS_%i,", levelIndex);
+			fprintf(f, "_LEVEL_DATA_CHARS_%i,", levelIndex);
+			fprintf(f, "_LEVEL_DATA_COLORS_%i,", levelIndex);
+		}
+		fprintf(f, "},");
+	}
+	fprintf(f, "};\n\n");
+}
+
 void compressLevels(FILE *f, Level *levels, int numLevels)
 {
 	fprintf(f, "#include \"levels.h\"\n");
@@ -99,21 +116,7 @@ void compressLevels(FILE *f, Level *levels, int numLevels)
 		printLevelData(f, &levels[levelIndex], &compressedChars, &compressedColors, levelIndex);
 	}
 
-	fprintf(f, "Level levels[] = {\n");
-	for (int levelIndex = 0; levelIndex < numLevels; ++levelIndex)
-	{
-		Level *level = &levels[levelIndex];
-
-		fprintf(f, "{");
-		{
-			fprintf(f, "_LEVEL_DATA_NAME_%i,", levelIndex);
-			fprintf(f, "_LEVEL_DATA_PLAYER_STARTS_%i,", levelIndex);
-			fprintf(f, "_LEVEL_DATA_CHARS_%i,", levelIndex);
-			fprintf(f, "_LEVEL_DATA_COLORS_%i,", levelIndex);
-		}
-		fprintf(f, "},");
-	}
-	fprintf(f, "};\n\n");
+	printLevelsStructArray(f, numLevels);
 }
 
 int main()
