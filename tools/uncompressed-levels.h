@@ -3,6 +3,7 @@
 
 #include "../coord.h"
 #include "../direction.h"
+#include "charset.h"
 #include <stdint.h>
 
 typedef struct PlayerStart
@@ -16,6 +17,7 @@ typedef uint8_t LevelAttributes[1000];
 typedef struct Level
 {
 	char *name;
+	Charset *charset;
 	PlayerStart playerStarts[4];
 	LevelAttributes chars;
 	LevelAttributes colors;
