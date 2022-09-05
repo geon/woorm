@@ -1,6 +1,7 @@
 #include "../tile.h"
 #include "buffer.h"
 #include "charset.h"
+#include "level.h"
 #include "partial-charset.h"
 #include "uncompressed-levels.h"
 #include <stdbool.h>
