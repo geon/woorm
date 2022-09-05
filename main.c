@@ -32,18 +32,15 @@ void animateWorm(Worm *worm)
 void setUpWormCharset()
 {
 	// Switch to charset at 0x2000. (Charset with index 4 in the default bank, which is the first one not shadowed by rom.)
-	// 0xD018
+	// Register 0xD018
 	VIC.addr = (VIC.addr & 0xF0) | (4 << 1);
 
 	// Switch to multi color mode.
-	// 0xD016
+	// Register 0xD016
 	VIC.ctrl2 = VIC.ctrl2 | 16;
 
 	// Set up secondary char colors.
-	// 0xD022
-	VIC.bgcolor1 = COLOR_WHITE;
-	// 0xD023
-	VIC.bgcolor2 = COLOR_BROWN;
+	levelSetMultiColors(COLOR_WHITE, COLOR_BROWN);
 }
 
 void waitMs(uint16_t time)
@@ -66,7 +63,7 @@ int main(void)
 	setUpWormCharset();
 
 	// garbled charset bug on level 7, 19
-	levelStart(&levels[0], screen, worms);
+	levelStart(&levels[1], screen, worms);
 
 	wormSetSpeed(&worms[0], 1);
 	wormSetSpeed(&worms[1], 2);
