@@ -59,8 +59,7 @@ int main(void)
 	bordercolor(COLOR_BLACK);
 	setUpWormCharset();
 
-	// garbled charset bug on level 7, 19
-	levelStart(&levels[9], screen, worms);
+	levelStart(&levels[0], screen, worms);
 
 	wormSetSpeed(&worms[0], 1);
 	wormSetSpeed(&worms[1], 2);
