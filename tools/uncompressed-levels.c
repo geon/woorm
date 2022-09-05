@@ -25,6 +25,8 @@ char extend[] = "Extend";
 Level levels[] = {
 	{pain,
 	 &originalLevelsCharset,
+	 1,
+	 9,
 	 {
 		 {{8, 8}, Direction_right},
 		 {{33, 12}, Direction_left},
@@ -84,6 +86,8 @@ Level levels[] = {
 
 	{bub_01,
 	 &originalLevelsCharset,
+	 1,
+	 9,
 	 {
 		 {{12, 6}, Direction_right},
 		 {{27, 6}, Direction_left},
@@ -143,6 +147,8 @@ Level levels[] = {
 
 	{bub_05,
 	 &originalLevelsCharset,
+	 13,
+	 9,
 	 {
 		 {{12, 6}, Direction_right},
 		 {{27, 6}, Direction_left},
@@ -202,6 +208,8 @@ Level levels[] = {
 
 	{mr_man,
 	 &originalLevelsCharset,
+	 1,
+	 9,
 	 {
 		 {{14, 4}, Direction_right},
 		 {{24, 4}, Direction_left},
@@ -261,6 +269,8 @@ Level levels[] = {
 
 	{worry,
 	 &originalLevelsCharset,
+	 1,
+	 9,
 	 {
 		 {{7, 7}, Direction_right},
 		 {{32, 7}, Direction_left},
@@ -320,6 +330,8 @@ Level levels[] = {
 
 	{load_1,
 	 &originalLevelsCharset,
+	 1,
+	 9,
 	 {
 		 {{12, 2}, Direction_right},
 		 {{27, 2}, Direction_left},
@@ -379,6 +391,8 @@ Level levels[] = {
 
 	{doodle,
 	 &originalLevelsCharset,
+	 1,
+	 9,
 	 {
 		 {{8, 4}, Direction_down},
 		 {{30, 4}, Direction_down},
@@ -438,6 +452,8 @@ Level levels[] = {
 
 	{bub_04,
 	 &originalLevelsCharset,
+	 1,
+	 9,
 	 {
 		 {{13, 5}, Direction_right},
 		 {{26, 5}, Direction_left},
@@ -497,6 +513,8 @@ Level levels[] = {
 
 	{ms_man,
 	 &originalLevelsCharset,
+	 1,
+	 9,
 	 {
 		 {{15, 8}, Direction_right},
 		 {{23, 8}, Direction_left},
@@ -556,6 +574,8 @@ Level levels[] = {
 
 	{bub_45,
 	 &originalLevelsCharset,
+	 1,
+	 2,
 	 {
 		 {{12, 8}, Direction_right},
 		 {{27, 8}, Direction_left},
@@ -615,6 +635,8 @@ Level levels[] = {
 
 	{bub_18,
 	 &originalLevelsCharset,
+	 7,
+	 9,
 	 {
 		 {{12, 7}, Direction_right},
 		 {{28, 7}, Direction_left},
@@ -674,6 +696,8 @@ Level levels[] = {
 
 	{symmetemmys,
 	 &originalLevelsCharset,
+	 1,
+	 9,
 	 {
 		 {{12, 7}, Direction_right},
 		 {{28, 7}, Direction_left},
@@ -733,6 +757,8 @@ Level levels[] = {
 
 	{load_2,
 	 &originalLevelsCharset,
+	 1,
+	 9,
 	 {
 		 {{12, 2}, Direction_right},
 		 {{27, 2}, Direction_left},
@@ -792,6 +818,8 @@ Level levels[] = {
 
 	{bub_29,
 	 &originalLevelsCharset,
+	 14,
+	 9,
 	 {
 		 {{10, 13}, Direction_right},
 		 {{27, 5}, Direction_left},
@@ -851,6 +879,8 @@ Level levels[] = {
 
 	{bub_16,
 	 &originalLevelsCharset,
+	 1,
+	 9,
 	 {
 		 {{13, 8}, Direction_right},
 		 {{27, 8}, Direction_left},
@@ -910,6 +940,8 @@ Level levels[] = {
 
 	{quatro,
 	 &originalLevelsCharset,
+	 1,
+	 9,
 	 {
 		 {{12, 2}, Direction_right},
 		 {{27, 2}, Direction_left},
@@ -969,6 +1001,8 @@ Level levels[] = {
 
 	{busted,
 	 &originalLevelsCharset,
+	 1,
+	 9,
 	 {
 		 {{6, 23}, Direction_left},
 		 {{33, 23}, Direction_right},
@@ -1028,6 +1062,8 @@ Level levels[] = {
 
 	{amazing_spider,
 	 &originalLevelsCharset,
+	 1,
+	 9,
 	 {
 		 {{7, 3}, Direction_right},
 		 {{32, 3}, Direction_left},
@@ -1087,6 +1123,8 @@ Level levels[] = {
 
 	{yrtemmys,
 	 &originalLevelsCharset,
+	 1,
+	 9,
 	 {
 		 {{12, 1}, Direction_right},
 		 {{27, 1}, Direction_left},
@@ -1146,6 +1184,8 @@ Level levels[] = {
 
 	{extend,
 	 &originalLevelsCharset,
+	 1,
+	 9,
 	 {
 		 {{11, 1}, Direction_right},
 		 {{27, 1}, Direction_left},

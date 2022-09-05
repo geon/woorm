@@ -11,6 +11,7 @@ void levelDraw(Level *level, Screen *screen)
 
 void levelStart(Level *level, Screen *screen, Worm worms[4])
 {
+	levelSetMultiColors(level);
 	levelDraw(level, screen);
 	wormInit(&worms[0], screen, coordToPos(level->playerStarts[0].position), level->playerStarts[0].direction, COLOR_CYAN + 8);
 	wormInit(&worms[1], screen, coordToPos(level->playerStarts[1].position), level->playerStarts[1].direction, COLOR_GREEN + 8);
@@ -18,9 +19,9 @@ void levelStart(Level *level, Screen *screen, Worm worms[4])
 	wormInit(&worms[3], screen, coordToPos(level->playerStarts[3].position), level->playerStarts[3].direction, COLOR_RED + 8);
 }
 
-void levelSetMultiColors(uint8_t color1, uint8_t color2)
+void levelSetMultiColors(Level *level)
 {
 	// Registers 0xD022, 0xD023
-	VIC.bgcolor1 = color1;
-	VIC.bgcolor2 = color2;
+	VIC.bgcolor1 = *level->multiColor1;
+	VIC.bgcolor2 = *level->multiColor2;
 }

@@ -18,6 +18,8 @@ typedef struct Level
 {
 	char *name;
 	Charset *charset;
+	uint8_t multiColor1;
+	uint8_t multiColor2;
 	PlayerStart playerStarts[4];
 	LevelAttributes chars;
 	LevelAttributes colors;

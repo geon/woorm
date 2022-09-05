@@ -38,9 +38,6 @@ void setUpWormCharset()
 	// Switch to multi color mode.
 	// Register 0xD016
 	VIC.ctrl2 = VIC.ctrl2 | 16;
-
-	// Set up secondary char colors.
-	levelSetMultiColors(COLOR_WHITE, COLOR_BROWN);
 }
 
 void waitMs(uint16_t time)
@@ -63,7 +60,7 @@ int main(void)
 	setUpWormCharset();
 
 	// garbled charset bug on level 7, 19
-	levelStart(&levels[1], screen, worms);
+	levelStart(&levels[9], screen, worms);
 
 	wormSetSpeed(&worms[0], 1);
 	wormSetSpeed(&worms[1], 2);
