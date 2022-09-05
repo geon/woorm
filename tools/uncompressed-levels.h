@@ -16,7 +16,7 @@ typedef uint8_t LevelAttributes[1000];
 
 typedef struct Level
 {
-	char *name;
+	char name[100];
 	Charset *charset;
 	uint8_t multiColor1;
 	uint8_t multiColor2;
