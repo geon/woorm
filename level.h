@@ -23,5 +23,6 @@ typedef struct Level
 
 void levelDraw(Level *level, Screen *screen);
 void levelStart(Level *level, Screen *screen, Worm worms[4]);
+void levelSetMultiColors(uint8_t color1, uint8_t color2);
 
 #endif
