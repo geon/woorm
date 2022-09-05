@@ -162,6 +162,9 @@ void printLevelData(
 {
 	fprintf(f, "\nchar _LEVEL_DATA_NAME_%i[] = \"%s\";\n", levelIndex, level->name);
 
+	fprintf(f, "\nuint8_t _LEVEL_DATA_MULTI_COLOR_1_%i[1] = {%i};\n", levelIndex, level->multiColor1);
+	fprintf(f, "\nuint8_t _LEVEL_DATA_MULTI_COLOR_2_%i[1] = {%i};\n", levelIndex, level->multiColor2);
+
 	fprintf(f, "\nPlayerStart _LEVEL_DATA_PLAYER_STARTS_%i[4] = ", levelIndex, level->name);
 	fprintf(f, "{");
 	for (int i = 0; i < 4; ++i)
@@ -187,6 +190,8 @@ void printLevelsStructArray(FILE *f, int numLevels)
 		fprintf(f, "{");
 		{
 			fprintf(f, "_LEVEL_DATA_NAME_%i,", levelIndex);
+			fprintf(f, "_LEVEL_DATA_MULTI_COLOR_1_%i,", levelIndex);
+			fprintf(f, "_LEVEL_DATA_MULTI_COLOR_2_%i,", levelIndex);
 			fprintf(f, "_LEVEL_DATA_PLAYER_STARTS_%i,", levelIndex);
 			fprintf(f, "_LEVEL_DATA_CHARS_%i,", levelIndex);
 			fprintf(f, "_LEVEL_DATA_COLORS_%i,", levelIndex);

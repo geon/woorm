@@ -2,6 +2,10 @@
 
 char _LEVEL_DATA_NAME_0[] = "pain";
 
+uint8_t _LEVEL_DATA_MULTI_COLOR_1_0[1] = {1};
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_2_0[1] = {9};
+
 PlayerStart _LEVEL_DATA_PLAYER_STARTS_0[4] = {
 	{{8, 8}, Direction_right},
 	{{33, 12}, Direction_left},
@@ -47,6 +51,10 @@ uint8_t _LEVEL_DATA_COLORS_0[] = {
 
 char _LEVEL_DATA_NAME_1[] = "Bub 01";
 
+uint8_t _LEVEL_DATA_MULTI_COLOR_1_1[1] = {1};
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_2_1[1] = {8};
+
 PlayerStart _LEVEL_DATA_PLAYER_STARTS_1[4] = {
 	{{12, 6}, Direction_right},
 	{{27, 6}, Direction_left},
@@ -75,6 +83,10 @@ uint8_t _LEVEL_DATA_COLORS_1[] = {
 	0x9B, 0x95, 0x0A, 0x33, 0xD4, 0x0E};
 
 char _LEVEL_DATA_NAME_2[] = "Bub 05";
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_1_2[1] = {13};
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_2_2[1] = {9};
 
 PlayerStart _LEVEL_DATA_PLAYER_STARTS_2[4] = {
 	{{12, 6}, Direction_right},
@@ -111,6 +123,10 @@ uint8_t _LEVEL_DATA_COLORS_2[] = {
 
 char _LEVEL_DATA_NAME_3[] = "Mr Man";
 
+uint8_t _LEVEL_DATA_MULTI_COLOR_1_3[1] = {1};
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_2_3[1] = {9};
+
 PlayerStart _LEVEL_DATA_PLAYER_STARTS_3[4] = {
 	{{14, 4}, Direction_right},
 	{{24, 4}, Direction_left},
@@ -144,6 +160,10 @@ uint8_t _LEVEL_DATA_COLORS_3[] = {
 	0x00, 0x50, 0x0A, 0x00, 0x4C};
 
 char _LEVEL_DATA_NAME_4[] = "Worry";
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_1_4[1] = {1};
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_2_4[1] = {9};
 
 PlayerStart _LEVEL_DATA_PLAYER_STARTS_4[4] = {
 	{{7, 7}, Direction_right},
@@ -180,6 +200,10 @@ uint8_t _LEVEL_DATA_COLORS_4[] = {
 
 char _LEVEL_DATA_NAME_5[] = "Load 1";
 
+uint8_t _LEVEL_DATA_MULTI_COLOR_1_5[1] = {1};
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_2_5[1] = {9};
+
 PlayerStart _LEVEL_DATA_PLAYER_STARTS_5[4] = {
 	{{12, 2}, Direction_right},
 	{{27, 2}, Direction_left},
@@ -207,6 +231,10 @@ uint8_t _LEVEL_DATA_COLORS_5[] = {
 	0x7F, 0x02, 0x00, 0x63};
 
 char _LEVEL_DATA_NAME_6[] = "Doodle";
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_1_6[1] = {1};
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_2_6[1] = {9};
 
 PlayerStart _LEVEL_DATA_PLAYER_STARTS_6[4] = {
 	{{8, 4}, Direction_down},
@@ -276,6 +304,10 @@ uint8_t _LEVEL_DATA_COLORS_6[] = {
 
 char _LEVEL_DATA_NAME_7[] = "Bub 04";
 
+uint8_t _LEVEL_DATA_MULTI_COLOR_1_7[1] = {1};
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_2_7[1] = {9};
+
 PlayerStart _LEVEL_DATA_PLAYER_STARTS_7[4] = {
 	{{13, 5}, Direction_right},
 	{{26, 5}, Direction_left},
@@ -318,6 +350,10 @@ uint8_t _LEVEL_DATA_COLORS_7[] = {
 
 char _LEVEL_DATA_NAME_8[] = "Ms Man";
 
+uint8_t _LEVEL_DATA_MULTI_COLOR_1_8[1] = {1};
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_2_8[1] = {9};
+
 PlayerStart _LEVEL_DATA_PLAYER_STARTS_8[4] = {
 	{{15, 8}, Direction_right},
 	{{23, 8}, Direction_left},
@@ -352,6 +388,10 @@ uint8_t _LEVEL_DATA_COLORS_8[] = {
 	0x00, 0x54, 0x07, 0x00, 0x52, 0x0A, 0x00, 0x4B};
 
 char _LEVEL_DATA_NAME_9[] = "Bub 45";
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_1_9[1] = {1};
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_2_9[1] = {2};
 
 PlayerStart _LEVEL_DATA_PLAYER_STARTS_9[4] = {
 	{{12, 8}, Direction_right},
@@ -396,6 +436,10 @@ uint8_t _LEVEL_DATA_COLORS_9[] = {
 
 char _LEVEL_DATA_NAME_10[] = "Bub 18";
 
+uint8_t _LEVEL_DATA_MULTI_COLOR_1_10[1] = {7};
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_2_10[1] = {9};
+
 PlayerStart _LEVEL_DATA_PLAYER_STARTS_10[4] = {
 	{{12, 7}, Direction_right},
 	{{28, 7}, Direction_left},
@@ -430,6 +474,10 @@ uint8_t _LEVEL_DATA_COLORS_10[] = {
 
 char _LEVEL_DATA_NAME_11[] = "SymmetemmyS";
 
+uint8_t _LEVEL_DATA_MULTI_COLOR_1_11[1] = {1};
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_2_11[1] = {9};
+
 PlayerStart _LEVEL_DATA_PLAYER_STARTS_11[4] = {
 	{{12, 7}, Direction_right},
 	{{28, 7}, Direction_left},
@@ -459,6 +507,10 @@ uint8_t _LEVEL_DATA_COLORS_11[] = {
 
 char _LEVEL_DATA_NAME_12[] = "Load 2";
 
+uint8_t _LEVEL_DATA_MULTI_COLOR_1_12[1] = {1};
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_2_12[1] = {9};
+
 PlayerStart _LEVEL_DATA_PLAYER_STARTS_12[4] = {
 	{{12, 2}, Direction_right},
 	{{27, 2}, Direction_left},
@@ -487,6 +539,10 @@ uint8_t _LEVEL_DATA_COLORS_12[] = {
 	0x09, 0x02, 0x00, 0x7F, 0x02, 0x00, 0x7F, 0x02, 0x00, 0x63};
 
 char _LEVEL_DATA_NAME_13[] = "Bub 29";
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_1_13[1] = {14};
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_2_13[1] = {9};
 
 PlayerStart _LEVEL_DATA_PLAYER_STARTS_13[4] = {
 	{{10, 13}, Direction_right},
@@ -531,6 +587,10 @@ uint8_t _LEVEL_DATA_COLORS_13[] = {
 
 char _LEVEL_DATA_NAME_14[] = "Bub 16";
 
+uint8_t _LEVEL_DATA_MULTI_COLOR_1_14[1] = {1};
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_2_14[1] = {9};
+
 PlayerStart _LEVEL_DATA_PLAYER_STARTS_14[4] = {
 	{{13, 8}, Direction_right},
 	{{27, 8}, Direction_left},
@@ -566,6 +626,10 @@ uint8_t _LEVEL_DATA_COLORS_14[] = {
 	0x00, 0x41, 0x0C, 0x03, 0x8B, 0x0A, 0x77, 0xD0, 0x0F, 0xE8, 0x7F, 0x0C, 0x00, 0x47};
 
 char _LEVEL_DATA_NAME_15[] = "Quatro";
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_1_15[1] = {1};
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_2_15[1] = {9};
 
 PlayerStart _LEVEL_DATA_PLAYER_STARTS_15[4] = {
 	{{12, 2}, Direction_right},
@@ -618,6 +682,10 @@ uint8_t _LEVEL_DATA_COLORS_15[] = {
 
 char _LEVEL_DATA_NAME_16[] = "Busted";
 
+uint8_t _LEVEL_DATA_MULTI_COLOR_1_16[1] = {1};
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_2_16[1] = {9};
+
 PlayerStart _LEVEL_DATA_PLAYER_STARTS_16[4] = {
 	{{6, 23}, Direction_left},
 	{{33, 23}, Direction_right},
@@ -665,6 +733,10 @@ uint8_t _LEVEL_DATA_COLORS_16[] = {
 
 char _LEVEL_DATA_NAME_17[] = "Amazing Spider";
 
+uint8_t _LEVEL_DATA_MULTI_COLOR_1_17[1] = {1};
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_2_17[1] = {9};
+
 PlayerStart _LEVEL_DATA_PLAYER_STARTS_17[4] = {
 	{{7, 3}, Direction_right},
 	{{32, 3}, Direction_left},
@@ -700,6 +772,10 @@ uint8_t _LEVEL_DATA_COLORS_17[] = {
 	0x0C, 0xA0, 0x2B, 0x0A, 0x00, 0x7F, 0x0A, 0x00, 0x7F, 0x0A, 0x00, 0x45};
 
 char _LEVEL_DATA_NAME_18[] = "yrtemmyS";
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_1_18[1] = {1};
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_2_18[1] = {9};
 
 PlayerStart _LEVEL_DATA_PLAYER_STARTS_18[4] = {
 	{{12, 1}, Direction_right},
@@ -747,6 +823,10 @@ uint8_t _LEVEL_DATA_COLORS_18[] = {
 	0x4D};
 
 char _LEVEL_DATA_NAME_19[] = "Extend";
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_1_19[1] = {1};
+
+uint8_t _LEVEL_DATA_MULTI_COLOR_2_19[1] = {9};
 
 PlayerStart _LEVEL_DATA_PLAYER_STARTS_19[4] = {
 	{{11, 1}, Direction_right},
@@ -814,120 +894,160 @@ uint8_t _LEVEL_DATA_COLORS_19[] = {
 Level levels[] = {
 	{
 		_LEVEL_DATA_NAME_0,
+		_LEVEL_DATA_MULTI_COLOR_1_0,
+		_LEVEL_DATA_MULTI_COLOR_2_0,
 		_LEVEL_DATA_PLAYER_STARTS_0,
 		_LEVEL_DATA_CHARS_0,
 		_LEVEL_DATA_COLORS_0,
 	},
 	{
 		_LEVEL_DATA_NAME_1,
+		_LEVEL_DATA_MULTI_COLOR_1_1,
+		_LEVEL_DATA_MULTI_COLOR_2_1,
 		_LEVEL_DATA_PLAYER_STARTS_1,
 		_LEVEL_DATA_CHARS_1,
 		_LEVEL_DATA_COLORS_1,
 	},
 	{
 		_LEVEL_DATA_NAME_2,
+		_LEVEL_DATA_MULTI_COLOR_1_2,
+		_LEVEL_DATA_MULTI_COLOR_2_2,
 		_LEVEL_DATA_PLAYER_STARTS_2,
 		_LEVEL_DATA_CHARS_2,
 		_LEVEL_DATA_COLORS_2,
 	},
 	{
 		_LEVEL_DATA_NAME_3,
+		_LEVEL_DATA_MULTI_COLOR_1_3,
+		_LEVEL_DATA_MULTI_COLOR_2_3,
 		_LEVEL_DATA_PLAYER_STARTS_3,
 		_LEVEL_DATA_CHARS_3,
 		_LEVEL_DATA_COLORS_3,
 	},
 	{
 		_LEVEL_DATA_NAME_4,
+		_LEVEL_DATA_MULTI_COLOR_1_4,
+		_LEVEL_DATA_MULTI_COLOR_2_4,
 		_LEVEL_DATA_PLAYER_STARTS_4,
 		_LEVEL_DATA_CHARS_4,
 		_LEVEL_DATA_COLORS_4,
 	},
 	{
 		_LEVEL_DATA_NAME_5,
+		_LEVEL_DATA_MULTI_COLOR_1_5,
+		_LEVEL_DATA_MULTI_COLOR_2_5,
 		_LEVEL_DATA_PLAYER_STARTS_5,
 		_LEVEL_DATA_CHARS_5,
 		_LEVEL_DATA_COLORS_5,
 	},
 	{
 		_LEVEL_DATA_NAME_6,
+		_LEVEL_DATA_MULTI_COLOR_1_6,
+		_LEVEL_DATA_MULTI_COLOR_2_6,
 		_LEVEL_DATA_PLAYER_STARTS_6,
 		_LEVEL_DATA_CHARS_6,
 		_LEVEL_DATA_COLORS_6,
 	},
 	{
 		_LEVEL_DATA_NAME_7,
+		_LEVEL_DATA_MULTI_COLOR_1_7,
+		_LEVEL_DATA_MULTI_COLOR_2_7,
 		_LEVEL_DATA_PLAYER_STARTS_7,
 		_LEVEL_DATA_CHARS_7,
 		_LEVEL_DATA_COLORS_7,
 	},
 	{
 		_LEVEL_DATA_NAME_8,
+		_LEVEL_DATA_MULTI_COLOR_1_8,
+		_LEVEL_DATA_MULTI_COLOR_2_8,
 		_LEVEL_DATA_PLAYER_STARTS_8,
 		_LEVEL_DATA_CHARS_8,
 		_LEVEL_DATA_COLORS_8,
 	},
 	{
 		_LEVEL_DATA_NAME_9,
+		_LEVEL_DATA_MULTI_COLOR_1_9,
+		_LEVEL_DATA_MULTI_COLOR_2_9,
 		_LEVEL_DATA_PLAYER_STARTS_9,
 		_LEVEL_DATA_CHARS_9,
 		_LEVEL_DATA_COLORS_9,
 	},
 	{
 		_LEVEL_DATA_NAME_10,
+		_LEVEL_DATA_MULTI_COLOR_1_10,
+		_LEVEL_DATA_MULTI_COLOR_2_10,
 		_LEVEL_DATA_PLAYER_STARTS_10,
 		_LEVEL_DATA_CHARS_10,
 		_LEVEL_DATA_COLORS_10,
 	},
 	{
 		_LEVEL_DATA_NAME_11,
+		_LEVEL_DATA_MULTI_COLOR_1_11,
+		_LEVEL_DATA_MULTI_COLOR_2_11,
 		_LEVEL_DATA_PLAYER_STARTS_11,
 		_LEVEL_DATA_CHARS_11,
 		_LEVEL_DATA_COLORS_11,
 	},
 	{
 		_LEVEL_DATA_NAME_12,
+		_LEVEL_DATA_MULTI_COLOR_1_12,
+		_LEVEL_DATA_MULTI_COLOR_2_12,
 		_LEVEL_DATA_PLAYER_STARTS_12,
 		_LEVEL_DATA_CHARS_12,
 		_LEVEL_DATA_COLORS_12,
 	},
 	{
 		_LEVEL_DATA_NAME_13,
+		_LEVEL_DATA_MULTI_COLOR_1_13,
+		_LEVEL_DATA_MULTI_COLOR_2_13,
 		_LEVEL_DATA_PLAYER_STARTS_13,
 		_LEVEL_DATA_CHARS_13,
 		_LEVEL_DATA_COLORS_13,
 	},
 	{
 		_LEVEL_DATA_NAME_14,
+		_LEVEL_DATA_MULTI_COLOR_1_14,
+		_LEVEL_DATA_MULTI_COLOR_2_14,
 		_LEVEL_DATA_PLAYER_STARTS_14,
 		_LEVEL_DATA_CHARS_14,
 		_LEVEL_DATA_COLORS_14,
 	},
 	{
 		_LEVEL_DATA_NAME_15,
+		_LEVEL_DATA_MULTI_COLOR_1_15,
+		_LEVEL_DATA_MULTI_COLOR_2_15,
 		_LEVEL_DATA_PLAYER_STARTS_15,
 		_LEVEL_DATA_CHARS_15,
 		_LEVEL_DATA_COLORS_15,
 	},
 	{
 		_LEVEL_DATA_NAME_16,
+		_LEVEL_DATA_MULTI_COLOR_1_16,
+		_LEVEL_DATA_MULTI_COLOR_2_16,
 		_LEVEL_DATA_PLAYER_STARTS_16,
 		_LEVEL_DATA_CHARS_16,
 		_LEVEL_DATA_COLORS_16,
 	},
 	{
 		_LEVEL_DATA_NAME_17,
+		_LEVEL_DATA_MULTI_COLOR_1_17,
+		_LEVEL_DATA_MULTI_COLOR_2_17,
 		_LEVEL_DATA_PLAYER_STARTS_17,
 		_LEVEL_DATA_CHARS_17,
 		_LEVEL_DATA_COLORS_17,
 	},
 	{
 		_LEVEL_DATA_NAME_18,
+		_LEVEL_DATA_MULTI_COLOR_1_18,
+		_LEVEL_DATA_MULTI_COLOR_2_18,
 		_LEVEL_DATA_PLAYER_STARTS_18,
 		_LEVEL_DATA_CHARS_18,
 		_LEVEL_DATA_COLORS_18,
 	},
 	{
 		_LEVEL_DATA_NAME_19,
+		_LEVEL_DATA_MULTI_COLOR_1_19,
+		_LEVEL_DATA_MULTI_COLOR_2_19,
 		_LEVEL_DATA_PLAYER_STARTS_19,
 		_LEVEL_DATA_CHARS_19,
 		_LEVEL_DATA_COLORS_19,
