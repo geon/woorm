@@ -64,20 +64,27 @@ int main(void)
 	bordercolor(COLOR_BLACK);
 	setUpWormCharset();
 
-	levelStart(&levels[0], screen, worms);
-
 	wormSetSpeed(&worms[0], 1);
 	wormSetSpeed(&worms[1], 2);
 	wormSetSpeed(&worms[2], 3);
 	wormSetSpeed(&worms[3], 4);
 
-	for (;;)
 	{
-		waitvsync();
-		animateWorm(&worms[0]);
-		animateWorm(&worms[1]);
-		animateWorm(&worms[2]);
-		animateWorm(&worms[3]);
+		uint16_t frame;
+		uint8_t levelIndex = 0;
+		for (;;)
+		{
+			levelStart(&levels[levelIndex % numLevels], screen, worms);
+			for (frame = 0; frame < 180; ++frame)
+			{
+				waitvsync();
+				animateWorm(&worms[0]);
+				animateWorm(&worms[1]);
+				animateWorm(&worms[2]);
+				animateWorm(&worms[3]);
+			}
+			++levelIndex;
+		}
 	}
 
 	return 0;
