@@ -22,11 +22,6 @@ extern Level levels[];
 void animateWorm(Worm *worm)
 {
 	wormStep(worm);
-	if (worm->step == 0)
-	{
-		int random = rand() % 8;
-		wormSetNextDirection(worm, (worm->nextDirection + (random == 0 ? 1 : (random == 1 ? -1 : 0))) & 3);
-	}
 }
 
 void setUpWormCharset()
@@ -64,17 +59,13 @@ int main(void)
 	bordercolor(COLOR_BLACK);
 	setUpWormCharset();
 
-	wormSetSpeed(&worms[0], 1);
-	wormSetSpeed(&worms[1], 2);
-	wormSetSpeed(&worms[2], 3);
-	wormSetSpeed(&worms[3], 4);
-
 	{
 		uint16_t frame;
 		uint8_t levelIndex = 0;
 		for (;;)
 		{
 			levelStart(&levels[levelIndex % numLevels], screen, worms);
+
 			for (frame = 0; frame < 180; ++frame)
 			{
 				waitvsync();
