@@ -38,6 +38,11 @@ void setUpWormCharset()
 	// Switch to multi color mode.
 	// Register 0xD016
 	VIC.ctrl2 = VIC.ctrl2 | 16;
+
+	// Not setting the bg colors makes the charset glitch on some levels, unless there is a wait before the level start.
+	// Registers 0xD022, 0xD023
+	VIC.bgcolor1 = 1;
+	VIC.bgcolor2 = 9;
 }
 
 void waitMs(uint16_t time)
@@ -59,15 +64,12 @@ int main(void)
 	bordercolor(COLOR_BLACK);
 	setUpWormCharset();
 
-	// Garbled charset bug on 7 & 19. *SOMETIMES* Timing?
 	levelStart(&levels[0], screen, worms);
 
 	wormSetSpeed(&worms[0], 1);
 	wormSetSpeed(&worms[1], 2);
 	wormSetSpeed(&worms[2], 3);
 	wormSetSpeed(&worms[3], 4);
-
-	waitMs(100);
 
 	for (;;)
 	{
