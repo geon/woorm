@@ -268,5 +268,7 @@ int main()
 
 	printLevelsStructArray(levelsFile, numLevels);
 
+	fprintf(levelsFile, "int numLevels = sizeof(levels) / sizeof(levels[0]);\n");
+
 	return 0;
 }
