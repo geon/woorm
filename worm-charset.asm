@@ -2,16 +2,16 @@
 .export _wormCharset
 _wormCharset:
 .byte $00, $00, $00, $00, $00, $00, $00, $00
-.byte $3C, $FF, $D7, $1C, $1C, $DE, $DE, $DE
+.byte $3C, $F6, $D6, $1C, $1C, $DE, $DE, $DE
 .byte $08, $2E, $0E, $8E, $FE, $DC, $DC, $DE
 .byte $FF, $FF, $55, $55, $FF, $FF, $AA, $AA
 .byte $20, $B8, $F0, $F2, $DE, $1E, $1E, $DE
-.byte $00, $00, $00, $00, $00, $00, $3C, $FF
+.byte $00, $00, $00, $00, $00, $00, $3C, $F6
 .byte $00, $00, $00, $00, $00, $00, $38, $BE
 .byte $DE, $DE, $7E, $7E, $FA, $F8, $A8, $A0
-.byte $00, $00, $00, $00, $3C, $FF, $D7, $1C
+.byte $00, $00, $00, $00, $3C, $F6, $D6, $1C
 .byte $00, $00, $00, $00, $38, $BE, $DE, $1C
-.byte $00, $00, $3C, $FF, $D7, $1C, $1C, $DE
+.byte $00, $00, $3C, $F6, $D6, $1C, $1C, $DE
 .byte $00, $00, $28, $3E, $BE, $1E, $1C, $DC
 .byte $00, $00, $38, $BC, $DE, $DC, $1C, $1E
 .byte $38, $FE, $4E, $4E, $FA, $F8, $A8, $A0
@@ -46,7 +46,7 @@ _wormCharset:
 .byte $DE, $DE, $DE, $DE, $DE, $DE, $DE, $DE
 .byte $0B, $2F, $3D, $B5, $F7, $DF, $DE, $DE
 .byte $E0, $F8, $78, $7E, $DE, $DE, $DE, $DE
-.byte $D7, $1C, $1C, $DE, $DE, $DE, $DE, $DE
+.byte $D6, $1C, $1C, $DE, $DE, $DE, $DE, $DE
 .byte $02, $23, $3F, $B7, $F4, $DC, $DE, $DE
 .byte $C0, $C8, $78, $7E, $1E, $1E, $DE, $DE
 .byte $1C, $DE, $DE, $DE, $DE, $DE, $DE, $DE
@@ -86,10 +86,9 @@ _wormCharset:
 .byte $20, $B8, $F8, $FE, $DE, $DE, $DE, $DE
 .byte $FF, $FF, $D5, $55, $7F, $FF, $AA, $AA
 .byte $2E, $BF, $F5, $F5, $BF, $2F, $2A, $0A
-.byte $3C, $FF, $D7, $DF, $DF, $DE, $DE, $DE
+.byte $3C, $F6, $D6, $DE, $DE, $DE, $DE, $DE
 .byte $B8, $FE, $7E, $7E, $FA, $F8, $A8, $A0
-.byte $DF, $DE, $DE, $DE, $DE, $DE, $DE, $DE
-.byte $D7, $DF, $DF, $DE, $DE, $DE, $DE, $DE
+.byte $D6, $DE, $DE, $DE, $DE, $DE, $DE, $DE
 .byte $DE, $DE, $FE, $FE, $BE, $2E, $2A, $08
 .byte $08, $2E, $3E, $BE, $FE, $DE, $DE, $DE
 .byte $FC, $FE, $5E, $5E, $FE, $FE, $AA, $A8
@@ -107,9 +106,9 @@ _wormCharset:
 .byte $00, $00, $00, $00, $38, $BE, $DE, $DE
 .byte $00, $02, $03, $03, $03, $02, $02, $00
 .byte $0E, $1F, $35, $35, $2F, $0B, $0A, $02
-.byte $00, $00, $3C, $FF, $D7, $DF, $DF, $DE
+.byte $00, $00, $3C, $F6, $D6, $DE, $DE, $DE
 .byte $E0, $F8, $78, $78, $F8, $E0, $A0, $80
-.byte $00, $00, $00, $00, $3C, $FF, $D7, $DF
+.byte $00, $00, $00, $00, $3C, $F6, $D6, $DE
 .byte $DE, $DE, $FE, $BE, $2A, $28, $00, $00
 .byte $00, $00, $28, $3E, $BE, $DE, $DE, $DE
 .byte $F0, $F8, $78, $78, $F8, $F8, $A8, $A0
@@ -255,5 +254,6 @@ _wormCharset:
 .byte $1F, $15, $25, $28, $1A, $0F, $07, $00
 .byte $F8, $50, $44, $0C, $B8, $F0, $E0, $00
 .byte $3E, $7F, $49, $77, $3E, $14, $2A, $1C
+.byte $00, $00, $00, $00, $00, $00, $00, $00
 .byte $00, $00, $00, $00, $00, $00, $00, $00
 .byte $00, $00, $00, $00, $00, $00, $00, $00
