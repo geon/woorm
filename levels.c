@@ -507,7 +507,7 @@ uint8_t _LEVEL_DATA_MULTI_COLOR_1_14[1] = {14};
 
 uint8_t _LEVEL_DATA_MULTI_COLOR_2_14[1] = {9};
 
-PlayerStart _LEVEL_DATA_PLAYER_STARTS_14[4] = {{{10,13}, Direction_right},{{27,5}, Direction_left},{{12,21}, Direction_right},{{27,22}, Direction_left},};
+PlayerStart _LEVEL_DATA_PLAYER_STARTS_14[4] = {{{10,13}, Direction_right},{{26,5}, Direction_left},{{12,21}, Direction_right},{{27,22}, Direction_left},};
 
 
 uint8_t _LEVEL_DATA_CHARS_14[] = {

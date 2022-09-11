@@ -864,7 +864,7 @@ Level levels[] = {
 	 9,
 	 {
 		 {{10, 13}, Direction_right},
-		 {{27, 5}, Direction_left},
+		 {{26, 5}, Direction_left},
 		 {{12, 21}, Direction_right},
 		 {{27, 22}, Direction_left},
 	 },
