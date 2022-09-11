@@ -7,6 +7,8 @@
 #include "worm.h"
 #include <c64.h>
 #include <conio.h>
+#include <joystick.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
@@ -19,9 +21,13 @@ Screen *screen = &_screen;
 
 extern Level levels[];
 
-void animateWorm(Worm *worm)
+void animateWorm(Worm *worm, Direction nextDirection)
 {
 	wormStep(worm);
+	if (nextDirection != Direction_count)
+	{
+		wormSetNextDirection(worm, nextDirection);
+	}
 }
 
 void setUpWormCharset()
@@ -50,8 +56,54 @@ void waitMs(uint16_t time)
 	}
 }
 
+void setupJoysticks()
+{
+	if (JOY_ERR_OK != joy_install(joy_static_stddrv))
+	{
+		exit(1);
+	}
+}
+
+Direction joyStateToDirection(uint8_t joyState)
+{
+	if (JOY_UP(joyState))
+	{
+		return Direction_up;
+	}
+	if (JOY_DOWN(joyState))
+	{
+		return Direction_down;
+	}
+	if (JOY_LEFT(joyState))
+	{
+		return Direction_left;
+	}
+	if (JOY_RIGHT(joyState))
+	{
+		return Direction_right;
+	}
+
+	return Direction_count;
+}
+
+Direction getPlayerInput(uint8_t playerIndex)
+{
+	switch (playerIndex)
+	{
+		case 0:
+			return joyStateToDirection(joy_read(JOY_1));
+		case 1:
+			return joyStateToDirection(joy_read(JOY_2));
+
+		default:
+			return Direction_count;
+	}
+}
+
 int main(void)
 {
+	setupJoysticks();
+
 	srand(time(NULL));
 
 	screenClear(screen);
@@ -69,10 +121,11 @@ int main(void)
 			for (frame = 0; frame < 180; ++frame)
 			{
 				waitvsync();
-				animateWorm(&worms[0]);
-				animateWorm(&worms[1]);
-				animateWorm(&worms[2]);
-				animateWorm(&worms[3]);
+
+				animateWorm(&worms[0], getPlayerInput(0));
+				animateWorm(&worms[1], getPlayerInput(1));
+				animateWorm(&worms[2], getPlayerInput(2));
+				animateWorm(&worms[3], getPlayerInput(3));
 			}
 			++levelIndex;
 		}

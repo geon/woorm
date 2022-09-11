@@ -11,6 +11,7 @@ cl65 -O ^
     level.c ^
     levels.c ^
     lz77.c ^
+    -DJOYSTICK_DRIVER=joy_static_stddrv ^
     -C c64-c-gamedev.cfg ^
     -o woorm.prg
 if %errorlevel% neq 0 exit /b %errorlevel%
