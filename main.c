@@ -58,7 +58,7 @@ void waitMs(uint16_t time)
 
 void setupJoysticks()
 {
-	if (JOY_ERR_OK != joy_install(joy_static_stddrv))
+	if (JOY_ERR_OK != joy_install(c64_ptvjoy_joy))
 	{
 		exit(1);
 	}
