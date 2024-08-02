@@ -15,6 +15,7 @@ cl ^
     original-levels-charset.c ^
     original-levels-charset-b.c ^
     level-charset-geon.c ^
+    level-charset-title-screen.c ^
     -o generate-charset-and-levels.exe
 if %errorlevel% neq 0 exit /b %errorlevel%
 

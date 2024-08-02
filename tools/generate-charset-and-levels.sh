@@ -19,6 +19,7 @@ clang \
     original-levels-charset.c \
     original-levels-charset-b.c \
     level-charset-geon.c \
+    level-charset-title-screen.c \
     -o generate-charset-and-levels.exe
 
 ./generate-charset-and-levels.exe
