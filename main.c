@@ -5,6 +5,7 @@
 #include "screen-location-c64.h"
 #include "screen.h"
 #include "tile.h"
+#include "title-screen.h"
 #include "worm.h"
 #include "worms.h"
 #include <c64.h>
@@ -113,7 +114,7 @@ void gameLoop(void)
 	uint8_t levelIndex = 0;
 	for (;;)
 	{
-		levelStart(&levels[levelIndex % numLevels], screen, worms, sizeof(worms) / sizeof(Worm));
+		levelStart(&levels[levelIndex % (numLevels - 1)], screen, worms, sizeof(worms) / sizeof(Worm));
 
 		for (frame = 0; frame < 180; ++frame)
 		{
@@ -131,6 +132,7 @@ void gameLoop(void)
 int main(void)
 {
 	setup();
+	titleScreen();
 	gameLoop();
 
 	return 0;

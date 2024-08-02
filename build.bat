@@ -13,6 +13,7 @@ cl65 -O ^
     lz77.c ^
     screen-location-c64.c ^
     worms.c ^
+    title-screen.c ^
     -DJOYSTICK_DRIVER=c64_ptvjoy_joy ^
     -C c64-c-gamedev.cfg ^
     -o woorm.prg
