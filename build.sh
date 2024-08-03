@@ -21,6 +21,7 @@ cl65 -O \
     level.c \
     levels.c \
     lz77.c \
+    screen-location-c64.c \
     -DJOYSTICK_DRIVER=c64_ptvjoy_joy \
     -C c64-c-gamedev.cfg \
     -o woorm.prg
