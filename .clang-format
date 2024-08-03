@@ -1,12 +1,9 @@
-{
-	BasedOnStyle: LLVM,
-	UseTab: Always,
-	IndentWidth: 4,
-	TabWidth: 4,
-	BreakBeforeBraces: Allman,
-	AllowShortIfStatementsOnASingleLine: false,
-	IndentCaseLabels: false,
-	ColumnLimit: 0,
-	SortIncludes: true,
-	IndentCaseLabels: true,
-}
+BasedOnStyle: LLVM
+UseTab: Always
+IndentWidth: 4
+TabWidth: 4
+BreakBeforeBraces: Allman
+AllowShortIfStatementsOnASingleLine: false
+ColumnLimit: 0
+SortIncludes: true
+IndentCaseLabels: true
