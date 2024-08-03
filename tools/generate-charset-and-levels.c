@@ -200,7 +200,7 @@ void printLevelsStructArray(FILE *f, int numLevels)
 			fprintf(f, "_LEVEL_DATA_CHARS_%i,", levelIndex);
 			fprintf(f, "_LEVEL_DATA_COLORS_%i,", levelIndex);
 		}
-		fprintf(f, "},");
+		fprintf(f, "},\n");
 	}
 	fprintf(f, "};\n\n");
 }
