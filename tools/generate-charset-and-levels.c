@@ -169,7 +169,7 @@ void printLevelData(
 	fprintf(f, "\nuint8_t _LEVEL_DATA_MULTI_COLOR_1_%i[1] = {%i};\n", levelIndex, level->multiColor1);
 	fprintf(f, "\nuint8_t _LEVEL_DATA_MULTI_COLOR_2_%i[1] = {%i};\n", levelIndex, level->multiColor2);
 
-	fprintf(f, "\nPlayerStart _LEVEL_DATA_PLAYER_STARTS_%i[4] = ", levelIndex, level->name);
+	fprintf(f, "\nPlayerStart _LEVEL_DATA_PLAYER_STARTS_%i[4] = ", levelIndex);
 	fprintf(f, "{");
 	for (int i = 0; i < 4; ++i)
 	{
