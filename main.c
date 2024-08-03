@@ -100,7 +100,7 @@ Direction getPlayerInput(uint8_t playerIndex)
 	}
 }
 
-int main(void)
+void setup(void)
 {
 	setupJoysticks();
 
@@ -110,6 +110,11 @@ int main(void)
 	bgcolor(COLOR_BLACK);
 	bordercolor(COLOR_BLACK);
 	setUpWormCharset();
+}
+
+int main(void)
+{
+	setup();
 
 	{
 		uint16_t frame;
