@@ -2,11 +2,14 @@
 #include "buffer.h"
 #include "charset.h"
 #include "level.h"
+#include "lz77.h"
 #include "partial-charset.h"
+#include "tile.legacy.h"
 #include "uncompressed-levels.h"
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 void mappingTablePrint(FILE *f, uint8_t mappingTable[0x100])
 {
