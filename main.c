@@ -12,8 +12,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-Worm worms[4];
-
 Screen _screen = {
 	(uint8_t *)0x0400,
 	(uint8_t *)0xD800};
@@ -112,29 +110,32 @@ void setup(void)
 	setUpWormCharset();
 }
 
+void gameLoop(void)
+{
+	Worm worms[4];
+	uint16_t frame;
+	uint8_t levelIndex = 0;
+	for (;;)
+	{
+		levelStart(&levels[levelIndex % numLevels], screen, worms);
+
+		for (frame = 0; frame < 180; ++frame)
+		{
+			waitvsync();
+
+			animateWorm(&worms[0], getPlayerInput(0));
+			animateWorm(&worms[1], getPlayerInput(1));
+			animateWorm(&worms[2], getPlayerInput(2));
+			animateWorm(&worms[3], getPlayerInput(3));
+		}
+		++levelIndex;
+	}
+}
+
 int main(void)
 {
 	setup();
-
-	{
-		uint16_t frame;
-		uint8_t levelIndex = 0;
-		for (;;)
-		{
-			levelStart(&levels[levelIndex % numLevels], screen, worms);
-
-			for (frame = 0; frame < 180; ++frame)
-			{
-				waitvsync();
-
-				animateWorm(&worms[0], getPlayerInput(0));
-				animateWorm(&worms[1], getPlayerInput(1));
-				animateWorm(&worms[2], getPlayerInput(2));
-				animateWorm(&worms[3], getPlayerInput(3));
-			}
-			++levelIndex;
-		}
-	}
+	gameLoop();
 
 	return 0;
 }
