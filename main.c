@@ -2,6 +2,7 @@
 #include "direction.h"
 #include "level.h"
 #include "levels.h"
+#include "screen-location-c64.h"
 #include "screen.h"
 #include "tile.h"
 #include "worm.h"
@@ -11,11 +12,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
-Screen _screen = {
-	(uint8_t *)0x0400,
-	(uint8_t *)0xD800};
-Screen *screen = &_screen;
 
 extern Level levels[];
 
