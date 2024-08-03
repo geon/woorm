@@ -6,6 +6,7 @@
 #include "screen.h"
 #include "tile.h"
 #include "worm.h"
+#include "worms.h"
 #include <c64.h>
 #include <conio.h>
 #include <joystick.h>
@@ -108,7 +109,6 @@ void setup(void)
 
 void gameLoop(void)
 {
-	Worm worms[4];
 	uint16_t frame;
 	uint8_t levelIndex = 0;
 	for (;;)

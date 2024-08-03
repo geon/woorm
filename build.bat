@@ -12,6 +12,7 @@ cl65 -O ^
     levels.c ^
     lz77.c ^
     screen-location-c64.c ^
+    worms.c ^
     -DJOYSTICK_DRIVER=c64_ptvjoy_joy ^
     -C c64-c-gamedev.cfg ^
     -o woorm.prg
