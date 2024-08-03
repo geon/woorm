@@ -126,6 +126,9 @@ void wormStep(Worm *worm)
 
 		worm->nextDirection = nextStep.direction;
 
+		// When forced to turn, forget whatever input the user did, and continue straight forward.
+		worm->wantedNextDirection = worm->nextDirection;
+
 		worm->step = newStep;
 	}
 
