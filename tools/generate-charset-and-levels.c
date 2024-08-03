@@ -222,7 +222,7 @@ int main()
 	}
 	for (int i = 0; i < numLevels; ++i)
 	{
-		levelRemapChars(&levels[i], &newCharset);
+		levelRemapChars(&levels[i], newCharset.charset);
 	}
 
 	for (int levelIndex = 0; levelIndex < numLevels; ++levelIndex)
