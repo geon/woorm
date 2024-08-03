@@ -117,7 +117,7 @@ void gameLoop(void)
 	uint8_t levelIndex = 0;
 	for (;;)
 	{
-		levelStart(&levels[levelIndex % numLevels], screen, worms);
+		levelStart(&levels[levelIndex % numLevels], screen, worms, sizeof(worms) / sizeof(Worm));
 
 		for (frame = 0; frame < 180; ++frame)
 		{

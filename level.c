@@ -9,14 +9,22 @@ void levelDraw(Level *level, Screen *screen)
 	lz77Decompress(level->colors, 1024, screen->colors, 1024);
 }
 
-void levelStart(Level *level, Screen *screen, Worm worms[4])
+uint8_t wormColors[] = {
+	COLOR_CYAN,
+	COLOR_GREEN,
+	COLOR_YELLOW,
+	COLOR_RED,
+};
+
+void levelStart(Level *level, Screen *screen, Worm worms[], uint8_t numWorms)
 {
+	uint8_t index;
 	levelSetMultiColors(level);
 	levelDraw(level, screen);
-	wormInit(&worms[0], screen, coordToPos(level->playerStarts[0].position), level->playerStarts[0].direction, COLOR_CYAN + 8);
-	wormInit(&worms[1], screen, coordToPos(level->playerStarts[1].position), level->playerStarts[1].direction, COLOR_GREEN + 8);
-	wormInit(&worms[2], screen, coordToPos(level->playerStarts[2].position), level->playerStarts[2].direction, COLOR_YELLOW + 8);
-	wormInit(&worms[3], screen, coordToPos(level->playerStarts[3].position), level->playerStarts[3].direction, COLOR_RED + 8);
+	for (index = 0; index < numWorms; ++index)
+	{
+		wormInit(&worms[index], screen, coordToPos(level->playerStarts[index].position), level->playerStarts[index].direction, wormColors[index] + 8);
+	}
 }
 
 void levelSetMultiColors(Level *level)
