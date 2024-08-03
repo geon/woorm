@@ -15,7 +15,7 @@ void levelRemoveInvisibleColorChanges(Level *level)
 	}
 }
 
-void levelRemapChars(Level *level, Charset *newCharset)
+void levelRemapChars(Level *level, Charset newCharset)
 {
 	for (int i = 0; i < 1000; ++i)
 	{
