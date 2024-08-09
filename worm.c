@@ -170,13 +170,13 @@ void wormDraw(Worm *worm)
 {
 	CircularBuffer *tail = &worm->tail;
 	TileType part = 0;
+	TailCell cell = {0, 0};
 	uint8_t iterator = 0;
 	Screen *screen = worm->screen;
 	Direction nextDirection = worm->nextDirection;
 
 	circularBufferForEachReverse(tail, iterator)
 	{
-		TailCell cell = {0, 0};
 
 		cell = circularBufferGetValue(worm->tailValues, iterator);
 		part = wormGetPart(worm, iterator);
