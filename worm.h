@@ -25,10 +25,13 @@ typedef struct Worm
 	Direction nextDirection;
 	Microstep headStep;
 	Microstep tailStep;
-	CircularBuffer tail;
-	TailCell tailValues[0x100];
 	bool hasNextStep;
 	TailCell nextStep;
+
+	CircularBuffer tail;
+	// The actual values of the CircularBuffer are stored separately, in multiple arrays.
+	Direction tailDirections[0x100];
+	uint16_t tailPositions[0x100];
 } Worm;
 
 void wormInit(Worm *worm, Screen *screen, uint16_t pos, Direction direction, uint8_t color);
