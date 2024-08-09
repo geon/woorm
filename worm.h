@@ -8,15 +8,6 @@
 #include "tile-type.h"
 #include <stdint.h>
 
-typedef struct TailCell
-{
-	Direction direction;
-	uint16_t position;
-	// Array element size should be 1, 2, 4 or 8 bytes for speed.
-	// Also crashes without this.
-	uint8_t PADDING;
-} TailCell;
-
 typedef struct Worm
 {
 	Screen *screen;
@@ -25,8 +16,12 @@ typedef struct Worm
 	Direction nextDirection;
 	uint8_t speed;
 	Microstep step;
+
 	CircularBuffer tail;
-	TailCell tailValues[0x100];
+	// The actual values of the CircularBuffer are stored separately, in multiple arrays.
+	Direction tailDirections[0x100];
+	uint16_t tailPositions[0x100];
+
 } Worm;
 
 void wormInit(Worm *worm, Screen *screen, uint16_t pos, Direction direction, uint8_t color);
