@@ -199,6 +199,8 @@ void wormLazyDraw(Worm *worm)
 	nextDirection = worm->nextDirection;
 	cell = circularBufferGetValue(worm->tailValues, tail->end - 1);
 	screen->chars[cell.position] = tileToIndex[tilePackWormTileStateInBits(TileType_animated_head, cell.direction, nextDirection, worm->step)];
+
+	// Only the cell just entered needs to have the color changed.
 	screen->colors[cell.position] = worm->color;
 
 	nextDirection = cell.direction;
