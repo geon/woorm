@@ -11,6 +11,7 @@ cl65 -O ^
     worm.benchmark.c ^
     screen.c ^
     cc65-benchmark.c ^
+    tile-to-index.c ^
     -o benchmark.prg
 if %errorlevel% neq 0 exit /b %errorlevel%
 
