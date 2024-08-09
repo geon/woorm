@@ -172,11 +172,11 @@ void wormDraw(Worm *worm)
 	TileType part = 0;
 	uint8_t iterator = 0;
 	Screen *screen = worm->screen;
+	Direction nextDirection = worm->nextDirection;
 
 	circularBufferForEachReverse(tail, iterator)
 	{
 		TailCell cell = {0, 0};
-		Direction nextDirection = worm->nextDirection;
 
 		cell = circularBufferGetValue(worm->tailValues, iterator);
 		part = wormGetPart(worm, iterator);
