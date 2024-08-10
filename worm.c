@@ -96,10 +96,11 @@ void wormFullStep(Worm *worm, TailCell nextStep)
 
 void wormStep(Worm *worm)
 {
-	TailCell nextStep = {0, 0};
 	uint8_t stepCounter;
 	uint8_t newStep;
 
+	worm->nextStep.direction = 0;
+	worm->nextStep.position = 0;
 	worm->hasNextStep = false;
 
 	if (worm->speed == 0)
@@ -109,7 +110,7 @@ void wormStep(Worm *worm)
 
 	for (stepCounter = 0; stepCounter < worm->speed; ++stepCounter)
 	{
-		worm->hasNextStep = wormGetNextStep(worm, &nextStep);
+		worm->hasNextStep = wormGetNextStep(worm, &worm->nextStep);
 
 		newStep = (worm->step + 1) & 15;
 
@@ -121,10 +122,10 @@ void wormStep(Worm *worm)
 				return;
 			}
 
-			wormFullStep(worm, nextStep);
+			wormFullStep(worm, worm->nextStep);
 		}
 
-		worm->nextDirection = nextStep.direction;
+		worm->nextDirection = worm->nextStep.direction;
 
 		// When forced to turn, forget whatever input the user did, and continue straight forward.
 		worm->wantedNextDirection = worm->nextDirection;
