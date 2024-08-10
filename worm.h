@@ -27,6 +27,7 @@ typedef struct Worm
 	Microstep step;
 	CircularBuffer tail;
 	TailCell tailValues[0x100];
+	bool hasNextStep;
 } Worm;
 
 void wormInit(Worm *worm, Screen *screen, uint16_t pos, Direction direction, uint8_t color);

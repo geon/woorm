@@ -97,10 +97,10 @@ void wormFullStep(Worm *worm, TailCell nextStep)
 void wormStep(Worm *worm)
 {
 	TailCell nextStep = {0, 0};
-	bool hasNextStep = false;
-
 	uint8_t stepCounter;
 	uint8_t newStep;
+
+	worm->hasNextStep = false;
 
 	if (worm->speed == 0)
 	{
@@ -109,13 +109,13 @@ void wormStep(Worm *worm)
 
 	for (stepCounter = 0; stepCounter < worm->speed; ++stepCounter)
 	{
-		hasNextStep = wormGetNextStep(worm, &nextStep);
+		worm->hasNextStep = wormGetNextStep(worm, &nextStep);
 
 		newStep = (worm->step + 1) & 15;
 
 		if (newStep == 4)
 		{
-			if (!hasNextStep)
+			if (!worm->hasNextStep)
 			{
 				// Blocked.
 				return;
