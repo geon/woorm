@@ -56,6 +56,7 @@ void wormSetNextStep(Worm *worm)
 	// Try stepping in the selected direction.
 	worm->nextStep.direction = worm->wantedNextDirection;
 	worm->nextStep.position = currentHeadCell.position + getPositionOffsetForDirection(worm->nextStep.direction);
+	worm->hasNextStep = true;
 
 	// If the selected direction is blocked, first try the previous direction.
 	if (worm->screen->chars[worm->nextStep.position])
@@ -79,10 +80,7 @@ void wormSetNextStep(Worm *worm)
 	if (worm->screen->chars[worm->nextStep.position])
 	{
 		worm->hasNextStep = false;
-		return;
 	}
-
-	worm->hasNextStep = true;
 }
 
 void wormFullStep(Worm *worm)
