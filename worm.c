@@ -17,6 +17,7 @@ void wormInit(Worm *worm, Screen *screen, uint16_t pos, Direction direction, uin
 	worm->color = color;
 	worm->screen = screen;
 	circularBufferInit(&worm->tail);
+	worm->hasNextStep = false;
 
 	circularBufferPush(&worm->tail, &index);
 	circularBufferGetValue(worm->tailValues, index).direction = direction;
@@ -97,10 +98,6 @@ void wormStep(Worm *worm)
 {
 	uint8_t stepCounter;
 	uint8_t newStep;
-
-	worm->nextStep.direction = 0;
-	worm->nextStep.position = 0;
-	worm->hasNextStep = false;
 
 	if (worm->speed == 0)
 	{
