@@ -47,7 +47,7 @@ void wormSetSpeed(Worm *worm, uint8_t speed)
 	worm->speed = speed;
 }
 
-bool wormGetNextStep(Worm *worm)
+void wormSetNextStep(Worm *worm)
 {
 	TailCell currentHeadCell = {0, 0};
 
@@ -78,10 +78,11 @@ bool wormGetNextStep(Worm *worm)
 	// If still blocked, just don't move.
 	if (worm->screen->chars[worm->nextStep.position])
 	{
-		return false;
+		worm->hasNextStep = false;
+		return;
 	}
 
-	return true;
+	worm->hasNextStep = true;
 }
 
 void wormFullStep(Worm *worm)
@@ -110,7 +111,7 @@ void wormStep(Worm *worm)
 
 	for (stepCounter = 0; stepCounter < worm->speed; ++stepCounter)
 	{
-		worm->hasNextStep = wormGetNextStep(worm);
+		wormSetNextStep(worm);
 
 		newStep = (worm->step + 1) & 15;
 
