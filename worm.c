@@ -79,22 +79,6 @@ void wormSetNextStep(Worm *worm)
 	}
 }
 
-void wormFullHeadStep(Worm *worm)
-{
-	uint8_t index = 0;
-
-	circularBufferPush(&worm->tail, &index);
-	circularBufferGetValue(worm->tailValues, index).direction = worm->nextStep.direction;
-	circularBufferGetValue(worm->tailValues, index).position = worm->nextStep.position;
-}
-
-void wormFullTailStep(Worm *worm)
-{
-	uint8_t index = 0;
-
-	circularBufferPop(&worm->tail, &index);
-}
-
 void wormStep(Worm *worm)
 {
 	wormSetNextStep(worm);
@@ -104,18 +88,24 @@ void wormStep(Worm *worm)
 
 	if (worm->headStep == 4)
 	{
+		uint8_t index = 0;
+
 		if (!worm->hasNextStep)
 		{
 			// Blocked.
 			return;
 		}
 
-		wormFullHeadStep(worm);
+		circularBufferPush(&worm->tail, &index);
+		circularBufferGetValue(worm->tailValues, index).direction = worm->nextStep.direction;
+		circularBufferGetValue(worm->tailValues, index).position = worm->nextStep.position;
 	}
 
 	if (worm->tailStep == 4)
 	{
-		wormFullTailStep(worm);
+		uint8_t index = 0;
+
+		circularBufferPop(&worm->tail, &index);
 	}
 
 	worm->nextDirection = worm->nextStep.direction;
