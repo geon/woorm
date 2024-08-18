@@ -160,7 +160,7 @@ void wormTest(void)
 
 		headTile = screen->chars[coordToPos(coordCreate(20, 10))];
 		wormStep(worm);
-		assertTrue("No step.", screen->chars[coordToPos(coordCreate(20, 10))] == headTile);
+		assertTrue("No headStep.", screen->chars[coordToPos(coordCreate(20, 10))] == headTile);
 	}
 	endTest();
 
