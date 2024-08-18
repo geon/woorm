@@ -9,7 +9,7 @@
 void animateWormTitleScreen(Worm *worm, uint8_t path[], uint8_t *currentPathStep, uint8_t pathStepCount)
 {
 	wormStep(worm);
-	if (worm->step == 0)
+	if (worm->headStep == 0)
 	{
 		worm->wantedNextDirection = path[*currentPathStep];
 

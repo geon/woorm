@@ -23,7 +23,7 @@ typedef struct Worm
 	uint8_t color;
 	Direction wantedNextDirection;
 	Direction nextDirection;
-	Microstep step;
+	Microstep headStep;
 	CircularBuffer tail;
 	TailCell tailValues[0x100];
 	bool hasNextStep;
