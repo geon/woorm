@@ -62,13 +62,13 @@ void wormSetNextStep(Worm *worm)
 	// If the direction is blocked, turn clockwise.
 	if (worm->screen->chars[worm->nextStep.position])
 	{
-		worm->nextStep.direction = (worm->nextStep.direction + 1) & 3;
+		worm->nextStep.direction = (worm->nextStep.direction + 1) & 0b11;
 		worm->nextStep.position = currentHeadCell.position + getPositionOffsetForDirection(worm->nextStep.direction);
 	}
 	// If still blocked, try anti-clockwise instead.
 	if (worm->screen->chars[worm->nextStep.position])
 	{
-		worm->nextStep.direction = (worm->nextStep.direction + 2) & 3;
+		worm->nextStep.direction = (worm->nextStep.direction + 2) & 0b11;
 		worm->nextStep.position = currentHeadCell.position + getPositionOffsetForDirection(worm->nextStep.direction);
 	}
 	// If still blocked, just don't move.
@@ -94,7 +94,7 @@ void wormStep(Worm *worm)
 
 	wormSetNextStep(worm);
 
-	newStep = (worm->step + 4) & 15;
+	newStep = (worm->step + 4) & 0b1111;
 
 	if (newStep == 4)
 	{

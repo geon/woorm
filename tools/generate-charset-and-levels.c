@@ -77,14 +77,14 @@ void unmapCharset(PartialCharset *newCharset, uint8_t *mappingTable, Charset ori
 				}
 
 				{
-					Direction nextDirection = (direction + 1) & 3;
+					Direction nextDirection = (direction + 1) & 0b11;
 					uint8_t sourceIndex = tileCreate(tileType, direction, nextDirection, step);
 					uint8_t tileBits = tilePackWormTileStateInBits(tileType, direction, nextDirection, step);
 					charsetCharCopy(originalWormCharset[sourceIndex], cleanedWormCharset[tileBits]);
 				}
 
 				{
-					Direction nextDirection = (direction + 3) & 3;
+					Direction nextDirection = (direction + 3) & 0b11;
 					uint8_t sourceIndex = tileCreate(tileType, direction, nextDirection, step);
 					uint8_t tileBits = tilePackWormTileStateInBits(tileType, direction, nextDirection, step);
 					charsetCharCopy(originalWormCharset[sourceIndex], cleanedWormCharset[tileBits]);

@@ -33,7 +33,7 @@ bool charsetCharHasPrimaryColor(CharsetChar charsetChar)
 		// Check all bit-pairs.
 		for (int j = 0; j < 4; ++j)
 		{
-			uint8_t bitPair = (line >> (j * 2)) & 3;
+			uint8_t bitPair = (line >> (j * 2)) & 0b11;
 
 			if (bitPair == 0b01)
 			{
