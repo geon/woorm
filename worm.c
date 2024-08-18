@@ -90,33 +90,29 @@ void wormFullStep(Worm *worm)
 
 void wormStep(Worm *worm)
 {
-	uint8_t stepCounter;
 	uint8_t newStep;
 
-	for (stepCounter = 0; stepCounter < 4; ++stepCounter)
+	wormSetNextStep(worm);
+
+	newStep = (worm->step + 4) & 15;
+
+	if (newStep == 4)
 	{
-		wormSetNextStep(worm);
-
-		newStep = (worm->step + 1) & 15;
-
-		if (newStep == 4)
+		if (!worm->hasNextStep)
 		{
-			if (!worm->hasNextStep)
-			{
-				// Blocked.
-				return;
-			}
-
-			wormFullStep(worm);
+			// Blocked.
+			return;
 		}
 
-		worm->nextDirection = worm->nextStep.direction;
-
-		// When forced to turn, forget whatever input the user did, and continue straight forward.
-		worm->wantedNextDirection = worm->nextDirection;
-
-		worm->step = newStep;
+		wormFullStep(worm);
 	}
+
+	worm->nextDirection = worm->nextStep.direction;
+
+	// When forced to turn, forget whatever input the user did, and continue straight forward.
+	worm->wantedNextDirection = worm->nextDirection;
+
+	worm->step = newStep;
 
 	wormLazyDraw(worm);
 }
