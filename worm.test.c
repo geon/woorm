@@ -193,24 +193,10 @@ void wormTest(void)
 	}
 	endTest();
 
-	beginTest("Worms don't move at speed zero.");
-	{
-		screenClear(screen);
-		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
-		wormSetSpeed(worm, 0);
-		wormSetNextDirection(worm, Direction_right);
-
-		wormStep(worm);
-
-		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(20, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_head, Direction_right, Direction_right, Microstep_0)]);
-	}
-	endTest();
-
 	beginTest("Worms forget wanted direction.");
 	{
 		screenClear(screen);
 		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
-		wormSetSpeed(worm, 4);
 		wormSetNextDirection(worm, Direction_right);
 		screen->chars[coordToPos(coordCreate(21, 10))] = Tile_filled;
 

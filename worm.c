@@ -12,7 +12,6 @@ void wormInit(Worm *worm, Screen *screen, uint16_t pos, Direction direction, uin
 
 	worm->wantedNextDirection = direction;
 	worm->nextDirection = direction;
-	worm->speed = 4;
 	worm->step = Microstep_0;
 	worm->color = color;
 	worm->screen = screen;
@@ -41,11 +40,6 @@ void wormInit(Worm *worm, Screen *screen, uint16_t pos, Direction direction, uin
 void wormSetNextDirection(Worm *worm, Direction direction)
 {
 	worm->wantedNextDirection = direction;
-}
-
-void wormSetSpeed(Worm *worm, uint8_t speed)
-{
-	worm->speed = speed;
 }
 
 void wormSetNextStep(Worm *worm)
@@ -99,12 +93,7 @@ void wormStep(Worm *worm)
 	uint8_t stepCounter;
 	uint8_t newStep;
 
-	if (worm->speed == 0)
-	{
-		return;
-	}
-
-	for (stepCounter = 0; stepCounter < worm->speed; ++stepCounter)
+	for (stepCounter = 0; stepCounter < 4; ++stepCounter)
 	{
 		wormSetNextStep(worm);
 
