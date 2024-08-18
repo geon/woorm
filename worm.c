@@ -90,13 +90,13 @@ void wormFullStep(Worm *worm)
 
 void wormStep(Worm *worm)
 {
-	uint8_t newStep;
+	uint8_t newHeadStep;
 
 	wormSetNextStep(worm);
 
-	newStep = (worm->headStep + 4) & 0b1111;
+	newHeadStep = (worm->headStep + 4) & 0b1111;
 
-	if (newStep == 4)
+	if (newHeadStep == 4)
 	{
 		if (!worm->hasNextStep)
 		{
@@ -112,7 +112,7 @@ void wormStep(Worm *worm)
 	// When forced to turn, forget whatever input the user did, and continue straight forward.
 	worm->wantedNextDirection = worm->nextDirection;
 
-	worm->headStep = newStep;
+	worm->headStep = newHeadStep;
 
 	wormLazyDraw(worm);
 }
