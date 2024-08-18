@@ -24,6 +24,7 @@ typedef struct Worm
 	Direction wantedNextDirection;
 	Direction nextDirection;
 	Microstep headStep;
+	Microstep tailStep;
 	CircularBuffer tail;
 	TailCell tailValues[0x100];
 	bool hasNextStep;
