@@ -24,4 +24,4 @@ cl65 -O \
 
 # Run benchmarks in c64 emulator.
 export PATH="$PATH:/Applications/vice-arm64-gtk3-3.6.1/bin"
-x64sc benchmark.prg
+x64sc -warp benchmark.prg

@@ -16,4 +16,4 @@ cl65 -O ^
 if %errorlevel% neq 0 exit /b %errorlevel%
 
 rem Run in c64 emulator.
-x64sc benchmark.prg
+x64sc -warp benchmark.prg

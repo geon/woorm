@@ -53,4 +53,4 @@ cl65 -O ^
 if %errorlevel% neq 0 exit /b %errorlevel%
 
 rem Run tests in c64 emulator.
-x64sc test.prg
+x64sc -warp test.prg

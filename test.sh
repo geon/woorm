@@ -53,4 +53,4 @@ cl65 -O \
 
 # Run tests in c64 emulator.
 export PATH="$PATH:/Applications/vice-arm64-gtk3-3.6.1/bin"
-x64sc test.prg
+x64sc -warp test.prg
