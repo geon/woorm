@@ -79,6 +79,7 @@ void wormSetNextStep(Worm *worm)
 
 void wormStep(Worm *worm)
 {
+	// TODO: Run this only each full step. Worms don't need to be able to change direction in the middle of a step.
 	wormSetNextStep(worm);
 
 	worm->headStep = (worm->headStep + 4) & 0b1111;
