@@ -3,6 +3,6 @@
 
 #include <stdint.h>
 
-uint8_t titleScreen(void);
+void titleScreen(void);
 
 #endif

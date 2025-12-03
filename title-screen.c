@@ -44,7 +44,7 @@ uint8_t pathB[] = {
 	Direction_up,
 };
 
-uint8_t titleScreen(void)
+void titleScreen(void)
 {
 	uint8_t pathStepA = 0;
 	uint8_t pathStepB = 0;
