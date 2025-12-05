@@ -4,7 +4,7 @@
 set -e
 
 # Compile tests natively.
-clang \
+clang -Wall -Wextra \
     main.test.c \
     cc65-test.c \
     circular-buffer.test.c \
