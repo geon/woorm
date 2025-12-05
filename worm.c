@@ -6,7 +6,7 @@
 #include "worms.h"
 #include <stdint.h>
 
-void wormInit(uint8_t wormIndex, Screen *screen, uint16_t pos, Direction direction, uint8_t color)
+void wormInit(uint8_t wormIndex, Screen *screen, uint16_t pos, Direction direction)
 {
 	Worm *worm = &worms[wormIndex];
 
@@ -17,7 +17,6 @@ void wormInit(uint8_t wormIndex, Screen *screen, uint16_t pos, Direction directi
 	worm->nextDirection = direction;
 	worm->headStep = Microstep_0;
 	worm->tailStep = Microstep_0;
-	worm->color = color;
 	worm->screen = screen;
 	circularBufferInit(&worm->tail);
 	worm->hasNextStep = false;
@@ -160,6 +159,7 @@ TileType wormGetPart(uint8_t wormIndex, uint8_t iterator)
 void wormDraw(uint8_t wormIndex)
 {
 	Worm *worm = &worms[wormIndex];
+	uint8_t color = wormColors[wormIndex] + 8;
 
 	CircularBuffer *tail = &worm->tail;
 	TileType part = 0;
@@ -178,7 +178,7 @@ void wormDraw(uint8_t wormIndex)
 
 		// TODO. This call uses only the head step, not the tail step.
 		screen->chars[position] = tileToIndex[tilePackWormTileStateInBits(part, direction, nextDirection, worm->headStep)];
-		screen->colors[position] = worm->color;
+		screen->colors[position] = color;
 
 		nextDirection = direction;
 	}
@@ -187,6 +187,7 @@ void wormDraw(uint8_t wormIndex)
 void wormLazyDraw(uint8_t wormIndex)
 {
 	Worm *worm = &worms[wormIndex];
+	uint8_t color = wormColors[wormIndex] + 8;
 
 	Direction nextDirection;
 	CircularBuffer *tail = &worm->tail;
@@ -202,7 +203,7 @@ void wormLazyDraw(uint8_t wormIndex)
 
 	// TODO: Only needed on full steps.
 	// Only the cell just entered needs to have the color changed.
-	screen->colors[position] = worm->color;
+	screen->colors[position] = color;
 
 	nextDirection = direction;
 	direction = circularBufferGetValue(worm->tailDirections, tail->end - 2);

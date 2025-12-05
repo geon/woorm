@@ -1,6 +1,5 @@
 #include "level.h"
 #include "lz77.h"
-#include "worms.h"
 #include <c64.h>
 
 void levelDraw(Level *level, Screen *screen)
@@ -17,7 +16,7 @@ void levelStart(Level *level, Screen *screen, uint8_t numWorms)
 	levelDraw(level, screen);
 	for (index = 0; index < numWorms; ++index)
 	{
-		wormInit(index, screen, coordToPos(level->playerStarts[index].position), level->playerStarts[index].direction, wormColors[index] + 8);
+		wormInit(index, screen, coordToPos(level->playerStarts[index].position), level->playerStarts[index].direction);
 	}
 }
 
