@@ -4,5 +4,6 @@
 #include "worm.h"
 
 extern Worm worms[4];
+extern uint8_t wormColors[4];
 
 #endif

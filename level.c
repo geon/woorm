@@ -1,5 +1,6 @@
 #include "level.h"
 #include "lz77.h"
+#include "worms.h"
 #include <c64.h>
 
 void levelDraw(Level *level, Screen *screen)
@@ -8,13 +9,6 @@ void levelDraw(Level *level, Screen *screen)
 	lz77Decompress(level->chars, 1024, screen->chars, 1024);
 	lz77Decompress(level->colors, 1024, screen->colors, 1024);
 }
-
-uint8_t wormColors[] = {
-	COLOR_CYAN,
-	COLOR_GREEN,
-	COLOR_YELLOW,
-	COLOR_RED,
-};
 
 void levelStart(Level *level, Screen *screen, Worm worms[], uint8_t numWorms)
 {
