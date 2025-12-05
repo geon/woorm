@@ -6,9 +6,11 @@
 #include <joystick.h>
 #include <stdint.h>
 
-void animateWormTitleScreen(Worm *worm, uint8_t path[], uint8_t *currentPathStep, uint8_t pathStepCount)
+void animateWormTitleScreen(uint8_t wormIndex, uint8_t path[], uint8_t *currentPathStep, uint8_t pathStepCount)
 {
-	wormStep(worm);
+	Worm *worm = &worms[wormIndex];
+
+	wormStep(wormIndex);
 	if (worm->headStep == 0)
 	{
 		worm->wantedNextDirection = path[*currentPathStep];
@@ -49,7 +51,7 @@ void titleScreen(void)
 	uint8_t pathStepA = 0;
 	uint8_t pathStepB = 0;
 
-	levelStart(&levels[(numLevels - 1)], screen, worms, 2);
+	levelStart(&levels[(numLevels - 1)], screen, 2);
 	// worms[0].wantedLength = sizeof(pathA) - 2;
 	// worms[1].wantedLength = sizeof(pathB) - 2;
 
@@ -61,7 +63,7 @@ void titleScreen(void)
 		}
 
 		waitvsync();
-		animateWormTitleScreen(&worms[0], pathA, &pathStepA, sizeof(pathA));
-		animateWormTitleScreen(&worms[1], pathB, &pathStepB, sizeof(pathB));
+		animateWormTitleScreen(0, pathA, &pathStepA, sizeof(pathA));
+		animateWormTitleScreen(1, pathB, &pathStepB, sizeof(pathB));
 	}
 }

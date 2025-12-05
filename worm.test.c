@@ -3,12 +3,12 @@
 #include "coord.h"
 #include "screen.h"
 #include "tile.h"
+#include "worms.h"
 #include <stdint.h>
 
 bool Tile_filled = true;
 
-Worm _worm;
-Worm *worm = &_worm;
+uint8_t wormIndex = 0;
 
 // Fake screen with char and color ram.
 uint8_t chars[1000];
@@ -22,7 +22,7 @@ void wormTest(void)
 {
 	beginTest("Create worm.");
 	{
-		wormInit(worm, screen, 100, Direction_first, 0);
+		wormInit(wormIndex, screen, 100, Direction_first, 0);
 	}
 	endTest();
 
@@ -30,7 +30,7 @@ void wormTest(void)
 	{
 		screenClear(screen);
 		screen->chars[coordToPos(coordCreate(17, 10))] = 1;
-		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
+		wormInit(wormIndex, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
 
 		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(20, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_head, Direction_right, Direction_right, Microstep_0)]);
 		assertByteDecimal("Head to middle", screen->chars[coordToPos(coordCreate(19, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_headToMiddle, Direction_right, Direction_right, Microstep_0)]);
@@ -42,8 +42,8 @@ void wormTest(void)
 	beginTest("To move, it must add a tile in front.");
 	{
 		screenClear(screen);
-		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
-		wormStep(worm);
+		wormInit(wormIndex, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
+		wormStep(wormIndex);
 
 		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(21, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_head, Direction_right, Direction_right, Microstep_1)]);
 		assertByteDecimal("Head to middle", screen->chars[coordToPos(coordCreate(20, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_headToMiddle, Direction_right, Direction_right, Microstep_1)]);
@@ -55,10 +55,10 @@ void wormTest(void)
 	beginTest("Further microsteps should cycle the tiles.");
 	{
 		screenClear(screen);
-		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
-		wormStep(worm);
-		wormStep(worm);
-		wormStep(worm);
+		wormInit(wormIndex, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
+		wormStep(wormIndex);
+		wormStep(wormIndex);
+		wormStep(wormIndex);
 
 		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(21, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_head, Direction_right, Direction_right, Microstep_3)]);
 		assertByteDecimal("Head to middle", screen->chars[coordToPos(coordCreate(20, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_headToMiddle, Direction_right, Direction_right, Microstep_3)]);
@@ -70,11 +70,11 @@ void wormTest(void)
 	beginTest("The last microsteps should clear the trail.");
 	{
 		screenClear(screen);
-		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
-		wormStep(worm);
-		wormStep(worm);
-		wormStep(worm);
-		wormStep(worm);
+		wormInit(wormIndex, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
+		wormStep(wormIndex);
+		wormStep(wormIndex);
+		wormStep(wormIndex);
+		wormStep(wormIndex);
 
 		assertByte("Head", screen->chars[coordToPos(coordCreate(21, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_head, Direction_right, Direction_right, Microstep_0)]);
 		assertByte("Middle", screen->chars[coordToPos(coordCreate(20, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_headToMiddle, Direction_right, Direction_right, Microstep_0)]);
@@ -86,13 +86,13 @@ void wormTest(void)
 	beginTest("Setting nextDirection affects macro steps.");
 	{
 		screenClear(screen);
-		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_up, 0);
-		wormSetNextDirection(worm, Direction_right);
+		wormInit(wormIndex, screen, coordToPos(coordCreate(20, 10)), Direction_up, 0);
+		wormSetNextDirection(wormIndex, Direction_right);
 
-		wormStep(worm);
-		wormStep(worm);
-		wormStep(worm);
-		wormStep(worm);
+		wormStep(wormIndex);
+		wormStep(wormIndex);
+		wormStep(wormIndex);
+		wormStep(wormIndex);
 
 		assertTrue("Head", screen->chars[coordToPos(coordCreate(21, 10))]);
 		assertTrue("Middle", screen->chars[coordToPos(coordCreate(20, 10))]);
@@ -104,13 +104,13 @@ void wormTest(void)
 	beginTest("Bends should render properly.");
 	{
 		screenClear(screen);
-		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_up, 0);
-		wormSetNextDirection(worm, Direction_right);
+		wormInit(wormIndex, screen, coordToPos(coordCreate(20, 10)), Direction_up, 0);
+		wormSetNextDirection(wormIndex, Direction_right);
 
-		wormStep(worm);
-		wormStep(worm);
-		wormStep(worm);
-		wormStep(worm);
+		wormStep(wormIndex);
+		wormStep(wormIndex);
+		wormStep(wormIndex);
+		wormStep(wormIndex);
 
 		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(21, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_head, Direction_right, Direction_right, Microstep_0)]);
 		assertByteDecimal("Middle", screen->chars[coordToPos(coordCreate(20, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_headToMiddle, Direction_up, Direction_right, Microstep_0)]);
@@ -122,17 +122,17 @@ void wormTest(void)
 	beginTest("Worms should avoid obstacles automatically.");
 	{
 		screenClear(screen);
-		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
+		wormInit(wormIndex, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
 		screen->chars[coordToPos(coordCreate(20, 9))] = Tile_filled;
 		screen->chars[coordToPos(coordCreate(21, 10))] = Tile_filled;
-		wormStep(worm);
+		wormStep(wormIndex);
 		assertTrue("Above and to the right.", screen->chars[coordToPos(coordCreate(20, 11))]);
 
 		screenClear(screen);
-		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
+		wormInit(wormIndex, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
 		screen->chars[coordToPos(coordCreate(20, 11))] = Tile_filled;
 		screen->chars[coordToPos(coordCreate(21, 10))] = Tile_filled;
-		wormStep(worm);
+		wormStep(wormIndex);
 		assertTrue("Below and to the right.", screen->chars[coordToPos(coordCreate(20, 9))]);
 	}
 	endTest();
@@ -140,11 +140,11 @@ void wormTest(void)
 	beginTest("Worms should not turn back on themself.");
 	{
 		screenClear(screen);
-		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_up, 0);
-		wormSetNextDirection(worm, Direction_right);
+		wormInit(wormIndex, screen, coordToPos(coordCreate(20, 10)), Direction_up, 0);
+		wormSetNextDirection(wormIndex, Direction_right);
 		screen->chars[coordToPos(coordCreate(20, 9))] = Tile_filled;
 		screen->chars[coordToPos(coordCreate(21, 10))] = Tile_filled;
-		wormStep(worm);
+		wormStep(wormIndex);
 		assertTrue("Above and to the right.", screen->chars[coordToPos(coordCreate(19, 10))]);
 	}
 	endTest();
@@ -153,13 +153,13 @@ void wormTest(void)
 	{
 		uint8_t headTile = 0;
 		screenClear(screen);
-		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
+		wormInit(wormIndex, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
 		screen->chars[coordToPos(coordCreate(20, 9))] = Tile_filled;
 		screen->chars[coordToPos(coordCreate(21, 10))] = Tile_filled;
 		screen->chars[coordToPos(coordCreate(20, 11))] = Tile_filled;
 
 		headTile = screen->chars[coordToPos(coordCreate(20, 10))];
-		wormStep(worm);
+		wormStep(wormIndex);
 		assertTrue("No headStep.", screen->chars[coordToPos(coordCreate(20, 10))] == headTile);
 	}
 	endTest();
@@ -167,11 +167,11 @@ void wormTest(void)
 	beginTest("Worms should face forwd when blocked.");
 	{
 		screenClear(screen);
-		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
+		wormInit(wormIndex, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
 		screen->chars[coordToPos(coordCreate(20, 11))] = Tile_filled;
-		wormSetNextDirection(worm, Direction_down);
+		wormSetNextDirection(wormIndex, Direction_down);
 
-		wormStep(worm);
+		wormStep(wormIndex);
 
 		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(21, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_head, Direction_right, Direction_right, Microstep_1)]);
 	}
@@ -180,11 +180,11 @@ void wormTest(void)
 	beginTest("Worms look ahead around corners.");
 	{
 		screenClear(screen);
-		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_up, 0);
+		wormInit(wormIndex, screen, coordToPos(coordCreate(20, 10)), Direction_up, 0);
 		// screen->chars[coordToPos(coordCreate(21, 10))] = Tile_filled;
-		wormStep(worm);
-		wormSetNextDirection(worm, Direction_right);
-		wormStep(worm);
+		wormStep(wormIndex);
+		wormSetNextDirection(wormIndex, Direction_right);
+		wormStep(wormIndex);
 
 		assertByteDecimal("Head", screen->chars[coordToPos(coordCreate(20, 9))], tilePackWormTileStateInBits(TileType_animated_head, Direction_up, Direction_right, Microstep_2));
 		assertByteDecimal("Head to middle", screen->chars[coordToPos(coordCreate(20, 10))], tileToIndex[tilePackWormTileStateInBits(TileType_animated_headToMiddle, Direction_up, Direction_up, Microstep_2)]);
@@ -196,13 +196,13 @@ void wormTest(void)
 	beginTest("Worms forget wanted direction.");
 	{
 		screenClear(screen);
-		wormInit(worm, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
-		wormSetNextDirection(worm, Direction_right);
+		wormInit(wormIndex, screen, coordToPos(coordCreate(20, 10)), Direction_right, 0);
+		wormSetNextDirection(wormIndex, Direction_right);
 		screen->chars[coordToPos(coordCreate(21, 10))] = Tile_filled;
 
-		wormStep(worm);
+		wormStep(wormIndex);
 
-		assertByteDecimal("Direction", worm->wantedNextDirection, (Direction_right + 1) % 4);
+		assertByteDecimal("Direction", worms[wormIndex].wantedNextDirection, (Direction_right + 1) % 4);
 	}
 	endTest();
 }

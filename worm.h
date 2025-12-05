@@ -34,12 +34,12 @@ typedef struct Worm
 	uint16_t tailPositions[0x100];
 } Worm;
 
-void wormInit(Worm *worm, Screen *screen, uint16_t pos, Direction direction, uint8_t color);
-void wormSetNextDirection(Worm *worm, Direction direction);
-void wormStep(Worm *worm);
+void wormInit(uint8_t wormIndex, Screen *screen, uint16_t pos, Direction direction, uint8_t color);
+void wormSetNextDirection(uint8_t wormIndex, Direction direction);
+void wormStep(uint8_t wormIndex);
 
 // For benchmark only.
-void wormDraw(Worm *worm);
-void wormLazyDraw(Worm *worm);
+void wormDraw(uint8_t wormIndex);
+void wormLazyDraw(uint8_t wormIndex);
 
 #endif

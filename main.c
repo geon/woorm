@@ -17,12 +17,14 @@
 
 extern Level levels[];
 
-void animateWorm(Worm *worm, Direction nextDirection)
+void animateWorm(uint8_t wormIndex, Direction nextDirection)
 {
-	wormStep(worm);
+	Worm *worm = &worms[wormIndex];
+
+	wormStep(wormIndex);
 	if (nextDirection != Direction_count)
 	{
-		wormSetNextDirection(worm, nextDirection);
+		wormSetNextDirection(wormIndex, nextDirection);
 	}
 }
 
@@ -114,7 +116,7 @@ void gameLoop(void)
 	uint8_t levelIndex = 0;
 	for (;;)
 	{
-		levelStart(&levels[levelIndex % (numLevels - 1)], screen, worms, sizeof(worms) / sizeof(Worm));
+		levelStart(&levels[levelIndex % (numLevels - 1)], screen, sizeof(worms) / sizeof(Worm));
 
 		for (frame = 0; frame < 180; ++frame)
 		{
@@ -125,10 +127,10 @@ void gameLoop(void)
 
 			waitvsync();
 
-			animateWorm(&worms[0], getPlayerInput(0));
-			animateWorm(&worms[1], getPlayerInput(1));
-			animateWorm(&worms[2], getPlayerInput(2));
-			animateWorm(&worms[3], getPlayerInput(3));
+			animateWorm(0, getPlayerInput(0));
+			animateWorm(1, getPlayerInput(1));
+			animateWorm(2, getPlayerInput(2));
+			animateWorm(3, getPlayerInput(3));
 		}
 		++levelIndex;
 	}

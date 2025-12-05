@@ -3,10 +3,13 @@
 #include "direction.h"
 #include "screen.h"
 #include "tile.h"
+#include "worms.h"
 #include <stdint.h>
 
-void wormInit(Worm *worm, Screen *screen, uint16_t pos, Direction direction, uint8_t color)
+void wormInit(uint8_t wormIndex, Screen *screen, uint16_t pos, Direction direction, uint8_t color)
 {
+	Worm *worm = &worms[wormIndex];
+
 	uint8_t index = 0;
 	uint16_t position = pos - getPositionOffsetForDirection(direction) * 3;
 
@@ -35,16 +38,20 @@ void wormInit(Worm *worm, Screen *screen, uint16_t pos, Direction direction, uin
 	circularBufferGetValue(worm->tailDirections, index) = direction;
 	circularBufferGetValue(worm->tailPositions, index) = position;
 
-	wormDraw(worm);
+	wormDraw(wormIndex);
 }
 
-void wormSetNextDirection(Worm *worm, Direction direction)
+void wormSetNextDirection(uint8_t wormIndex, Direction direction)
 {
+	Worm *worm = &worms[wormIndex];
+
 	worm->wantedNextDirection = direction;
 }
 
-void wormSetNextStep(Worm *worm)
+void wormSetNextStep(uint8_t wormIndex)
 {
+	Worm *worm = &worms[wormIndex];
+
 	uint16_t currentHeadPosition = circularBufferGetLastValue(worm->tail, worm->tailPositions);
 
 	// Try stepping in the selected direction.
@@ -77,10 +84,12 @@ void wormSetNextStep(Worm *worm)
 	}
 }
 
-void wormStep(Worm *worm)
+void wormStep(uint8_t wormIndex)
 {
+	Worm *worm = &worms[wormIndex];
+
 	// TODO: Run this only each full step. Worms don't need to be able to change direction in the middle of a step.
-	wormSetNextStep(worm);
+	wormSetNextStep(wormIndex);
 
 	worm->headStep = (worm->headStep + 4) & 0b1111;
 	worm->tailStep = (worm->tailStep + 4) & 0b1111;
@@ -112,13 +121,15 @@ void wormStep(Worm *worm)
 	// When forced to turn, forget whatever input the user did, and continue straight forward.
 	worm->wantedNextDirection = worm->nextDirection;
 
-	wormLazyDraw(worm);
+	wormLazyDraw(wormIndex);
 }
 
-TileType wormGetPart(Worm *worm, uint8_t iterator);
+TileType wormGetPart(uint8_t wormIndex, uint8_t iterator);
 
-TileType wormGetPart(Worm *worm, uint8_t iterator)
+TileType wormGetPart(uint8_t wormIndex, uint8_t iterator)
 {
+	Worm *worm = &worms[wormIndex];
+
 	CircularBuffer *tail = &worm->tail;
 
 	TileType part = 0;
@@ -146,8 +157,10 @@ TileType wormGetPart(Worm *worm, uint8_t iterator)
 	return part;
 }
 
-void wormDraw(Worm *worm)
+void wormDraw(uint8_t wormIndex)
 {
+	Worm *worm = &worms[wormIndex];
+
 	CircularBuffer *tail = &worm->tail;
 	TileType part = 0;
 	Direction direction;
@@ -161,7 +174,7 @@ void wormDraw(Worm *worm)
 
 		direction = circularBufferGetValue(worm->tailDirections, iterator);
 		position = circularBufferGetValue(worm->tailPositions, iterator);
-		part = wormGetPart(worm, iterator);
+		part = wormGetPart(wormIndex, iterator);
 
 		// TODO. This call uses only the head step, not the tail step.
 		screen->chars[position] = tileToIndex[tilePackWormTileStateInBits(part, direction, nextDirection, worm->headStep)];
@@ -171,8 +184,10 @@ void wormDraw(Worm *worm)
 	}
 }
 
-void wormLazyDraw(Worm *worm)
+void wormLazyDraw(uint8_t wormIndex)
 {
+	Worm *worm = &worms[wormIndex];
+
 	Direction nextDirection;
 	CircularBuffer *tail = &worm->tail;
 

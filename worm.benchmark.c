@@ -3,6 +3,7 @@
 #include "coord.h"
 #include "screen.h"
 #include "tile.h"
+#include "worms.h"
 #include <stdint.h>
 #include <stdio.h>
 #include <time.h>
@@ -11,8 +12,7 @@
 #define CLOCKS_PER_SEC 1
 #endif
 
-Worm _worm;
-Worm *worm = &_worm;
+uint8_t wormIndex = 0;
 
 // Fake screen with char and color ram.
 uint8_t chars[1000];
@@ -25,12 +25,12 @@ Screen *screen = &_screen;
 void wormBenchmark(void)
 {
 	screenClear(screen);
-	wormInit(worm, screen, coordToPos(coordCreate(4, 0)), Direction_right, 0);
+	wormInit(wormIndex, screen, coordToPos(coordCreate(4, 0)), Direction_right, 0);
 
 	beginBenchmark("wormStep");
 	{
 		beginBenchmarkRepeat
-			wormStep(worm);
+			wormStep(wormIndex);
 		endBenchmarkRepeat
 	}
 	endBenchmark();
@@ -38,7 +38,7 @@ void wormBenchmark(void)
 	beginBenchmark("wormDraw");
 	{
 		beginBenchmarkRepeat
-			wormDraw(worm);
+			wormDraw(wormIndex);
 		endBenchmarkRepeat
 	}
 	endBenchmark();
@@ -46,7 +46,7 @@ void wormBenchmark(void)
 	beginBenchmark("wormLazyDraw");
 	{
 		beginBenchmarkRepeat
-			wormLazyDraw(worm);
+			wormLazyDraw(wormIndex);
 		endBenchmarkRepeat
 	}
 	endBenchmark();

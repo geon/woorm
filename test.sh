@@ -21,6 +21,7 @@ clang -Wall -Wextra \
     lz77-back-reference.test.c \
     lz77.c \
     lz77.test.c \
+    worms.c \
     -o test.exe
 
 # Run tests natively.
@@ -49,6 +50,7 @@ cl65 -O \
     lz77-back-reference.test.c \
     lz77.c \
     lz77.test.c \
+    worms.c \
     -o test.prg
 
 # Run tests in c64 emulator.
