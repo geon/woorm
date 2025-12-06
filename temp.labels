@@ -1,0 +1,1628 @@
+{
+       Address: "FFA5"
+        Name: .ACPTR 
+ }
+{
+       Address: "FFCF"
+        Name: .BASIN 
+ }
+{
+       Address: "FFD2"
+        Name: .BSOUT 
+ }
+{
+       Address: "FFC6"
+        Name: .CHKIN 
+ }
+{
+       Address: "FFCF"
+        Name: .CHRIN 
+ }
+{
+       Address: "FFD2"
+        Name: .CHROUT 
+ }
+{
+       Address: "FF81"
+        Name: .CINT 
+ }
+{
+       Address: "FFA8"
+        Name: .CIOUT 
+ }
+{
+       Address: "FFC9"
+        Name: .CKOUT 
+ }
+{
+       Address: "FFE7"
+        Name: .CLALL 
+ }
+{
+       Address: "FFC3"
+        Name: .CLOSE 
+ }
+{
+       Address: "FFCC"
+        Name: .CLRCH 
+ }
+{
+       Address: "E544"
+        Name: .CLRSCR 
+ }
+{
+       Address: "FFE4"
+        Name: .GETIN 
+ }
+{
+       Address: "FFF3"
+        Name: .IOBASE 
+ }
+{
+       Address: "FF84"
+        Name: .IOINIT 
+ }
+{
+       Address: "E5B4"
+        Name: .KBDREAD 
+ }
+{
+       Address: "FFB1"
+        Name: .LISTEN 
+ }
+{
+       Address: "FFD5"
+        Name: .LOAD 
+ }
+{
+       Address: "FF9C"
+        Name: .MEMBOT 
+ }
+{
+       Address: "FF99"
+        Name: .MEMTOP 
+ }
+{
+       Address: "FEBC"
+        Name: .NMIEXIT 
+ }
+{
+       Address: "FFC0"
+        Name: .OPEN 
+ }
+{
+       Address: "FF87"
+        Name: .RAMTAS 
+ }
+{
+       Address: "FFDE"
+        Name: .RDTIM 
+ }
+{
+       Address: "FFB7"
+        Name: .READST 
+ }
+{
+       Address: "FF8A"
+        Name: .RESTOR 
+ }
+{
+       Address: "FFD8"
+        Name: .SAVE 
+ }
+{
+       Address: "FF9F"
+        Name: .SCNKEY 
+ }
+{
+       Address: "FFED"
+        Name: .SCREEN 
+ }
+{
+       Address: "FF93"
+        Name: .SECOND 
+ }
+{
+       Address: "FFBA"
+        Name: .SETLFS 
+ }
+{
+       Address: "FF90"
+        Name: .SETMSG 
+ }
+{
+       Address: "FFBD"
+        Name: .SETNAM 
+ }
+{
+       Address: "FFDB"
+        Name: .SETTIM 
+ }
+{
+       Address: "FFA2"
+        Name: .SETTMO 
+ }
+{
+       Address: "0090"
+        Name: .ST 
+ }
+{
+       Address: "FFE1"
+        Name: .STOP 
+ }
+{
+       Address: "FFB4"
+        Name: .TALK 
+ }
+{
+       Address: "FF96"
+        Name: .TKSA 
+ }
+{
+       Address: "67E0"
+        Name: .TM 
+ }
+{
+       Address: "FFEA"
+        Name: .UDTIM 
+ }
+{
+       Address: "FFAE"
+        Name: .UNLSN 
+ }
+{
+       Address: "FFAB"
+        Name: .UNTLK 
+ }
+{
+       Address: "EA24"
+        Name: .UPDCRAMPTR 
+ }
+{
+       Address: "FF8D"
+        Name: .VECTOR 
+ }
+{
+       Address: "681C"
+        Name: .__BSS_LOAD__ 
+ }
+{
+       Address: "681C"
+        Name: .__BSS_RUN__ 
+ }
+{
+       Address: "0C3E"
+        Name: .__BSS_SIZE__ 
+ }
+{
+       Address: "1801"
+        Name: .__CHARSET_FILEOFFS__ 
+ }
+{
+       Address: "2800"
+        Name: .__CHARSET_LAST__ 
+ }
+{
+       Address: "1000"
+        Name: .__CHARSET_SIZE__ 
+ }
+{
+       Address: "2000"
+        Name: .__CHARSET_START__ 
+ }
+{
+       Address: "0001"
+        Name: .__CONSTRUCTOR_COUNT__ 
+ }
+{
+       Address: "685F"
+        Name: .__CONSTRUCTOR_TABLE__ 
+ }
+{
+       Address: "0000"
+        Name: .__DESTRUCTOR_COUNT__ 
+ }
+{
+       Address: "4642"
+        Name: .__DESTRUCTOR_TABLE__ 
+ }
+{
+       Address: "0001"
+        Name: .__EXEHDR__ 
+ }
+{
+       Address: "0002"
+        Name: .__HEADER_FILEOFFS__ 
+ }
+{
+       Address: "080D"
+        Name: .__HEADER_LAST__ 
+ }
+{
+       Address: "000D"
+        Name: .__HEADER_SIZE__ 
+ }
+{
+       Address: "0801"
+        Name: .__HEADER_START__ 
+ }
+{
+       Address: "D000"
+        Name: .__HIMEM__ 
+ }
+{
+       Address: "4759"
+        Name: .__LEVEL_DATA_CHARS_0 
+ }
+{
+       Address: "495B"
+        Name: .__LEVEL_DATA_CHARS_1 
+ }
+{
+       Address: "557D"
+        Name: .__LEVEL_DATA_CHARS_10 
+ }
+{
+       Address: "566A"
+        Name: .__LEVEL_DATA_CHARS_11 
+ }
+{
+       Address: "57BC"
+        Name: .__LEVEL_DATA_CHARS_12 
+ }
+{
+       Address: "58BF"
+        Name: .__LEVEL_DATA_CHARS_13 
+ }
+{
+       Address: "59CD"
+        Name: .__LEVEL_DATA_CHARS_14 
+ }
+{
+       Address: "5B5D"
+        Name: .__LEVEL_DATA_CHARS_15 
+ }
+{
+       Address: "5D2C"
+        Name: .__LEVEL_DATA_CHARS_16 
+ }
+{
+       Address: "5EA6"
+        Name: .__LEVEL_DATA_CHARS_17 
+ }
+{
+       Address: "60F2"
+        Name: .__LEVEL_DATA_CHARS_18 
+ }
+{
+       Address: "62DD"
+        Name: .__LEVEL_DATA_CHARS_19 
+ }
+{
+       Address: "4A28"
+        Name: .__LEVEL_DATA_CHARS_2 
+ }
+{
+       Address: "6458"
+        Name: .__LEVEL_DATA_CHARS_20 
+ }
+{
+       Address: "65D0"
+        Name: .__LEVEL_DATA_CHARS_21 
+ }
+{
+       Address: "4C26"
+        Name: .__LEVEL_DATA_CHARS_3 
+ }
+{
+       Address: "4D43"
+        Name: .__LEVEL_DATA_CHARS_4 
+ }
+{
+       Address: "4E92"
+        Name: .__LEVEL_DATA_CHARS_5 
+ }
+{
+       Address: "4FFA"
+        Name: .__LEVEL_DATA_CHARS_6 
+ }
+{
+       Address: "50EA"
+        Name: .__LEVEL_DATA_CHARS_7 
+ }
+{
+       Address: "52B5"
+        Name: .__LEVEL_DATA_CHARS_8 
+ }
+{
+       Address: "541D"
+        Name: .__LEVEL_DATA_CHARS_9 
+ }
+{
+       Address: "487D"
+        Name: .__LEVEL_DATA_COLORS_0 
+ }
+{
+       Address: "49D6"
+        Name: .__LEVEL_DATA_COLORS_1 
+ }
+{
+       Address: "561F"
+        Name: .__LEVEL_DATA_COLORS_10 
+ }
+{
+       Address: "574B"
+        Name: .__LEVEL_DATA_COLORS_11 
+ }
+{
+       Address: "5859"
+        Name: .__LEVEL_DATA_COLORS_12 
+ }
+{
+       Address: "595E"
+        Name: .__LEVEL_DATA_COLORS_13 
+ }
+{
+       Address: "5AFC"
+        Name: .__LEVEL_DATA_COLORS_14 
+ }
+{
+       Address: "5CDB"
+        Name: .__LEVEL_DATA_COLORS_15 
+ }
+{
+       Address: "5E43"
+        Name: .__LEVEL_DATA_COLORS_16 
+ }
+{
+       Address: "5FD5"
+        Name: .__LEVEL_DATA_COLORS_17 
+ }
+{
+       Address: "6248"
+        Name: .__LEVEL_DATA_COLORS_18 
+ }
+{
+       Address: "63D9"
+        Name: .__LEVEL_DATA_COLORS_19 
+ }
+{
+       Address: "4B54"
+        Name: .__LEVEL_DATA_COLORS_2 
+ }
+{
+       Address: "6573"
+        Name: .__LEVEL_DATA_COLORS_20 
+ }
+{
+       Address: "6642"
+        Name: .__LEVEL_DATA_COLORS_21 
+ }
+{
+       Address: "4CE0"
+        Name: .__LEVEL_DATA_COLORS_3 
+ }
+{
+       Address: "4E39"
+        Name: .__LEVEL_DATA_COLORS_4 
+ }
+{
+       Address: "4F7F"
+        Name: .__LEVEL_DATA_COLORS_5 
+ }
+{
+       Address: "5081"
+        Name: .__LEVEL_DATA_COLORS_6 
+ }
+{
+       Address: "51FB"
+        Name: .__LEVEL_DATA_COLORS_7 
+ }
+{
+       Address: "53C0"
+        Name: .__LEVEL_DATA_COLORS_8 
+ }
+{
+       Address: "5525"
+        Name: .__LEVEL_DATA_COLORS_9 
+ }
+{
+       Address: "474B"
+        Name: .__LEVEL_DATA_MULTI_COLOR_1_0 
+ }
+{
+       Address: "494D"
+        Name: .__LEVEL_DATA_MULTI_COLOR_1_1 
+ }
+{
+       Address: "556F"
+        Name: .__LEVEL_DATA_MULTI_COLOR_1_10 
+ }
+{
+       Address: "565C"
+        Name: .__LEVEL_DATA_MULTI_COLOR_1_11 
+ }
+{
+       Address: "57AE"
+        Name: .__LEVEL_DATA_MULTI_COLOR_1_12 
+ }
+{
+       Address: "58B1"
+        Name: .__LEVEL_DATA_MULTI_COLOR_1_13 
+ }
+{
+       Address: "59BF"
+        Name: .__LEVEL_DATA_MULTI_COLOR_1_14 
+ }
+{
+       Address: "5B4F"
+        Name: .__LEVEL_DATA_MULTI_COLOR_1_15 
+ }
+{
+       Address: "5D1E"
+        Name: .__LEVEL_DATA_MULTI_COLOR_1_16 
+ }
+{
+       Address: "5E98"
+        Name: .__LEVEL_DATA_MULTI_COLOR_1_17 
+ }
+{
+       Address: "60E4"
+        Name: .__LEVEL_DATA_MULTI_COLOR_1_18 
+ }
+{
+       Address: "62CF"
+        Name: .__LEVEL_DATA_MULTI_COLOR_1_19 
+ }
+{
+       Address: "4A1A"
+        Name: .__LEVEL_DATA_MULTI_COLOR_1_2 
+ }
+{
+       Address: "644A"
+        Name: .__LEVEL_DATA_MULTI_COLOR_1_20 
+ }
+{
+       Address: "65C2"
+        Name: .__LEVEL_DATA_MULTI_COLOR_1_21 
+ }
+{
+       Address: "4C18"
+        Name: .__LEVEL_DATA_MULTI_COLOR_1_3 
+ }
+{
+       Address: "4D35"
+        Name: .__LEVEL_DATA_MULTI_COLOR_1_4 
+ }
+{
+       Address: "4E84"
+        Name: .__LEVEL_DATA_MULTI_COLOR_1_5 
+ }
+{
+       Address: "4FEC"
+        Name: .__LEVEL_DATA_MULTI_COLOR_1_6 
+ }
+{
+       Address: "50DC"
+        Name: .__LEVEL_DATA_MULTI_COLOR_1_7 
+ }
+{
+       Address: "52A7"
+        Name: .__LEVEL_DATA_MULTI_COLOR_1_8 
+ }
+{
+       Address: "540F"
+        Name: .__LEVEL_DATA_MULTI_COLOR_1_9 
+ }
+{
+       Address: "474C"
+        Name: .__LEVEL_DATA_MULTI_COLOR_2_0 
+ }
+{
+       Address: "494E"
+        Name: .__LEVEL_DATA_MULTI_COLOR_2_1 
+ }
+{
+       Address: "5570"
+        Name: .__LEVEL_DATA_MULTI_COLOR_2_10 
+ }
+{
+       Address: "565D"
+        Name: .__LEVEL_DATA_MULTI_COLOR_2_11 
+ }
+{
+       Address: "57AF"
+        Name: .__LEVEL_DATA_MULTI_COLOR_2_12 
+ }
+{
+       Address: "58B2"
+        Name: .__LEVEL_DATA_MULTI_COLOR_2_13 
+ }
+{
+       Address: "59C0"
+        Name: .__LEVEL_DATA_MULTI_COLOR_2_14 
+ }
+{
+       Address: "5B50"
+        Name: .__LEVEL_DATA_MULTI_COLOR_2_15 
+ }
+{
+       Address: "5D1F"
+        Name: .__LEVEL_DATA_MULTI_COLOR_2_16 
+ }
+{
+       Address: "5E99"
+        Name: .__LEVEL_DATA_MULTI_COLOR_2_17 
+ }
+{
+       Address: "60E5"
+        Name: .__LEVEL_DATA_MULTI_COLOR_2_18 
+ }
+{
+       Address: "62D0"
+        Name: .__LEVEL_DATA_MULTI_COLOR_2_19 
+ }
+{
+       Address: "4A1B"
+        Name: .__LEVEL_DATA_MULTI_COLOR_2_2 
+ }
+{
+       Address: "644B"
+        Name: .__LEVEL_DATA_MULTI_COLOR_2_20 
+ }
+{
+       Address: "65C3"
+        Name: .__LEVEL_DATA_MULTI_COLOR_2_21 
+ }
+{
+       Address: "4C19"
+        Name: .__LEVEL_DATA_MULTI_COLOR_2_3 
+ }
+{
+       Address: "4D36"
+        Name: .__LEVEL_DATA_MULTI_COLOR_2_4 
+ }
+{
+       Address: "4E85"
+        Name: .__LEVEL_DATA_MULTI_COLOR_2_5 
+ }
+{
+       Address: "4FED"
+        Name: .__LEVEL_DATA_MULTI_COLOR_2_6 
+ }
+{
+       Address: "50DD"
+        Name: .__LEVEL_DATA_MULTI_COLOR_2_7 
+ }
+{
+       Address: "52A8"
+        Name: .__LEVEL_DATA_MULTI_COLOR_2_8 
+ }
+{
+       Address: "5410"
+        Name: .__LEVEL_DATA_MULTI_COLOR_2_9 
+ }
+{
+       Address: "4746"
+        Name: .__LEVEL_DATA_NAME_0 
+ }
+{
+       Address: "4946"
+        Name: .__LEVEL_DATA_NAME_1 
+ }
+{
+       Address: "556B"
+        Name: .__LEVEL_DATA_NAME_10 
+ }
+{
+       Address: "5655"
+        Name: .__LEVEL_DATA_NAME_11 
+ }
+{
+       Address: "57A2"
+        Name: .__LEVEL_DATA_NAME_12 
+ }
+{
+       Address: "58AA"
+        Name: .__LEVEL_DATA_NAME_13 
+ }
+{
+       Address: "59B8"
+        Name: .__LEVEL_DATA_NAME_14 
+ }
+{
+       Address: "5B47"
+        Name: .__LEVEL_DATA_NAME_15 
+ }
+{
+       Address: "5D17"
+        Name: .__LEVEL_DATA_NAME_16 
+ }
+{
+       Address: "5E91"
+        Name: .__LEVEL_DATA_NAME_17 
+ }
+{
+       Address: "60DD"
+        Name: .__LEVEL_DATA_NAME_18 
+ }
+{
+       Address: "62C0"
+        Name: .__LEVEL_DATA_NAME_19 
+ }
+{
+       Address: "4A15"
+        Name: .__LEVEL_DATA_NAME_2 
+ }
+{
+       Address: "6445"
+        Name: .__LEVEL_DATA_NAME_20 
+ }
+{
+       Address: "65B5"
+        Name: .__LEVEL_DATA_NAME_21 
+ }
+{
+       Address: "4C11"
+        Name: .__LEVEL_DATA_NAME_3 
+ }
+{
+       Address: "4D2E"
+        Name: .__LEVEL_DATA_NAME_4 
+ }
+{
+       Address: "4E7E"
+        Name: .__LEVEL_DATA_NAME_5 
+ }
+{
+       Address: "4FE5"
+        Name: .__LEVEL_DATA_NAME_6 
+ }
+{
+       Address: "50D5"
+        Name: .__LEVEL_DATA_NAME_7 
+ }
+{
+       Address: "52A0"
+        Name: .__LEVEL_DATA_NAME_8 
+ }
+{
+       Address: "5408"
+        Name: .__LEVEL_DATA_NAME_9 
+ }
+{
+       Address: "474D"
+        Name: .__LEVEL_DATA_PLAYER_STARTS_0 
+ }
+{
+       Address: "494F"
+        Name: .__LEVEL_DATA_PLAYER_STARTS_1 
+ }
+{
+       Address: "5571"
+        Name: .__LEVEL_DATA_PLAYER_STARTS_10 
+ }
+{
+       Address: "565E"
+        Name: .__LEVEL_DATA_PLAYER_STARTS_11 
+ }
+{
+       Address: "57B0"
+        Name: .__LEVEL_DATA_PLAYER_STARTS_12 
+ }
+{
+       Address: "58B3"
+        Name: .__LEVEL_DATA_PLAYER_STARTS_13 
+ }
+{
+       Address: "59C1"
+        Name: .__LEVEL_DATA_PLAYER_STARTS_14 
+ }
+{
+       Address: "5B51"
+        Name: .__LEVEL_DATA_PLAYER_STARTS_15 
+ }
+{
+       Address: "5D20"
+        Name: .__LEVEL_DATA_PLAYER_STARTS_16 
+ }
+{
+       Address: "5E9A"
+        Name: .__LEVEL_DATA_PLAYER_STARTS_17 
+ }
+{
+       Address: "60E6"
+        Name: .__LEVEL_DATA_PLAYER_STARTS_18 
+ }
+{
+       Address: "62D1"
+        Name: .__LEVEL_DATA_PLAYER_STARTS_19 
+ }
+{
+       Address: "4A1C"
+        Name: .__LEVEL_DATA_PLAYER_STARTS_2 
+ }
+{
+       Address: "644C"
+        Name: .__LEVEL_DATA_PLAYER_STARTS_20 
+ }
+{
+       Address: "65C4"
+        Name: .__LEVEL_DATA_PLAYER_STARTS_21 
+ }
+{
+       Address: "4C1A"
+        Name: .__LEVEL_DATA_PLAYER_STARTS_3 
+ }
+{
+       Address: "4D37"
+        Name: .__LEVEL_DATA_PLAYER_STARTS_4 
+ }
+{
+       Address: "4E86"
+        Name: .__LEVEL_DATA_PLAYER_STARTS_5 
+ }
+{
+       Address: "4FEE"
+        Name: .__LEVEL_DATA_PLAYER_STARTS_6 
+ }
+{
+       Address: "50DE"
+        Name: .__LEVEL_DATA_PLAYER_STARTS_7 
+ }
+{
+       Address: "52A9"
+        Name: .__LEVEL_DATA_PLAYER_STARTS_8 
+ }
+{
+       Address: "5411"
+        Name: .__LEVEL_DATA_PLAYER_STARTS_9 
+ }
+{
+       Address: "0001"
+        Name: .__LOADADDR__ 
+ }
+{
+       Address: "2001"
+        Name: .__MAIN_FILEOFFS__ 
+ }
+{
+       Address: "6861"
+        Name: .__MAIN_LAST__ 
+ }
+{
+       Address: "A800"
+        Name: .__MAIN_SIZE__ 
+ }
+{
+       Address: "2800"
+        Name: .__MAIN_START__ 
+ }
+{
+       Address: "681C"
+        Name: .__ONCE_LOAD__ 
+ }
+{
+       Address: "681C"
+        Name: .__ONCE_RUN__ 
+ }
+{
+       Address: "0045"
+        Name: .__ONCE_SIZE__ 
+ }
+{
+       Address: "0800"
+        Name: .__STACKSIZE__ 
+ }
+{
+       Address: "000E"
+        Name: .__STARTRAM_FILEOFFS__ 
+ }
+{
+       Address: "0840"
+        Name: .__STARTRAM_LAST__ 
+ }
+{
+       Address: "17F3"
+        Name: .__STARTRAM_SIZE__ 
+ }
+{
+       Address: "080D"
+        Name: .__STARTRAM_START__ 
+ }
+{
+       Address: "0001"
+        Name: .__STARTUP__ 
+ }
+{
+       Address: "0000"
+        Name: .__ZP_FILEOFFS__ 
+ }
+{
+       Address: "001C"
+        Name: .__ZP_LAST__ 
+ }
+{
+       Address: "001A"
+        Name: .__ZP_SIZE__ 
+ }
+{
+       Address: "0002"
+        Name: .__ZP_START__ 
+ }
+{
+       Address: "6798"
+        Name: .__argc 
+ }
+{
+       Address: "679A"
+        Name: .__argv 
+ }
+{
+       Address: "677C"
+        Name: .__screen 
+ }
+{
+       Address: "67D1"
+        Name: .__tz 
+ }
+{
+       Address: "4355"
+        Name: ._abs 
+ }
+{
+       Address: "2800"
+        Name: ._animateWorm 
+ }
+{
+       Address: "3A28"
+        Name: ._animateWormTitleScreen 
+ }
+{
+       Address: "3891"
+        Name: ._backReferenceDecode 
+ }
+{
+       Address: "3BD3"
+        Name: ._bgcolor 
+ }
+{
+       Address: "3BAC"
+        Name: ._bordercolor 
+ }
+{
+       Address: "67F2"
+        Name: ._c64_ptvjoy_joy 
+ }
+{
+       Address: "29EF"
+        Name: ._circularBufferInit 
+ }
+{
+       Address: "2A51"
+        Name: ._circularBufferPop 
+ }
+{
+       Address: "2A0E"
+        Name: ._circularBufferPush 
+ }
+{
+       Address: "2A93"
+        Name: ._circularBufferSize 
+ }
+{
+       Address: "3C8C"
+        Name: ._clock_gettime 
+ }
+{
+       Address: "3696"
+        Name: ._coordCreate 
+ }
+{
+       Address: "36B1"
+        Name: ._coordToPos 
+ }
+{
+       Address: "3C50"
+        Name: ._div 
+ }
+{
+       Address: "0825"
+        Name: ._exit 
+ }
+{
+       Address: "2926"
+        Name: ._gameLoop 
+ }
+{
+       Address: "28DD"
+        Name: ._getPlayerInput 
+ }
+{
+       Address: "36F5"
+        Name: ._getPositionOffsetForDirection 
+ }
+{
+       Address: "3C65"
+        Name: ._get_ostype 
+ }
+{
+       Address: "3C86"
+        Name: ._get_tv 
+ }
+{
+       Address: "28A0"
+        Name: ._joyStateToDirection 
+ }
+{
+       Address: "3DB3"
+        Name: ._joy_clear_ptr 
+ }
+{
+       Address: "7450"
+        Name: ._joy_drv 
+ }
+{
+       Address: "3D70"
+        Name: ._joy_install 
+ }
+{
+       Address: "67CA"
+        Name: ._joy_read 
+ }
+{
+       Address: "3DB0"
+        Name: ._joy_uninstall 
+ }
+{
+       Address: "378F"
+        Name: ._levelDraw 
+ }
+{
+       Address: "3865"
+        Name: ._levelSetMultiColors 
+ }
+{
+       Address: "37D7"
+        Name: ._levelStart 
+ }
+{
+       Address: "6672"
+        Name: ._levels 
+ }
+{
+       Address: "38C9"
+        Name: ._lz77Decompress 
+ }
+{
+       Address: "29E2"
+        Name: ._main 
+ }
+{
+       Address: "3EDE"
+        Name: ._mktime 
+ }
+{
+       Address: "677A"
+        Name: ._numLevels 
+ }
+{
+       Address: "4642"
+        Name: ._offsets 
+ }
+{
+       Address: "6786"
+        Name: ._pathA 
+ }
+{
+       Address: "678E"
+        Name: ._pathB 
+ }
+{
+       Address: "36CD"
+        Name: ._posToCoord 
+ }
+{
+       Address: "43DC"
+        Name: ._rand 
+ }
+{
+       Address: "6780"
+        Name: ._screen 
+ }
+{
+       Address: "374D"
+        Name: ._screenClear 
+ }
+{
+       Address: "283C"
+        Name: ._setUpWormCharset 
+ }
+{
+       Address: "2904"
+        Name: ._setup 
+ }
+{
+       Address: "2889"
+        Name: ._setupJoysticks 
+ }
+{
+       Address: "43D0"
+        Name: ._srand 
+ }
+{
+       Address: "3BCB"
+        Name: ._textcolor 
+ }
+{
+       Address: "370A"
+        Name: ._tilePackWormTileStateInBits 
+ }
+{
+       Address: "4646"
+        Name: ._tileToIndex 
+ }
+{
+       Address: "44D1"
+        Name: ._time 
+ }
+{
+       Address: "3AB9"
+        Name: ._titleScreen 
+ }
+{
+       Address: "2859"
+        Name: ._waitMs 
+ }
+{
+       Address: "4581"
+        Name: ._waitvsync 
+ }
+{
+       Address: "2000"
+        Name: ._wormCharset 
+ }
+{
+       Address: "6782"
+        Name: ._wormColors 
+ }
+{
+       Address: "2EB8"
+        Name: ._wormDraw 
+ }
+{
+       Address: "35D6"
+        Name: ._wormGetPart 
+ }
+{
+       Address: "2AB9"
+        Name: ._wormInit 
+ }
+{
+       Address: "3022"
+        Name: ._wormLazyDraw 
+ }
+{
+       Address: "2D30"
+        Name: ._wormSetNextDirection 
+ }
+{
+       Address: "33AD"
+        Name: ._wormSetNextStep 
+ }
+{
+       Address: "2D5D"
+        Name: ._wormStep 
+ }
+{
+       Address: "681C"
+        Name: ._worms 
+ }
+{
+       Address: "3B5C"
+        Name: .addeq0sp 
+ }
+{
+       Address: "3B5E"
+        Name: .addeqysp 
+ }
+{
+       Address: "3B6E"
+        Name: .addysp 
+ }
+{
+       Address: "3B6D"
+        Name: .addysp1 
+ }
+{
+       Address: "3B7B"
+        Name: .aslax1 
+ }
+{
+       Address: "3B83"
+        Name: .aslax2 
+ }
+{
+       Address: "3B8E"
+        Name: .aslax4 
+ }
+{
+       Address: "3B9F"
+        Name: .axlong 
+ }
+{
+       Address: "3BA5"
+        Name: .axulong 
+ }
+{
+       Address: "3BB4"
+        Name: .callmain 
+ }
+{
+       Address: "679C"
+        Name: .condes 
+ }
+{
+       Address: "3BE7"
+        Name: .decax1 
+ }
+{
+       Address: "3BEE"
+        Name: .decax2 
+ }
+{
+       Address: "3BF5"
+        Name: .decaxy 
+ }
+{
+       Address: "3BFE"
+        Name: .decsp1 
+ }
+{
+       Address: "3C07"
+        Name: .decsp2 
+ }
+{
+       Address: "3C14"
+        Name: .decsp3 
+ }
+{
+       Address: "3C21"
+        Name: .decsp4 
+ }
+{
+       Address: "3C2E"
+        Name: .decsp8 
+ }
+{
+       Address: "3BDB"
+        Name: .donelib 
+ }
+{
+       Address: "0825"
+        Name: .em_libref 
+ }
+{
+       Address: "3D23"
+        Name: .incax1 
+ }
+{
+       Address: "3D2A"
+        Name: .incax4 
+ }
+{
+       Address: "3D2C"
+        Name: .incaxy 
+ }
+{
+       Address: "3D35"
+        Name: .incsp1 
+ }
+{
+       Address: "3D44"
+        Name: .incsp2 
+ }
+{
+       Address: "3D52"
+        Name: .incsp3 
+ }
+{
+       Address: "3D57"
+        Name: .incsp4 
+ }
+{
+       Address: "3D5C"
+        Name: .incsp5 
+ }
+{
+       Address: "3D61"
+        Name: .incsp6 
+ }
+{
+       Address: "3D66"
+        Name: .incsp7 
+ }
+{
+       Address: "3D6B"
+        Name: .incsp8 
+ }
+{
+       Address: "681C"
+        Name: .initlib 
+ }
+{
+       Address: "6842"
+        Name: .inittime 
+ }
+{
+       Address: "67C7"
+        Name: .joy_count 
+ }
+{
+       Address: "67C1"
+        Name: .joy_install 
+ }
+{
+       Address: "0825"
+        Name: .joy_libref 
+ }
+{
+       Address: "67CA"
+        Name: .joy_read 
+ }
+{
+       Address: "67C4"
+        Name: .joy_uninstall 
+ }
+{
+       Address: "3DE2"
+        Name: .ldaidx 
+ }
+{
+       Address: "3DFB"
+        Name: .ldax0sp 
+ }
+{
+       Address: "3DEE"
+        Name: .ldaxi 
+ }
+{
+       Address: "3DF0"
+        Name: .ldaxidx 
+ }
+{
+       Address: "3DFD"
+        Name: .ldaxysp 
+ }
+{
+       Address: "3E1B"
+        Name: .ldeax0sp 
+ }
+{
+       Address: "3E04"
+        Name: .ldeaxi 
+ }
+{
+       Address: "3E06"
+        Name: .ldeaxidx 
+ }
+{
+       Address: "3E1D"
+        Name: .ldeaxysp 
+ }
+{
+       Address: "3E2E"
+        Name: .leaa0sp 
+ }
+{
+       Address: "3E30"
+        Name: .leaaxsp 
+ }
+{
+       Address: "4514"
+        Name: .load_tenth 
+ }
+{
+       Address: "430C"
+        Name: .mul8x16 
+ }
+{
+       Address: "4316"
+        Name: .mul8x16a 
+ }
+{
+       Address: "4344"
+        Name: .mulax3 
+ }
+{
+       Address: "4359"
+        Name: .negax 
+ }
+{
+       Address: "3D3C"
+        Name: .popax 
+ }
+{
+       Address: "4367"
+        Name: .popptr1 
+ }
+{
+       Address: "441E"
+        Name: .popsargsudiv16 
+ }
+{
+       Address: "000A"
+        Name: .ptr1 
+ }
+{
+       Address: "000C"
+        Name: .ptr2 
+ }
+{
+       Address: "000E"
+        Name: .ptr3 
+ }
+{
+       Address: "0010"
+        Name: .ptr4 
+ }
+{
+       Address: "438B"
+        Name: .push0 
+ }
+{
+       Address: "3E99"
+        Name: .push0ax 
+ }
+{
+       Address: "4379"
+        Name: .pusha 
+ }
+{
+       Address: "438D"
+        Name: .pusha0 
+ }
+{
+       Address: "4375"
+        Name: .pusha0sp 
+ }
+{
+       Address: "438F"
+        Name: .pushax 
+ }
+{
+       Address: "4377"
+        Name: .pushaysp 
+ }
+{
+       Address: "3E9F"
+        Name: .pusheax 
+ }
+{
+       Address: "3E96"
+        Name: .pushl0 
+ }
+{
+       Address: "43AB"
+        Name: .pushptr1idx 
+ }
+{
+       Address: "43A5"
+        Name: .pushw 
+ }
+{
+       Address: "43B4"
+        Name: .pushw0sp 
+ }
+{
+       Address: "43A7"
+        Name: .pushwidx 
+ }
+{
+       Address: "43B6"
+        Name: .pushwysp 
+ }
+{
+       Address: "0016"
+        Name: .regbank 
+ }
+{
+       Address: "0006"
+        Name: .regsave 
+ }
+{
+       Address: "4404"
+        Name: .regswap2 
+ }
+{
+       Address: "441A"
+        Name: .return0 
+ }
+{
+       Address: "0825"
+        Name: .ser_libref 
+ }
+{
+       Address: "3B7B"
+        Name: .shlax1 
+ }
+{
+       Address: "3B83"
+        Name: .shlax2 
+ }
+{
+       Address: "3B8E"
+        Name: .shlax4 
+ }
+{
+       Address: "443E"
+        Name: .shrax2 
+ }
+{
+       Address: "0002"
+        Name: .sp 
+ }
+{
+       Address: "0004"
+        Name: .sreg 
+ }
+{
+       Address: "4449"
+        Name: .staspidx 
+ }
+{
+       Address: "445F"
+        Name: .stax0sp 
+ }
+{
+       Address: "446A"
+        Name: .staxspidx 
+ }
+{
+       Address: "4461"
+        Name: .staxysp 
+ }
+{
+       Address: "4485"
+        Name: .steax0sp 
+ }
+{
+       Address: "449A"
+        Name: .steaxspidx 
+ }
+{
+       Address: "4487"
+        Name: .steaxysp 
+ }
+{
+       Address: "0825"
+        Name: .tgi_libref 
+ }
+{
+       Address: "0012"
+        Name: .tmp1 
+ }
+{
+       Address: "0013"
+        Name: .tmp2 
+ }
+{
+       Address: "0014"
+        Name: .tmp3 
+ }
+{
+       Address: "0015"
+        Name: .tmp4 
+ }
+{
+       Address: "3DBD"
+        Name: .tosadd0ax 
+ }
+{
+       Address: "3B40"
+        Name: .tosadda0 
+ }
+{
+       Address: "3B42"
+        Name: .tosaddax 
+ }
+{
+       Address: "3DC3"
+        Name: .tosaddeax 
+ }
+{
+       Address: "3C3B"
+        Name: .tosdiva0 
+ }
+{
+       Address: "3C3D"
+        Name: .tosdivax 
+ }
+{
+       Address: "3CF7"
+        Name: .tosicmp 
+ }
+{
+       Address: "3CF5"
+        Name: .tosicmp0 
+ }
+{
+       Address: "42B4"
+        Name: .tosmoda0 
+ }
+{
+       Address: "42B6"
+        Name: .tosmodax 
+ }
+{
+       Address: "3E3A"
+        Name: .tosmul0ax 
+ }
+{
+       Address: "430A"
+        Name: .tosmula0 
+ }
+{
+       Address: "42C5"
+        Name: .tosmulax 
+ }
+{
+       Address: "3E40"
+        Name: .tosmuleax 
+ }
+{
+       Address: "3EB7"
+        Name: .tossub0ax 
+ }
+{
+       Address: "44BC"
+        Name: .tossuba0 
+ }
+{
+       Address: "44BE"
+        Name: .tossubax 
+ }
+{
+       Address: "3EBD"
+        Name: .tossubeax 
+ }
+{
+       Address: "4521"
+        Name: .tosudiva0 
+ }
+{
+       Address: "4523"
+        Name: .tosudivax 
+ }
+{
+       Address: "4570"
+        Name: .tosumoda0 
+ }
+{
+       Address: "4572"
+        Name: .tosumodax 
+ }
+{
+       Address: "3E3A"
+        Name: .tosumul0ax 
+ }
+{
+       Address: "430A"
+        Name: .tosumula0 
+ }
+{
+       Address: "42C5"
+        Name: .tosumulax 
+ }
+{
+       Address: "3E40"
+        Name: .tosumuleax 
+ }
+{
+       Address: "4532"
+        Name: .udiv16 
+ }
+{
+       Address: "458C"
+        Name: .zerobss 
+ }
