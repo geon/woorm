@@ -115,7 +115,12 @@ void gameLoop(void)
 	uint8_t levelIndex = 0;
 	for (;;)
 	{
-		levelStart(&levels[levelIndex % (numLevels - 1)], screen, sizeof(worms) / sizeof(Worm));
+		// The last level is the title screen.
+		if (levelIndex > numLevels - 2)
+		{
+			levelIndex = 0;
+		}
+		levelStart(&levels[levelIndex], screen, sizeof(worms) / sizeof(Worm));
 
 		for (;;)
 		{
