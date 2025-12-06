@@ -112,13 +112,12 @@ void setup(void)
 
 void gameLoop(void)
 {
-	uint16_t frame;
 	uint8_t levelIndex = 0;
 	for (;;)
 	{
 		levelStart(&levels[levelIndex % (numLevels - 1)], screen, sizeof(worms) / sizeof(Worm));
 
-		for (frame = 0; frame < 180; ++frame)
+		for (;;)
 		{
 			if (JOY_FIRE(joy_read(JOY_1)) || JOY_FIRE(joy_read(JOY_2)))
 			{
