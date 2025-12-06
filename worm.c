@@ -92,10 +92,9 @@ void wormStep(uint8_t wormIndex)
 
 	if (worm->headStep == 0)
 	{
-		uint8_t index = 0;
-
 		if (worm->hasNextStep)
 		{
+			uint8_t index = 0;
 			circularBufferPush(&worm->tail, &index);
 			circularBufferGetValue(worm->tailDirections, index) = worm->nextStep.direction;
 			circularBufferGetValue(worm->tailPositions, index) = worm->nextStep.position;
