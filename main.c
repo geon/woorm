@@ -127,10 +127,15 @@ void gameLoop(void)
 
 			waitvsync();
 
+			bordercolor(wormColors[0]);
 			animateWorm(0, getPlayerInput(0));
+			bordercolor(wormColors[1]);
 			animateWorm(1, getPlayerInput(1));
+			bordercolor(wormColors[2]);
 			animateWorm(2, getPlayerInput(2));
+			bordercolor(wormColors[3]);
 			animateWorm(3, getPlayerInput(3));
+			bordercolor(COLOR_BLACK);
 		}
 		++levelIndex;
 	}
