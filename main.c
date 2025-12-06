@@ -120,7 +120,7 @@ void gameLoop(void)
 		{
 			levelIndex = 0;
 		}
-		levelStart(&levels[levelIndex], screen, sizeof(worms) / sizeof(Worm));
+		levelStart(&levels[levelIndex], screen, 4);
 
 		for (;;)
 		{
