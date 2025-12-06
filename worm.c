@@ -94,15 +94,17 @@ void wormStep(uint8_t wormIndex)
 	{
 		uint8_t index = 0;
 
-		if (!worm->hasNextStep)
+		if (worm->hasNextStep)
+		{
+			circularBufferPush(&worm->tail, &index);
+			circularBufferGetValue(worm->tailDirections, index) = worm->nextStep.direction;
+			circularBufferGetValue(worm->tailPositions, index) = worm->nextStep.position;
+		}
+		else
 		{
 			// Blocked.
 			return;
 		}
-
-		circularBufferPush(&worm->tail, &index);
-		circularBufferGetValue(worm->tailDirections, index) = worm->nextStep.direction;
-		circularBufferGetValue(worm->tailPositions, index) = worm->nextStep.position;
 	}
 
 	if (worm->tailStep == 0)
