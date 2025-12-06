@@ -2,4 +2,6 @@
 *.exe
 *.obj
 *.prg
+*.lbl
+*.labels
 art/

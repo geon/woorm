@@ -26,7 +26,10 @@ cl65 -O \
     title-screen.c \
     -DJOYSTICK_DRIVER=c64_ptvjoy_joy \
     -C c64-c-gamedev.cfg \
-    -o woorm.prg
+    -o woorm.prg \
+    -g -Ln woorm.lbl
+
+./convert-labels-to-retrodebugger-format.sh
 
 # Run in c64 emulator.
 export PATH="$PATH:/Applications/vice-arm64-gtk3-3.6.1/bin"
