@@ -90,10 +90,7 @@ void wormStep(uint8_t wormIndex)
 	// TODO: Run this only each full step. Worms don't need to be able to change direction in the middle of a step.
 	wormSetNextStep(wormIndex);
 
-	worm->headStep = (worm->headStep + 4) & 0b1111;
-	worm->tailStep = (worm->tailStep + 4) & 0b1111;
-
-	if (worm->headStep == 4)
+	if (worm->headStep == 0)
 	{
 		uint8_t index = 0;
 
@@ -108,12 +105,15 @@ void wormStep(uint8_t wormIndex)
 		circularBufferGetValue(worm->tailPositions, index) = worm->nextStep.position;
 	}
 
-	if (worm->tailStep == 4)
+	if (worm->tailStep == 0)
 	{
 		uint8_t index = 0;
 
 		circularBufferPop(&worm->tail, &index);
 	}
+
+	worm->headStep = (worm->headStep + 4) & 0b1111;
+	worm->tailStep = (worm->tailStep + 4) & 0b1111;
 
 	worm->nextDirection = worm->nextStep.direction;
 
