@@ -3,7 +3,9 @@
 
 #include "worm.h"
 
-extern Worm worms[4];
+typedef Worm Worms[4];
+
+extern Worms worms;
 extern uint8_t wormColors[4];
 
 #endif

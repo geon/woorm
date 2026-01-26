@@ -8,7 +8,7 @@
 #define COLOR_RED 4
 #endif
 
-Worm worms[4];
+Worms worms;
 
 uint8_t wormColors[4] = {
 	COLOR_CYAN,
