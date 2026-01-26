@@ -6,7 +6,7 @@
 #include "worms.h"
 #include <stdint.h>
 
-void wormInit(uint8_t wormIndex, Screen *screen, uint16_t pos, Direction direction)
+void wormInit(uint8_t wormIndex, uint16_t pos, Direction direction)
 {
 	Worm *worm = &worms[wormIndex];
 
@@ -17,7 +17,6 @@ void wormInit(uint8_t wormIndex, Screen *screen, uint16_t pos, Direction directi
 	worm->nextDirection = direction;
 	worm->headStep = Microstep_0;
 	worm->tailStep = Microstep_0;
-	worm->screen = screen;
 	circularBufferInit(&worm->tail);
 	worm->hasNextStep = false;
 
@@ -59,25 +58,25 @@ void wormSetNextStep(uint8_t wormIndex)
 	worm->hasNextStep = true;
 
 	// If the selected direction is blocked, first try the previous direction.
-	if (worm->screen->chars[worm->nextStep.position])
+	if (screen->chars[worm->nextStep.position])
 	{
 		worm->nextStep.direction = circularBufferGetLastValue(worm->tail, worm->tailDirections);
 		worm->nextStep.position = currentHeadPosition + getPositionOffsetForDirection(worm->nextStep.direction);
 	}
 	// If the direction is blocked, turn clockwise.
-	if (worm->screen->chars[worm->nextStep.position])
+	if (screen->chars[worm->nextStep.position])
 	{
 		worm->nextStep.direction = (worm->nextStep.direction + 1) & 0b11;
 		worm->nextStep.position = currentHeadPosition + getPositionOffsetForDirection(worm->nextStep.direction);
 	}
 	// If still blocked, try anti-clockwise instead.
-	if (worm->screen->chars[worm->nextStep.position])
+	if (screen->chars[worm->nextStep.position])
 	{
 		worm->nextStep.direction = (worm->nextStep.direction + 2) & 0b11;
 		worm->nextStep.position = currentHeadPosition + getPositionOffsetForDirection(worm->nextStep.direction);
 	}
 	// If still blocked, just don't move.
-	if (worm->screen->chars[worm->nextStep.position])
+	if (screen->chars[worm->nextStep.position])
 	{
 		worm->hasNextStep = false;
 	}
@@ -165,7 +164,6 @@ void wormDraw(uint8_t wormIndex)
 	Direction direction;
 	uint16_t position;
 	uint8_t iterator;
-	Screen *screen = worm->screen;
 	Direction nextDirection = worm->nextDirection;
 
 	circularBufferForEachReverse(tail, iterator)
@@ -191,7 +189,6 @@ void wormLazyDraw(uint8_t wormIndex)
 	Direction nextDirection;
 	CircularBuffer *tail = &worm->tail;
 
-	Screen *screen = worm->screen;
 	Direction direction;
 	uint16_t position;
 

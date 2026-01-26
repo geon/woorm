@@ -2,21 +2,21 @@
 #include "lz77.h"
 #include <c64.h>
 
-void levelDraw(Level *level, Screen *screen)
+void levelDraw(Level *level)
 {
 	// Decompress directly to screen.
 	lz77Decompress(level->chars, 1024, screen->chars, 1024);
 	lz77Decompress(level->colors, 1024, screen->colors, 1024);
 }
 
-void levelStart(Level *level, Screen *screen, uint8_t numWorms)
+void levelStart(Level *level, uint8_t numWorms)
 {
 	uint8_t index;
 	levelSetMultiColors(level);
-	levelDraw(level, screen);
+	levelDraw(level);
 	for (index = 0; index < numWorms; ++index)
 	{
-		wormInit(index, screen, coordToPos(level->playerStarts[index].position), level->playerStarts[index].direction);
+		wormInit(index, coordToPos(level->playerStarts[index].position), level->playerStarts[index].direction);
 	}
 }
 

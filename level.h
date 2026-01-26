@@ -23,8 +23,8 @@ typedef struct Level
 	uint8_t *colors;
 } Level;
 
-void levelDraw(Level *level, Screen *screen);
-void levelStart(Level *level, Screen *screen, uint8_t numWorms);
+void levelDraw(Level *level);
+void levelStart(Level *level, uint8_t numWorms);
 void levelSetMultiColors(Level *level);
 
 #endif

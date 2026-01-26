@@ -24,8 +24,8 @@ Screen *screen = &_screen;
 
 void wormBenchmark(void)
 {
-	screenClear(screen);
-	wormInit(wormIndex, screen, coordToPos(coordCreate(4, 0)), Direction_right);
+	screenClear();
+	wormInit(wormIndex, coordToPos(coordCreate(4, 0)), Direction_right);
 
 	beginBenchmark("wormStep");
 	{

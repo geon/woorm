@@ -9,6 +9,8 @@ typedef struct Screen
 	uint8_t *colors;
 } Screen;
 
-void screenClear(Screen *screen);
+extern Screen *screen;
+
+void screenClear();
 
 #endif

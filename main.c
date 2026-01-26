@@ -104,7 +104,7 @@ void setup(void)
 
 	srand(time(NULL));
 
-	screenClear(screen);
+	screenClear();
 	bgcolor(COLOR_BLACK);
 	bordercolor(COLOR_BLACK);
 	setUpWormCharset();
@@ -120,7 +120,7 @@ void gameLoop(void)
 		{
 			levelIndex = 0;
 		}
-		levelStart(&levels[levelIndex], screen, 4);
+		levelStart(&levels[levelIndex], 4);
 
 		for (;;)
 		{

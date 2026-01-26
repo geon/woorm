@@ -51,7 +51,7 @@ void titleScreen(void)
 	uint8_t pathStepA = 0;
 	uint8_t pathStepB = 0;
 
-	levelStart(&levels[(numLevels - 1)], screen, 2);
+	levelStart(&levels[(numLevels - 1)] ß, 2);
 	// worms[0].wantedLength = sizeof(pathA) - 2;
 	// worms[1].wantedLength = sizeof(pathB) - 2;
 

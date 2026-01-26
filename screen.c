@@ -1,6 +1,6 @@
 #include "screen.h"
 
-void screenClear(Screen *screen)
+void screenClear()
 {
 	uint16_t i = 0;
 

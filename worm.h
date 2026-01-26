@@ -19,7 +19,6 @@ typedef struct TailCell
 
 typedef struct Worm
 {
-	Screen *screen;
 	Direction wantedNextDirection;
 	Direction nextDirection;
 	Microstep headStep;
@@ -33,7 +32,7 @@ typedef struct Worm
 	uint16_t tailPositions[0x100];
 } Worm;
 
-void wormInit(uint8_t wormIndex, Screen *screen, uint16_t pos, Direction direction);
+void wormInit(uint8_t wormIndex, uint16_t pos, Direction direction);
 void wormSetNextDirection(uint8_t wormIndex, Direction direction);
 void wormStep(uint8_t wormIndex);
 
