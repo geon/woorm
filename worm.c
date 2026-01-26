@@ -53,30 +53,30 @@ void wormSetNextStep(uint8_t wormIndex)
 	uint16_t currentHeadPosition = circularBufferGetLastValue(worm->tail, worm->tailPositions);
 
 	// Try stepping in the selected direction.
-	worm->nextStep.direction = worm->wantedNextDirection;
-	worm->nextStep.position = currentHeadPosition + getPositionOffsetForDirection(worm->nextStep.direction);
+	worm->nextStepDirection = worm->wantedNextDirection;
+	worm->nextStepPosition = currentHeadPosition + getPositionOffsetForDirection(worm->nextStepDirection);
 	worm->hasNextStep = true;
 
 	// If the selected direction is blocked, first try the previous direction.
-	if (screen->chars[worm->nextStep.position])
+	if (screen->chars[worm->nextStepPosition])
 	{
-		worm->nextStep.direction = circularBufferGetLastValue(worm->tail, worm->tailDirections);
-		worm->nextStep.position = currentHeadPosition + getPositionOffsetForDirection(worm->nextStep.direction);
+		worm->nextStepDirection = circularBufferGetLastValue(worm->tail, worm->tailDirections);
+		worm->nextStepPosition = currentHeadPosition + getPositionOffsetForDirection(worm->nextStepDirection);
 	}
 	// If the direction is blocked, turn clockwise.
-	if (screen->chars[worm->nextStep.position])
+	if (screen->chars[worm->nextStepPosition])
 	{
-		worm->nextStep.direction = (worm->nextStep.direction + 1) & 0b11;
-		worm->nextStep.position = currentHeadPosition + getPositionOffsetForDirection(worm->nextStep.direction);
+		worm->nextStepDirection = (worm->nextStepDirection + 1) & 0b11;
+		worm->nextStepPosition = currentHeadPosition + getPositionOffsetForDirection(worm->nextStepDirection);
 	}
 	// If still blocked, try anti-clockwise instead.
-	if (screen->chars[worm->nextStep.position])
+	if (screen->chars[worm->nextStepPosition])
 	{
-		worm->nextStep.direction = (worm->nextStep.direction + 2) & 0b11;
-		worm->nextStep.position = currentHeadPosition + getPositionOffsetForDirection(worm->nextStep.direction);
+		worm->nextStepDirection = (worm->nextStepDirection + 2) & 0b11;
+		worm->nextStepPosition = currentHeadPosition + getPositionOffsetForDirection(worm->nextStepDirection);
 	}
 	// If still blocked, just don't move.
-	if (screen->chars[worm->nextStep.position])
+	if (screen->chars[worm->nextStepPosition])
 	{
 		worm->hasNextStep = false;
 	}
@@ -93,8 +93,8 @@ void wormStep(uint8_t wormIndex)
 	{
 		uint8_t index = 0;
 		circularBufferPush(&worm->tail, &index);
-		circularBufferGetValue(worm->tailDirections, index) = worm->nextStep.direction;
-		circularBufferGetValue(worm->tailPositions, index) = worm->nextStep.position;
+		circularBufferGetValue(worm->tailDirections, index) = worm->nextStepDirection;
+		circularBufferGetValue(worm->tailPositions, index) = worm->nextStepPosition;
 	}
 
 	if (!worm->hasNextStep)
@@ -113,7 +113,7 @@ void wormStep(uint8_t wormIndex)
 	worm->headStep = (worm->headStep + 4) & 0b1111;
 	worm->tailStep = (worm->tailStep + 4) & 0b1111;
 
-	worm->nextDirection = worm->nextStep.direction;
+	worm->nextDirection = worm->nextStepDirection;
 
 	// When forced to turn, forget whatever input the user did, and continue straight forward.
 	worm->wantedNextDirection = worm->nextDirection;
