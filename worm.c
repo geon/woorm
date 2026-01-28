@@ -194,35 +194,27 @@ void wormLazyDraw(uint8_t wormIndex)
 	wormLazyDraw_tailDirections = worms.tailDirections[wormIndex];
 	wormLazyDraw_tailPositions = worms.tailPositions[wormIndex];
 
-	{
-		Direction nextDirection = worms.nextDirection[wormIndex];
-		uint8_t tailIndex = tailEnd - 1;
-		TileType tileType = TileType_animated_head;
-		Microstep step = worms.headStep[wormIndex];
-		wormLazyDrawTile(nextDirection, tailIndex, tileType, step);
-	}
+	wormLazyDrawTile(
+		worms.nextDirection[wormIndex],
+		tailEnd - 1,
+		TileType_animated_head,
+		worms.headStep[wormIndex]);
 
-	{
-		Direction nextDirection = wormLazyDraw_direction;
-		uint8_t tailIndex = tailEnd - 2;
-		TileType tileType = TileType_animated_headToMiddle;
-		Microstep step = worms.headStep[wormIndex];
-		wormLazyDrawTile(nextDirection, tailIndex, tileType, step);
-	}
+	wormLazyDrawTile(
+		wormLazyDraw_direction,
+		tailEnd - 2,
+		TileType_animated_headToMiddle,
+		worms.headStep[wormIndex]);
 
-	{
-		Direction nextDirection = circularBufferGetValue(wormLazyDraw_tailDirections, tailBegin + 2);
-		uint8_t tailIndex = tailBegin + 1;
-		TileType tileType = TileType_animated_endToMiddle;
-		Microstep step = worms.tailStep[wormIndex];
-		wormLazyDrawTile(nextDirection, tailIndex, tileType, step);
-	}
+	wormLazyDrawTile(
+		circularBufferGetValue(wormLazyDraw_tailDirections, tailBegin + 2),
+		tailBegin + 1,
+		TileType_animated_endToMiddle,
+		worms.tailStep[wormIndex]);
 
-	{
-		Direction nextDirection = wormLazyDraw_direction;
-		uint8_t tailIndex = tailBegin;
-		TileType tileType = TileType_animated_end;
-		Microstep step = worms.tailStep[wormIndex];
-		wormLazyDrawTile(nextDirection, tailIndex, tileType, step);
-	}
+	wormLazyDrawTile(
+		wormLazyDraw_direction,
+		tailBegin,
+		TileType_animated_end,
+		worms.tailStep[wormIndex]);
 }
