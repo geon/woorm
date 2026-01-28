@@ -9,6 +9,7 @@ uint8_t tilePackWormTileStateInBits(TileType type, Direction lastDirection, Dire
 	// Just pack the bits as tightly as possible.
 	// `step` already has the relevant bits in the right place.
 	return (
+		// 3 bits, but the top bit isn't used. Not sure if ok.
 		((uint8_t)type << 6) |
 		((uint8_t)lastDirection << 4) |
 		((uint8_t)step & 0b1100) |
