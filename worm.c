@@ -181,9 +181,10 @@ void wormLazyDraw(uint8_t wormIndex)
 	{
 		Direction nextDirection = worms.nextDirection[wormIndex];
 		uint8_t tailIndex = tailEnd - 1;
+		TileType tileType = TileType_animated_head;
 		uint16_t position = circularBufferGetValue(tailPositions, tailIndex);
 		direction = circularBufferGetValue(tailDirections, tailIndex);
-		screen->chars[position] = tileToIndex[tilePackWormTileStateInBits(TileType_animated_head, direction, nextDirection, worms.headStep[wormIndex])];
+		screen->chars[position] = tileToIndex[tilePackWormTileStateInBits(tileType, direction, nextDirection, worms.headStep[wormIndex])];
 		// TODO: Only needed on full steps.
 		// TODO:
 		// Only the cell just entered needs to have the color changed.
@@ -193,9 +194,10 @@ void wormLazyDraw(uint8_t wormIndex)
 	{
 		Direction nextDirection = direction;
 		uint8_t tailIndex = tailEnd - 2;
+		TileType tileType = TileType_animated_headToMiddle;
 		uint16_t position = circularBufferGetValue(tailPositions, tailIndex);
 		direction = circularBufferGetValue(tailDirections, tailIndex);
-		screen->chars[position] = tileToIndex[tilePackWormTileStateInBits(TileType_animated_headToMiddle, direction, nextDirection, worms.headStep[wormIndex])];
+		screen->chars[position] = tileToIndex[tilePackWormTileStateInBits(tileType, direction, nextDirection, worms.headStep[wormIndex])];
 		// TODO: Only needed on full steps.
 		// TODO:
 		// Only the cell just entered needs to have the color changed.
@@ -205,9 +207,10 @@ void wormLazyDraw(uint8_t wormIndex)
 	{
 		Direction nextDirection = circularBufferGetValue(tailDirections, tailBegin + 2);
 		uint8_t tailIndex = tailBegin + 1;
+		TileType tileType = TileType_animated_endToMiddle;
 		uint16_t position = circularBufferGetValue(tailPositions, tailIndex);
 		direction = circularBufferGetValue(tailDirections, tailIndex);
-		screen->chars[position] = tileToIndex[tilePackWormTileStateInBits(TileType_animated_endToMiddle, direction, nextDirection, worms.tailStep[wormIndex])];
+		screen->chars[position] = tileToIndex[tilePackWormTileStateInBits(tileType, direction, nextDirection, worms.tailStep[wormIndex])];
 		// TODO: Only needed on full steps.
 		// TODO:
 		// Only the cell just entered needs to have the color changed.
@@ -217,9 +220,10 @@ void wormLazyDraw(uint8_t wormIndex)
 	{
 		Direction nextDirection = direction;
 		uint8_t tailIndex = tailBegin;
+		TileType tileType = TileType_animated_end;
 		uint16_t position = circularBufferGetValue(tailPositions, tailIndex);
 		direction = circularBufferGetValue(tailDirections, tailIndex);
-		screen->chars[position] = tileToIndex[tilePackWormTileStateInBits(TileType_animated_end, direction, nextDirection, worms.tailStep[wormIndex])];
+		screen->chars[position] = tileToIndex[tilePackWormTileStateInBits(tileType, direction, nextDirection, worms.tailStep[wormIndex])];
 		// TODO: Only needed on full steps.
 		// TODO:
 		// Only the cell just entered needs to have the color changed.
