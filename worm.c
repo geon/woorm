@@ -189,6 +189,8 @@ void wormLazyDraw(uint8_t wormIndex)
 {
 	uint16_t tailBegin = worms.tailBegin[wormIndex];
 	uint16_t tailEnd = worms.tailEnd[wormIndex];
+	Microstep headStep = worms.headStep[wormIndex];
+	Microstep tailStep = worms.tailStep[wormIndex];
 
 	wormLazyDraw_color = wormColors[wormIndex] + 8;
 	wormLazyDraw_tailDirections = worms.tailDirections[wormIndex];
@@ -198,23 +200,23 @@ void wormLazyDraw(uint8_t wormIndex)
 		worms.nextDirection[wormIndex],
 		tailEnd - 1,
 		TileType_animated_head,
-		worms.headStep[wormIndex]);
+		headStep);
 
 	wormLazyDrawTile(
 		wormLazyDraw_direction,
 		tailEnd - 2,
 		TileType_animated_headToMiddle,
-		worms.headStep[wormIndex]);
+		headStep);
 
 	wormLazyDrawTile(
 		circularBufferGetValue(wormLazyDraw_tailDirections, tailBegin + 2),
 		tailBegin + 1,
 		TileType_animated_endToMiddle,
-		worms.tailStep[wormIndex]);
+		tailStep);
 
 	wormLazyDrawTile(
 		wormLazyDraw_direction,
 		tailBegin,
 		TileType_animated_end,
-		worms.tailStep[wormIndex]);
+		tailStep);
 }
