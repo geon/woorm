@@ -1,23 +1,22 @@
 #ifndef TILE_TYPE_H
 #define TILE_TYPE_H
 
-#include "direction.h"
+#include <stdint.h>
 
-typedef enum TileType
-{
-	TileType_first,
+typedef uint8_t TileType;
 
-	TileType_animated_head = TileType_first,
-	TileType_animated_headToMiddle,
-	TileType_animated_endToMiddle,
-	TileType_animated_end,
+#define TileType_first 0
 
-	TileType_middle,
+#define TileType_animated_head TileType_first
+#define TileType_animated_headToMiddle 1
+#define TileType_animated_endToMiddle 2
+#define TileType_animated_end 3
 
-	// Not same as Tile_empty, which must be zero.
-	TileType_empty,
+#define TileType_middle 4
 
-	TileType_count
-} TileType;
+// Not same as Tile_empty, which must be zero.
+#define TileType_empty 5
+
+#define TileType_count 6
 
 #endif
