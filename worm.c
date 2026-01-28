@@ -178,10 +178,12 @@ void wormLazyDraw(uint8_t wormIndex)
 
 	Direction *tailDirections = worms.tailDirections[wormIndex];
 	uint16_t *tailPositions = worms.tailPositions[wormIndex];
+	uint16_t tailBegin = worms.tailBegin[wormIndex];
+	uint16_t tailEnd = worms.tailEnd[wormIndex];
 
 	nextDirection = worms.nextDirection[wormIndex];
 	{
-		uint8_t tailIndex = worms.tailEnd[wormIndex] - 1;
+		uint8_t tailIndex = tailEnd - 1;
 		direction = circularBufferGetValue(tailDirections, tailIndex);
 		position = circularBufferGetValue(tailPositions, tailIndex);
 	}
@@ -193,15 +195,15 @@ void wormLazyDraw(uint8_t wormIndex)
 
 	nextDirection = direction;
 	{
-		uint8_t tailIndex = worms.tailEnd[wormIndex] - 2;
+		uint8_t tailIndex = tailEnd - 2;
 		direction = circularBufferGetValue(tailDirections, tailIndex);
 		position = circularBufferGetValue(tailPositions, tailIndex);
 	}
 	screen->chars[position] = tileToIndex[tilePackWormTileStateInBits(TileType_animated_headToMiddle, direction, nextDirection, worms.headStep[wormIndex])];
 
-	nextDirection = circularBufferGetValue(tailDirections, worms.tailBegin[wormIndex] + 2);
+	nextDirection = circularBufferGetValue(tailDirections, tailBegin + 2);
 	{
-		uint8_t tailIndex = worms.tailBegin[wormIndex] + 1;
+		uint8_t tailIndex = tailBegin + 1;
 		direction = circularBufferGetValue(tailDirections, tailIndex);
 		position = circularBufferGetValue(tailPositions, tailIndex);
 	}
@@ -209,7 +211,7 @@ void wormLazyDraw(uint8_t wormIndex)
 
 	nextDirection = direction;
 	{
-		uint8_t tailIndex = worms.tailBegin[wormIndex];
+		uint8_t tailIndex = tailBegin;
 		direction = circularBufferGetValue(tailDirections, tailIndex);
 		position = circularBufferGetValue(tailPositions, tailIndex);
 	}
