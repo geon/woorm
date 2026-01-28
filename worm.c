@@ -172,6 +172,16 @@ Direction wormLazyDraw_direction;
 Direction *wormLazyDraw_tailDirections;
 uint16_t *wormLazyDraw_tailPositions;
 Direction wormLazyDraw_nextDirection;
+uint8_t wormLazyDraw_getTile(TileType type, Microstep step)
+{
+	// Optimized tilePackWormTileStateInBits
+	return (
+		// 3 bits, but the top bit isn't used.
+		((uint8_t)type << 6) |
+		((uint8_t)wormLazyDraw_direction << 4) |
+		((uint8_t)step & 0b1100) |
+		((uint8_t)wormLazyDraw_nextDirection << 0));
+}
 void wormLazyDrawTile(
 	uint8_t tailIndex,
 	TileType tileType,
@@ -179,11 +189,7 @@ void wormLazyDrawTile(
 {
 	uint16_t position = circularBufferGetValue(wormLazyDraw_tailPositions, tailIndex);
 	wormLazyDraw_direction = circularBufferGetValue(wormLazyDraw_tailDirections, tailIndex);
-	screen->chars[position] = tileToIndex[tilePackWormTileStateInBits(
-		tileType,
-		wormLazyDraw_direction,
-		wormLazyDraw_nextDirection,
-		step)];
+	screen->chars[position] = tileToIndex[wormLazyDraw_getTile(tileType, step)];
 	// TODO: Only needed on full steps.
 	// TODO:
 	// Only the cell just entered needs to have the color changed.
