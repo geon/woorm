@@ -172,7 +172,6 @@ void wormLazyDraw(uint8_t wormIndex)
 	uint8_t color = wormColors[wormIndex] + 8;
 
 	Direction direction;
-	uint16_t position;
 
 	Direction *tailDirections = worms.tailDirections[wormIndex];
 	uint16_t *tailPositions = worms.tailPositions[wormIndex];
@@ -182,36 +181,48 @@ void wormLazyDraw(uint8_t wormIndex)
 	{
 		Direction nextDirection = worms.nextDirection[wormIndex];
 		uint8_t tailIndex = tailEnd - 1;
+		uint16_t position = circularBufferGetValue(tailPositions, tailIndex);
 		direction = circularBufferGetValue(tailDirections, tailIndex);
-		position = circularBufferGetValue(tailPositions, tailIndex);
 		screen->chars[position] = tileToIndex[tilePackWormTileStateInBits(TileType_animated_head, direction, nextDirection, worms.headStep[wormIndex])];
+		// TODO: Only needed on full steps.
+		// TODO:
+		// Only the cell just entered needs to have the color changed.
+		screen->colors[position] = color;
 	}
-
-	// TODO: Only needed on full steps.
-	// Only the cell just entered needs to have the color changed.
-	screen->colors[position] = color;
 
 	{
 		Direction nextDirection = direction;
 		uint8_t tailIndex = tailEnd - 2;
+		uint16_t position = circularBufferGetValue(tailPositions, tailIndex);
 		direction = circularBufferGetValue(tailDirections, tailIndex);
-		position = circularBufferGetValue(tailPositions, tailIndex);
 		screen->chars[position] = tileToIndex[tilePackWormTileStateInBits(TileType_animated_headToMiddle, direction, nextDirection, worms.headStep[wormIndex])];
+		// TODO: Only needed on full steps.
+		// TODO:
+		// Only the cell just entered needs to have the color changed.
+		screen->colors[position] = color;
 	}
 
 	{
 		Direction nextDirection = circularBufferGetValue(tailDirections, tailBegin + 2);
 		uint8_t tailIndex = tailBegin + 1;
+		uint16_t position = circularBufferGetValue(tailPositions, tailIndex);
 		direction = circularBufferGetValue(tailDirections, tailIndex);
-		position = circularBufferGetValue(tailPositions, tailIndex);
 		screen->chars[position] = tileToIndex[tilePackWormTileStateInBits(TileType_animated_endToMiddle, direction, nextDirection, worms.tailStep[wormIndex])];
+		// TODO: Only needed on full steps.
+		// TODO:
+		// Only the cell just entered needs to have the color changed.
+		screen->colors[position] = color;
 	}
 
 	{
 		Direction nextDirection = direction;
 		uint8_t tailIndex = tailBegin;
+		uint16_t position = circularBufferGetValue(tailPositions, tailIndex);
 		direction = circularBufferGetValue(tailDirections, tailIndex);
-		position = circularBufferGetValue(tailPositions, tailIndex);
 		screen->chars[position] = tileToIndex[tilePackWormTileStateInBits(TileType_animated_end, direction, nextDirection, worms.tailStep[wormIndex])];
+		// TODO: Only needed on full steps.
+		// TODO:
+		// Only the cell just entered needs to have the color changed.
+		screen->colors[position] = color;
 	}
 }
