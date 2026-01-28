@@ -6,6 +6,14 @@
 #include "worms.h"
 #include <stdint.h>
 
+void wormInitAddSegment(uint8_t wormIndex, uint16_t *position, Direction direction, uint8_t *segmentIndex)
+{
+	circularBufferPush(worms.tailBegin[wormIndex], &worms.tailEnd[wormIndex], segmentIndex);
+	circularBufferGetValue(worms.tailDirections[wormIndex], *segmentIndex) = direction;
+	circularBufferGetValue(worms.tailPositions[wormIndex], *segmentIndex) = *position;
+	*position += getPositionOffsetForDirection(direction);
+}
+
 void wormInit(uint8_t wormIndex, uint16_t pos, Direction direction)
 {
 	uint8_t index = 0;
@@ -18,21 +26,10 @@ void wormInit(uint8_t wormIndex, uint16_t pos, Direction direction)
 	circularBufferInit(&worms.tailBegin[wormIndex], &worms.tailEnd[wormIndex]);
 	worms.hasNextStep[wormIndex] = false;
 
-	circularBufferPush(worms.tailBegin[wormIndex], &worms.tailEnd[wormIndex], &index);
-	circularBufferGetValue(worms.tailDirections[wormIndex], index) = direction;
-	circularBufferGetValue(worms.tailPositions[wormIndex], index) = position;
-	position += getPositionOffsetForDirection(direction);
-	circularBufferPush(worms.tailBegin[wormIndex], &worms.tailEnd[wormIndex], &index);
-	circularBufferGetValue(worms.tailDirections[wormIndex], index) = direction;
-	circularBufferGetValue(worms.tailPositions[wormIndex], index) = position;
-	position += getPositionOffsetForDirection(direction);
-	circularBufferPush(worms.tailBegin[wormIndex], &worms.tailEnd[wormIndex], &index);
-	circularBufferGetValue(worms.tailDirections[wormIndex], index) = direction;
-	circularBufferGetValue(worms.tailPositions[wormIndex], index) = position;
-	position += getPositionOffsetForDirection(direction);
-	circularBufferPush(worms.tailBegin[wormIndex], &worms.tailEnd[wormIndex], &index);
-	circularBufferGetValue(worms.tailDirections[wormIndex], index) = direction;
-	circularBufferGetValue(worms.tailPositions[wormIndex], index) = position;
+	wormInitAddSegment(wormIndex, &position, direction, &index);
+	wormInitAddSegment(wormIndex, &position, direction, &index);
+	wormInitAddSegment(wormIndex, &position, direction, &index);
+	wormInitAddSegment(wormIndex, &position, direction, &index);
 
 	wormDraw(wormIndex);
 }
