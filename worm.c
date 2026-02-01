@@ -95,18 +95,18 @@ void wormStep(uint8_t wormIndex)
 	// TODO: Run this only each full step. Worms don't need to be able to change direction in the middle of a step.
 	wormSetNextStep(wormIndex);
 
-	if (worms.headStep[wormIndex] == 0 && worms.hasNextStep[wormIndex])
+	if (!worms.hasNextStep[wormIndex])
+	{
+		// Blocked.
+		return;
+	}
+
+	if (worms.headStep[wormIndex] == 0)
 	{
 		uint8_t index = 0;
 		circularBufferPush(worms.tailBegin[wormIndex], &worms.tailEnd[wormIndex], &index);
 		circularBufferGetValue(worms.tailDirections[wormIndex], index) = worms.nextStepDirection[wormIndex];
 		circularBufferGetValue(worms.tailPositions[wormIndex], index) = worms.nextStepPosition[wormIndex];
-	}
-
-	if (!worms.hasNextStep[wormIndex])
-	{
-		// Blocked.
-		return;
 	}
 
 	if (worms.tailStep[wormIndex] == 0)
