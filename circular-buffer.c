@@ -1,36 +1,36 @@
 #include "circular-buffer.h"
 
-void circularBufferInit(CircularBuffer *circularBuffer)
+void circularBufferInit(uint8_t *circularBufferBegin, uint8_t *circularBufferEnd)
 {
-	circularBuffer->begin = 0;
-	circularBuffer->end = 0;
+	*circularBufferBegin = 0;
+	*circularBufferEnd = 0;
 }
 
-bool circularBufferPush(CircularBuffer *circularBuffer, uint8_t *index)
+bool circularBufferPush(uint8_t circularBufferBegin, uint8_t *circularBufferEnd, uint8_t *index)
 {
-	if (circularBufferSize(circularBuffer) > 0xfe)
+	if (circularBufferSize(circularBufferBegin, *circularBufferEnd) > 0xfe)
 	{
 		return false;
 	}
 
-	*index = circularBuffer->end;
-	++(circularBuffer->end);
+	*index = *circularBufferEnd;
+	++(*circularBufferEnd);
 	return true;
 }
 
-bool circularBufferPop(CircularBuffer *circularBuffer, uint8_t *index)
+bool circularBufferPop(uint8_t *circularBufferBegin, uint8_t circularBufferEnd, uint8_t *index)
 {
-	if (circularBufferSize(circularBuffer) == 0)
+	if (circularBufferSize(*circularBufferBegin, circularBufferEnd) == 0)
 	{
 		return false;
 	}
 
-	*index = circularBuffer->begin;
-	++(circularBuffer->begin);
+	*index = *circularBufferBegin;
+	++(*circularBufferBegin);
 	return true;
 }
 
-uint8_t circularBufferSize(CircularBuffer *circularBuffer)
+uint8_t circularBufferSize(uint8_t circularBufferBegin, uint8_t circularBufferEnd)
 {
-	return circularBuffer->end - circularBuffer->begin;
+	return circularBufferEnd - circularBufferBegin;
 }

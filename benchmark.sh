@@ -20,6 +20,7 @@ cl65 -O \
     screen.c \
     cc65-benchmark.c \
     tile-to-index.c \
+    worms.c \
     -o benchmark.prg
 
 # Run benchmarks in c64 emulator.

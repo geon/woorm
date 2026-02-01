@@ -8,7 +8,7 @@ void circularBufferTest(void)
 {
 	beginTest("Create circularBuffer.");
 	{
-		circularBufferInit(&circularBuffer);
+		circularBufferInit(&circularBuffer.begin, &circularBuffer.end);
 	}
 	endTest();
 
@@ -16,19 +16,19 @@ void circularBufferTest(void)
 	{
 		uint8_t foo = 0;
 
-		circularBufferInit(&circularBuffer);
+		circularBufferInit(&circularBuffer.begin, &circularBuffer.end);
 
-		circularBufferPush(&circularBuffer, &foo);
+		circularBufferPush(circularBuffer.begin, &circularBuffer.end, &foo);
 	}
 	endTest();
 
 	beginTest("Pop element from circularBuffer.");
 	{
 		uint8_t foo = 0;
-		circularBufferInit(&circularBuffer);
+		circularBufferInit(&circularBuffer.begin, &circularBuffer.end);
 
-		circularBufferPush(&circularBuffer, &foo);
-		circularBufferPop(&circularBuffer, &foo);
+		circularBufferPush(circularBuffer.begin, &circularBuffer.end, &foo);
+		circularBufferPop(&circularBuffer.begin, circularBuffer.end, &foo);
 	}
 	endTest();
 
@@ -42,9 +42,9 @@ void circularBufferTest(void)
 		for (i = 0x00; i <= 0xff; ++i)
 		{
 			pushed = (uint8_t)i;
-			circularBufferInit(&circularBuffer);
-			circularBufferPush(&circularBuffer, &pushed);
-			circularBufferPop(&circularBuffer, &popped);
+			circularBufferInit(&circularBuffer.begin, &circularBuffer.end);
+			circularBufferPush(circularBuffer.begin, &circularBuffer.end, &pushed);
+			circularBufferPop(&circularBuffer.begin, circularBuffer.end, &popped);
 			assertByte("Popped value should be same as pushed.", popped, pushed);
 		}
 	}
@@ -57,13 +57,13 @@ void circularBufferTest(void)
 		uint8_t firstPushed = 0;
 		uint8_t secondPushed = 0;
 
-		circularBufferInit(&circularBuffer);
+		circularBufferInit(&circularBuffer.begin, &circularBuffer.end);
 
-		circularBufferPush(&circularBuffer, &firstPushed);
-		circularBufferPush(&circularBuffer, &secondPushed);
+		circularBufferPush(circularBuffer.begin, &circularBuffer.end, &firstPushed);
+		circularBufferPush(circularBuffer.begin, &circularBuffer.end, &secondPushed);
 
-		circularBufferPop(&circularBuffer, &firstPopped);
-		circularBufferPop(&circularBuffer, &secondPopped);
+		circularBufferPop(&circularBuffer.begin, circularBuffer.end, &firstPopped);
+		circularBufferPop(&circularBuffer.begin, circularBuffer.end, &secondPopped);
 
 		assertByte("First popped value should be the first pushed.", firstPopped, firstPushed);
 		assertByte("Second popped value should be the second pushed.", secondPopped, secondPushed);
@@ -74,20 +74,20 @@ void circularBufferTest(void)
 	{
 		uint8_t foo = 0;
 
-		circularBufferInit(&circularBuffer);
-		assertByte("Fresh buffer should be empty.", circularBufferSize(&circularBuffer), 0);
+		circularBufferInit(&circularBuffer.begin, &circularBuffer.end);
+		assertByte("Fresh buffer should be empty.", circularBufferSize(circularBuffer.begin, circularBuffer.end), 0);
 
-		circularBufferPush(&circularBuffer, &foo);
-		assertByte("Pushing should increase size.", circularBufferSize(&circularBuffer), 1);
+		circularBufferPush(circularBuffer.begin, &circularBuffer.end, &foo);
+		assertByte("Pushing should increase size.", circularBufferSize(circularBuffer.begin, circularBuffer.end), 1);
 
-		circularBufferPush(&circularBuffer, &foo);
-		assertByte("Pushing should increase size.", circularBufferSize(&circularBuffer), 2);
+		circularBufferPush(circularBuffer.begin, &circularBuffer.end, &foo);
+		assertByte("Pushing should increase size.", circularBufferSize(circularBuffer.begin, circularBuffer.end), 2);
 
-		circularBufferPop(&circularBuffer, &foo);
-		assertByte("Popping should decrease size.", circularBufferSize(&circularBuffer), 1);
+		circularBufferPop(&circularBuffer.begin, circularBuffer.end, &foo);
+		assertByte("Popping should decrease size.", circularBufferSize(circularBuffer.begin, circularBuffer.end), 1);
 
-		circularBufferPop(&circularBuffer, &foo);
-		assertByte("Popping should decrease size.", circularBufferSize(&circularBuffer), 0);
+		circularBufferPop(&circularBuffer.begin, circularBuffer.end, &foo);
+		assertByte("Popping should decrease size.", circularBufferSize(circularBuffer.begin, circularBuffer.end), 0);
 	}
 	endTest();
 
@@ -97,15 +97,15 @@ void circularBufferTest(void)
 		bool success = 0;
 		uint8_t foo = 0;
 
-		circularBufferInit(&circularBuffer);
+		circularBufferInit(&circularBuffer.begin, &circularBuffer.end);
 
 		for (i = 0x00; i < 0xff; ++i)
 		{
-			success = circularBufferPush(&circularBuffer, &foo);
+			success = circularBufferPush(circularBuffer.begin, &circularBuffer.end, &foo);
 			assertTrue("Should be able to push exactly 0xff - 1 bytes.", success);
 		}
 
-		success = circularBufferPush(&circularBuffer, &foo);
+		success = circularBufferPush(circularBuffer.begin, &circularBuffer.end, &foo);
 		assertTrue("The buffer should be full now.", !success);
 	}
 	endTest();
@@ -114,13 +114,13 @@ void circularBufferTest(void)
 	{
 		uint8_t foo = 0;
 
-		circularBufferInit(&circularBuffer);
+		circularBufferInit(&circularBuffer.begin, &circularBuffer.end);
 
-		circularBufferPush(&circularBuffer, &foo);
-		circularBufferPop(&circularBuffer, &foo);
-		assertByte("Should be back at zero size.", circularBufferSize(&circularBuffer), 0);
-		circularBufferPop(&circularBuffer, &foo);
-		assertByte("Popping too many should not decrease size.", circularBufferSize(&circularBuffer), 0);
+		circularBufferPush(circularBuffer.begin, &circularBuffer.end, &foo);
+		circularBufferPop(&circularBuffer.begin, circularBuffer.end, &foo);
+		assertByte("Should be back at zero size.", circularBufferSize(circularBuffer.begin, circularBuffer.end), 0);
+		circularBufferPop(&circularBuffer.begin, circularBuffer.end, &foo);
+		assertByte("Popping too many should not decrease size.", circularBufferSize(circularBuffer.begin, circularBuffer.end), 0);
 	}
 	endTest();
 
@@ -130,20 +130,20 @@ void circularBufferTest(void)
 		uint8_t pushed = 0;
 		uint16_t i = 0;
 
-		circularBufferInit(&circularBuffer);
+		circularBufferInit(&circularBuffer.begin, &circularBuffer.end);
 
 		// Prep the buffer by pushing and popping to nearly capacity.
 		for (i = 0; i < 250; ++i)
 		{
-			circularBufferPush(&circularBuffer, &pushed);
-			circularBufferPop(&circularBuffer, &popped);
+			circularBufferPush(circularBuffer.begin, &circularBuffer.end, &pushed);
+			circularBufferPop(&circularBuffer.begin, circularBuffer.end, &popped);
 		}
 
 		// A few more pushes will bring it over the edge and loop back at the beginning.
 		for (i = 0; i < 10; ++i)
 		{
-			circularBufferPush(&circularBuffer, &pushed);
-			circularBufferPop(&circularBuffer, &popped);
+			circularBufferPush(circularBuffer.begin, &circularBuffer.end, &pushed);
+			circularBufferPop(&circularBuffer.begin, circularBuffer.end, &popped);
 			assertByte("Popped value should be same as pushed.", popped, pushed);
 		}
 	}
@@ -156,15 +156,15 @@ void circularBufferTest(void)
 		uint8_t expected = 0;
 		uint16_t i = 0;
 
-		circularBufferInit(&circularBuffer);
+		circularBufferInit(&circularBuffer.begin, &circularBuffer.end);
 
 		for (i = 0; i < 10; ++i)
 		{
-			circularBufferPush(&circularBuffer, &pushed);
+			circularBufferPush(circularBuffer.begin, &circularBuffer.end, &pushed);
 		}
 
 		expected = 0;
-		circularBufferForEach((&circularBuffer), iterator)
+		circularBufferForEach(circularBuffer.begin, circularBuffer.end, iterator)
 		{
 			assertByte("Popped value should be same as pushed.", iterator, expected);
 			++expected;
@@ -180,16 +180,16 @@ void circularBufferTest(void)
 		uint8_t count = 0;
 		uint16_t i = 0;
 
-		circularBufferInit(&circularBuffer);
+		circularBufferInit(&circularBuffer.begin, &circularBuffer.end);
 
 		for (i = 0; i < 10; ++i)
 		{
-			circularBufferPush(&circularBuffer, &pushed);
+			circularBufferPush(circularBuffer.begin, &circularBuffer.end, &pushed);
 		}
 
 		expected = pushed;
 		count = 0;
-		circularBufferForEachReverse((&circularBuffer), iterator)
+		circularBufferForEachReverse(circularBuffer.begin, circularBuffer.end, iterator)
 		{
 			assertByte("Value should be same as pushed.", iterator, expected);
 			--expected;

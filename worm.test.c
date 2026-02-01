@@ -202,7 +202,7 @@ void wormTest(void)
 
 		wormStep(wormIndex);
 
-		assertByteDecimal("Direction", worms[wormIndex].wantedNextDirection, (Direction_right + 1) % 4);
+		assertByteDecimal("Direction", worms.wantedNextDirection[wormIndex], (Direction_right + 1) % 4);
 	}
 	endTest();
 }

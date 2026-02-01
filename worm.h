@@ -8,22 +8,6 @@
 #include "tile-type.h"
 #include <stdint.h>
 
-typedef struct Worm
-{
-	Direction wantedNextDirection;
-	Direction nextDirection;
-	Microstep headStep;
-	Microstep tailStep;
-	bool hasNextStep;
-	Direction nextStepDirection;
-	uint16_t nextStepPosition;
-
-	CircularBuffer tail;
-	// The actual values of the CircularBuffer are stored separately, in multiple arrays.
-	Direction tailDirections[0x100];
-	uint16_t tailPositions[0x100];
-} Worm;
-
 void wormInit(uint8_t wormIndex, uint16_t pos, Direction direction);
 void wormSetNextDirection(uint8_t wormIndex, Direction direction);
 void wormStep(uint8_t wormIndex);

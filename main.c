@@ -19,8 +19,6 @@ extern Level levels[];
 
 void animateWorm(uint8_t wormIndex, Direction nextDirection)
 {
-	Worm *worm = &worms[wormIndex];
-
 	wormStep(wormIndex);
 	if (nextDirection != Direction_count)
 	{

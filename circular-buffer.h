@@ -10,15 +10,15 @@ typedef struct CircularBuffer
 	uint8_t end;
 } CircularBuffer;
 
-void circularBufferInit(CircularBuffer *circularBuffer);
-bool circularBufferPush(CircularBuffer *circularBuffer, uint8_t *index);
-bool circularBufferPop(CircularBuffer *circularBuffer, uint8_t *index);
-uint8_t circularBufferSize(CircularBuffer *circularBuffer);
+void circularBufferInit(uint8_t *circularBufferBegin, uint8_t *circularBufferEnd);
+bool circularBufferPush(uint8_t circularBufferBegin, uint8_t *circularBufferEnd, uint8_t *index);
+bool circularBufferPop(uint8_t *circularBufferBegin, uint8_t circularBufferEnd, uint8_t *index);
+uint8_t circularBufferSize(uint8_t circularBufferBegin, uint8_t circularBufferEnd);
 
-#define circularBufferForEach(circularBuffer, iterator) for (iterator = circularBuffer->begin; iterator != circularBuffer->end; ++iterator)
-#define circularBufferForEachReverse(circularBuffer, iterator) for (iterator = circularBuffer->end - 1; iterator != (uint8_t)(circularBuffer->begin - 1); --iterator)
+#define circularBufferForEach(circularBufferBegin, circularBufferEnd, iterator) for (iterator = circularBufferBegin; iterator != circularBufferEnd; ++iterator)
+#define circularBufferForEachReverse(circularBufferBegin, circularBufferEnd, iterator) for (iterator = circularBufferEnd - 1; iterator != (uint8_t)(circularBufferBegin - 1); --iterator)
 
 #define circularBufferGetValue(tailValues, index) ((tailValues)[(uint8_t)(index)])
-#define circularBufferGetLastValue(tail, tailValues) circularBufferGetValue(tailValues, tail.end - 1)
+#define circularBufferGetLastValue(tailEnd, tailValues) circularBufferGetValue(tailValues, tailEnd - 1)
 
 #endif

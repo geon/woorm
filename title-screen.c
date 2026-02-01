@@ -8,12 +8,10 @@
 
 void animateWormTitleScreen(uint8_t wormIndex, uint8_t path[], uint8_t *currentPathStep, uint8_t pathStepCount)
 {
-	Worm *worm = &worms[wormIndex];
-
 	wormStep(wormIndex);
-	if (worm->headStep == 0)
+	if (worms.headStep[wormIndex] == 0)
 	{
-		worm->wantedNextDirection = path[*currentPathStep];
+		worms.wantedNextDirection[wormIndex] = path[*currentPathStep];
 
 		++(*currentPathStep);
 		if (*currentPathStep >= pathStepCount)
@@ -51,7 +49,7 @@ void titleScreen(void)
 	uint8_t pathStepA = 0;
 	uint8_t pathStepB = 0;
 
-	levelStart(&levels[(numLevels - 1)] ß, 2);
+	levelStart(&levels[(numLevels - 1)], 2);
 	// worms[0].wantedLength = sizeof(pathA) - 2;
 	// worms[1].wantedLength = sizeof(pathB) - 2;
 
