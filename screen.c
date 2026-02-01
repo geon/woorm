@@ -6,6 +6,6 @@ void screenClear()
 
 	for (i = 0; i < 1000; ++i)
 	{
-		screen->chars[i] = 0;
+		screenChars[i] = 0;
 	}
 }

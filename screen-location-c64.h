@@ -3,7 +3,7 @@
 
 #include "screen.h"
 
-extern Screen _screen;
-extern Screen *screen;
+extern uint8_t *screenChars;
+extern uint8_t *screenColors;
 
 #endif

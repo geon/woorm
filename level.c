@@ -5,8 +5,8 @@
 void levelDraw(Level *level)
 {
 	// Decompress directly to screen.
-	lz77Decompress(level->chars, 1024, screen->chars, 1024);
-	lz77Decompress(level->colors, 1024, screen->colors, 1024);
+	lz77Decompress(level->chars, 1024, screenChars, 1024);
+	lz77Decompress(level->colors, 1024, screenColors, 1024);
 }
 
 void levelStart(Level *level, uint8_t numWorms)

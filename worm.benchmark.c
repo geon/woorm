@@ -17,10 +17,8 @@ uint8_t wormIndex = 0;
 // Fake screen with char and color ram.
 uint8_t chars[1000];
 uint8_t colors[1000];
-Screen _screen = {
-	chars,
-	colors};
-Screen *screen = &_screen;
+uint8_t *screenChars = chars;
+uint8_t *screenColors = colors;
 
 void wormBenchmark(void)
 {

@@ -50,25 +50,25 @@ void wormSetNextStep(uint8_t wormIndex)
 	worms.hasNextStep[wormIndex] = true;
 
 	// If the selected direction is blocked, first try the previous direction.
-	if (screen->chars[worms.nextStepPosition[wormIndex]])
+	if (screenChars[worms.nextStepPosition[wormIndex]])
 	{
 		worms.nextStepDirection[wormIndex] = circularBufferGetLastValue(worms.tailEnd[wormIndex], worms.tailDirections[wormIndex]);
 		worms.nextStepPosition[wormIndex] = currentHeadPosition + getPositionOffsetForDirection(worms.nextStepDirection[wormIndex]);
 	}
 	// If the direction is blocked, turn clockwise.
-	if (screen->chars[worms.nextStepPosition[wormIndex]])
+	if (screenChars[worms.nextStepPosition[wormIndex]])
 	{
 		worms.nextStepDirection[wormIndex] = (worms.nextStepDirection[wormIndex] + 1) & 0b11;
 		worms.nextStepPosition[wormIndex] = currentHeadPosition + getPositionOffsetForDirection(worms.nextStepDirection[wormIndex]);
 	}
 	// If still blocked, try anti-clockwise instead.
-	if (screen->chars[worms.nextStepPosition[wormIndex]])
+	if (screenChars[worms.nextStepPosition[wormIndex]])
 	{
 		worms.nextStepDirection[wormIndex] = (worms.nextStepDirection[wormIndex] + 2) & 0b11;
 		worms.nextStepPosition[wormIndex] = currentHeadPosition + getPositionOffsetForDirection(worms.nextStepDirection[wormIndex]);
 	}
 	// If still blocked, just don't move.
-	if (screen->chars[worms.nextStepPosition[wormIndex]])
+	if (screenChars[worms.nextStepPosition[wormIndex]])
 	{
 		worms.hasNextStep[wormIndex] = false;
 	}
@@ -160,8 +160,8 @@ void wormDraw(uint8_t wormIndex)
 		part = wormGetPart(wormIndex, iterator);
 
 		// TODO. This call uses only the head step, not the tail step.
-		screen->chars[position] = tileToIndex[tilePackWormTileStateInBits(part, direction, nextDirection, worms.headStep[wormIndex])];
-		screen->colors[position] = color;
+		screenChars[position] = tileToIndex[tilePackWormTileStateInBits(part, direction, nextDirection, worms.headStep[wormIndex])];
+		screenColors[position] = color;
 
 		nextDirection = direction;
 	}
@@ -190,11 +190,11 @@ void wormLazyDrawTile()
 	uint16_t position = circularBufferGetValue(wormLazyDraw_tailPositions, wormLazyDraw_tailIndex);
 	wormLazyDraw_direction = circularBufferGetValue(wormLazyDraw_tailDirections, wormLazyDraw_tailIndex);
 
-	screen->chars[position] = tileToIndex[wormLazyDraw_getTile()];
+	screenChars[position] = tileToIndex[wormLazyDraw_getTile()];
 	// TODO: Only needed on full steps.
 	// TODO:
 	// Only the cell just entered needs to have the color changed.
-	screen->colors[position] = wormLazyDraw_color;
+	screenColors[position] = wormLazyDraw_color;
 }
 void wormLazyDraw(uint8_t wormIndex)
 {

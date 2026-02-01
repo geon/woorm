@@ -3,13 +3,8 @@
 
 #include <stdint.h>
 
-typedef struct Screen
-{
-	uint8_t *chars;
-	uint8_t *colors;
-} Screen;
-
-extern Screen *screen;
+extern uint8_t *screenChars;
+extern uint8_t *screenColors;
 
 void screenClear();
 
