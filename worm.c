@@ -188,9 +188,12 @@ uint8_t wormLazyDraw_getTile()
 void wormLazyDrawTile()
 {
 	uint16_t position = circularBufferGetValue(wormLazyDraw_tailPositions, wormLazyDraw_tailIndex);
+	uint8_t tile;
+
 	wormLazyDraw_direction = circularBufferGetValue(wormLazyDraw_tailDirections, wormLazyDraw_tailIndex);
 
-	screenChars[position] = tileToIndex[wormLazyDraw_getTile()];
+	tile = wormLazyDraw_getTile();
+	screenChars[position] = tileToIndex[tile];
 	// TODO: Only needed on full steps.
 	// TODO:
 	// Only the cell just entered needs to have the color changed.
