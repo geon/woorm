@@ -9,8 +9,8 @@
 void wormInitAddSegment(uint8_t wormIndex, uint16_t *position, Direction direction, uint8_t *segmentIndex)
 {
 	circularBufferPush(worms.tailBegin[wormIndex], &worms.tailEnd[wormIndex], segmentIndex);
-	circularBufferGetValue(worms.tailDirections[wormIndex], *segmentIndex) = direction;
-	circularBufferGetValue(worms.tailPositions[wormIndex], *segmentIndex) = *position;
+	worms.tailDirections[wormIndex][*segmentIndex] = direction;
+	worms.tailPositions[wormIndex][*segmentIndex] = *position;
 	*position += getPositionOffsetForDirection(direction);
 }
 
@@ -41,8 +41,8 @@ void wormSetNextDirection(uint8_t wormIndex, Direction direction)
 
 void wormSetNextStep(uint8_t wormIndex)
 {
-
-	uint16_t currentHeadPosition = circularBufferGetLastValue(worms.tailEnd[wormIndex], worms.tailPositions[wormIndex]);
+	uint8_t lastTailIndex = worms.tailEnd[wormIndex] - 1;
+	uint16_t currentHeadPosition = worms.tailPositions[wormIndex][lastTailIndex];
 
 	// Try stepping in the selected direction.
 	worms.nextStepDirection[wormIndex] = worms.wantedNextDirection[wormIndex];
@@ -56,7 +56,7 @@ void wormSetNextStep(uint8_t wormIndex)
 	}
 
 	// The selected direction is blocked, first try the previous direction.
-	worms.nextStepDirection[wormIndex] = circularBufferGetLastValue(worms.tailEnd[wormIndex], worms.tailDirections[wormIndex]);
+	worms.nextStepDirection[wormIndex] = worms.tailDirections[wormIndex][lastTailIndex];
 	worms.nextStepPosition[wormIndex] = currentHeadPosition + getPositionOffsetForDirection(worms.nextStepDirection[wormIndex]);
 
 	// Check if not blocked.
@@ -105,8 +105,8 @@ void wormStep(uint8_t wormIndex)
 	{
 		uint8_t index = 0;
 		circularBufferPush(worms.tailBegin[wormIndex], &worms.tailEnd[wormIndex], &index);
-		circularBufferGetValue(worms.tailDirections[wormIndex], index) = worms.nextStepDirection[wormIndex];
-		circularBufferGetValue(worms.tailPositions[wormIndex], index) = worms.nextStepPosition[wormIndex];
+		worms.tailDirections[wormIndex][index] = worms.nextStepDirection[wormIndex];
+		worms.tailPositions[wormIndex][index] = worms.nextStepPosition[wormIndex];
 	}
 
 	if (worms.tailStep[wormIndex] == 0)
@@ -170,8 +170,8 @@ void wormDraw(uint8_t wormIndex)
 	circularBufferForEachReverse(worms.tailBegin[wormIndex], worms.tailEnd[wormIndex], iterator)
 	{
 
-		direction = circularBufferGetValue(worms.tailDirections[wormIndex], iterator);
-		position = circularBufferGetValue(worms.tailPositions[wormIndex], iterator);
+		direction = worms.tailDirections[wormIndex][iterator];
+		position = worms.tailPositions[wormIndex][iterator];
 		part = wormGetPart(wormIndex, iterator);
 
 		// TODO. This call uses only the head step, not the tail step.
@@ -202,10 +202,10 @@ uint8_t wormLazyDraw_getTile()
 }
 void wormLazyDrawTile()
 {
-	uint16_t position = circularBufferGetValue(wormLazyDraw_tailPositions, wormLazyDraw_tailIndex);
+	uint16_t position = wormLazyDraw_tailPositions[wormLazyDraw_tailIndex];
 	uint8_t tile;
 
-	wormLazyDraw_direction = circularBufferGetValue(wormLazyDraw_tailDirections, wormLazyDraw_tailIndex);
+	wormLazyDraw_direction = wormLazyDraw_tailDirections[wormLazyDraw_tailIndex];
 
 	tile = wormLazyDraw_getTile();
 	screenChars[position] = tileToIndex[tile];
@@ -237,7 +237,7 @@ void wormLazyDraw(uint8_t wormIndex)
 	wormLazyDraw_tailIndex = tailEnd - 2;
 	wormLazyDrawTile();
 
-	wormLazyDraw_nextDirection = circularBufferGetValue(wormLazyDraw_tailDirections, tailBegin + 2);
+	wormLazyDraw_nextDirection = wormLazyDraw_tailDirections[tailBegin + 2];
 	wormLazyDraw_type = TileType_animated_endToMiddle;
 	wormLazyDraw_step = tailStep;
 	wormLazyDraw_tailIndex = tailBegin + 1;

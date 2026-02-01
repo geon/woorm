@@ -18,7 +18,4 @@ uint8_t circularBufferSize(uint8_t circularBufferBegin, uint8_t circularBufferEn
 #define circularBufferForEach(circularBufferBegin, circularBufferEnd, iterator) for (iterator = circularBufferBegin; iterator != circularBufferEnd; ++iterator)
 #define circularBufferForEachReverse(circularBufferBegin, circularBufferEnd, iterator) for (iterator = circularBufferEnd - 1; iterator != (uint8_t)(circularBufferBegin - 1); --iterator)
 
-#define circularBufferGetValue(tailValues, index) ((tailValues)[(uint8_t)(index)])
-#define circularBufferGetLastValue(tailEnd, tailValues) circularBufferGetValue(tailValues, tailEnd - 1)
-
 #endif
