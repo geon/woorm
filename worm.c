@@ -174,6 +174,7 @@ uint16_t *wormLazyDraw_tailPositions;
 Direction wormLazyDraw_nextDirection;
 TileType wormLazyDraw_type;
 Microstep wormLazyDraw_step;
+uint8_t wormLazyDraw_tailIndex;
 uint8_t wormLazyDraw_getTile()
 {
 	// Optimized tilePackWormTileStateInBits
@@ -184,11 +185,10 @@ uint8_t wormLazyDraw_getTile()
 		((uint8_t)wormLazyDraw_step & 0b1100) |
 		((uint8_t)wormLazyDraw_nextDirection << 0));
 }
-void wormLazyDrawTile(
-	uint8_t tailIndex)
+void wormLazyDrawTile()
 {
-	uint16_t position = circularBufferGetValue(wormLazyDraw_tailPositions, tailIndex);
-	wormLazyDraw_direction = circularBufferGetValue(wormLazyDraw_tailDirections, tailIndex);
+	uint16_t position = circularBufferGetValue(wormLazyDraw_tailPositions, wormLazyDraw_tailIndex);
+	wormLazyDraw_direction = circularBufferGetValue(wormLazyDraw_tailDirections, wormLazyDraw_tailIndex);
 
 	screen->chars[position] = tileToIndex[wormLazyDraw_getTile()];
 	// TODO: Only needed on full steps.
@@ -210,24 +210,24 @@ void wormLazyDraw(uint8_t wormIndex)
 	wormLazyDraw_nextDirection = worms.nextDirection[wormIndex];
 	wormLazyDraw_type = TileType_animated_head;
 	wormLazyDraw_step = headStep;
-	wormLazyDrawTile(
-		tailEnd - 1);
+	wormLazyDraw_tailIndex = tailEnd - 1;
+	wormLazyDrawTile();
 
 	wormLazyDraw_nextDirection = wormLazyDraw_direction;
 	wormLazyDraw_type = TileType_animated_headToMiddle;
 	wormLazyDraw_step = headStep;
-	wormLazyDrawTile(
-		tailEnd - 2);
+	wormLazyDraw_tailIndex = tailEnd - 2;
+	wormLazyDrawTile();
 
 	wormLazyDraw_nextDirection = circularBufferGetValue(wormLazyDraw_tailDirections, tailBegin + 2);
 	wormLazyDraw_type = TileType_animated_endToMiddle;
 	wormLazyDraw_step = tailStep;
-	wormLazyDrawTile(
-		tailBegin + 1);
+	wormLazyDraw_tailIndex = tailBegin + 1;
+	wormLazyDrawTile();
 
 	wormLazyDraw_nextDirection = wormLazyDraw_direction;
 	wormLazyDraw_type = TileType_animated_end;
 	wormLazyDraw_step = tailStep;
-	wormLazyDrawTile(
-		tailBegin);
+	wormLazyDraw_tailIndex = tailBegin;
+	wormLazyDrawTile();
 }
