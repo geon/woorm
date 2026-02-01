@@ -49,29 +49,44 @@ void wormSetNextStep(uint8_t wormIndex)
 	worms.nextStepPosition[wormIndex] = currentHeadPosition + getPositionOffsetForDirection(worms.nextStepDirection[wormIndex]);
 	worms.hasNextStep[wormIndex] = true;
 
-	// If the selected direction is blocked, first try the previous direction.
-	if (screenChars[worms.nextStepPosition[wormIndex]])
+	// Check if not blocked.
+	if (!screenChars[worms.nextStepPosition[wormIndex]])
 	{
-		worms.nextStepDirection[wormIndex] = circularBufferGetLastValue(worms.tailEnd[wormIndex], worms.tailDirections[wormIndex]);
-		worms.nextStepPosition[wormIndex] = currentHeadPosition + getPositionOffsetForDirection(worms.nextStepDirection[wormIndex]);
+		return;
 	}
-	// If the direction is blocked, turn clockwise.
-	if (screenChars[worms.nextStepPosition[wormIndex]])
+
+	// The selected direction is blocked, first try the previous direction.
+	worms.nextStepDirection[wormIndex] = circularBufferGetLastValue(worms.tailEnd[wormIndex], worms.tailDirections[wormIndex]);
+	worms.nextStepPosition[wormIndex] = currentHeadPosition + getPositionOffsetForDirection(worms.nextStepDirection[wormIndex]);
+
+	// Check if not blocked.
+	if (!screenChars[worms.nextStepPosition[wormIndex]])
 	{
-		worms.nextStepDirection[wormIndex] = (worms.nextStepDirection[wormIndex] + 1) & 0b11;
-		worms.nextStepPosition[wormIndex] = currentHeadPosition + getPositionOffsetForDirection(worms.nextStepDirection[wormIndex]);
+		return;
 	}
-	// If still blocked, try anti-clockwise instead.
-	if (screenChars[worms.nextStepPosition[wormIndex]])
+
+	// The direction is blocked, turn clockwise.
+	worms.nextStepDirection[wormIndex] = (worms.nextStepDirection[wormIndex] + 1) & 0b11;
+	worms.nextStepPosition[wormIndex] = currentHeadPosition + getPositionOffsetForDirection(worms.nextStepDirection[wormIndex]);
+
+	// Check if not blocked.
+	if (!screenChars[worms.nextStepPosition[wormIndex]])
 	{
-		worms.nextStepDirection[wormIndex] = (worms.nextStepDirection[wormIndex] + 2) & 0b11;
-		worms.nextStepPosition[wormIndex] = currentHeadPosition + getPositionOffsetForDirection(worms.nextStepDirection[wormIndex]);
+		return;
 	}
-	// If still blocked, just don't move.
-	if (screenChars[worms.nextStepPosition[wormIndex]])
+
+	// Still blocked, try anti-clockwise instead.
+	worms.nextStepDirection[wormIndex] = (worms.nextStepDirection[wormIndex] + 2) & 0b11;
+	worms.nextStepPosition[wormIndex] = currentHeadPosition + getPositionOffsetForDirection(worms.nextStepDirection[wormIndex]);
+
+	// Check if not blocked.
+	if (!screenChars[worms.nextStepPosition[wormIndex]])
 	{
-		worms.hasNextStep[wormIndex] = false;
+		return;
 	}
+
+	// Still blocked, just don't move.
+	worms.hasNextStep[wormIndex] = false;
 }
 
 void wormStep(uint8_t wormIndex)
